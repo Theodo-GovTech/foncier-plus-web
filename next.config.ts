@@ -1,7 +1,11 @@
 import type { NextConfig } from "next";
 
+const repoName = "foncier-plus-web";
+const basePath = process.env.GITHUB_ACTIONS ? `/${repoName}` : "";
+
 const nextConfig: NextConfig = {
-  /* config options here */
+  output: "export",
+  basePath,
 };
 
 export default nextConfig;
