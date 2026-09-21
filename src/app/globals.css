@@ -12,6 +12,15 @@
   --font-mono: var(--font-geist-mono);
 }
 
+@theme {
+  --color-brand: #043f54;
+  --color-brand-accent: #e42319;
+  --color-line: #e4e6ea;
+
+  --container-rule: 87.5rem;
+  --container-page: 75rem;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -22,5 +31,4 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
 }
