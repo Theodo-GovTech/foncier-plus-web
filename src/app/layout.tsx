@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import { Header } from "@/components/Header";
+import { NextIntlClientProvider } from "next-intl";
 import "./globals.css";
 
 const metropolis = localFont({
@@ -31,8 +32,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${metropolis.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <Header />
-        {children}
+        <NextIntlClientProvider><Header/>{children}</NextIntlClientProvider>
       </body>
     </html>
   );
