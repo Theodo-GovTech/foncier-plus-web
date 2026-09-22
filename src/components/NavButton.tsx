@@ -22,21 +22,18 @@ type NavButtonBaseProps = {
 };
 
 type NavButtonProps = NavButtonBaseProps &
-  (
-    | { href: string; external?: false }
-    | { href: string; external: true }
-    | { href?: never; external?: never }
-  );
+  ({ href: string; external?: boolean } | { href?: never; external?: never });
 
 export function NavButton({
   variant,
   children,
+  href,
+  external,
   "aria-current": ariaCurrent,
-  ...props
 }: NavButtonProps) {
   const className = `${baseClassName} ${variantClassName[variant]}`;
 
-  if (props.href === undefined) {
+  if (href === undefined) {
     return (
       <button type="button" aria-current={ariaCurrent} className={className}>
         {children}
@@ -44,22 +41,15 @@ export function NavButton({
     );
   }
 
-  if (props.external) {
-    return (
-      <a
-        href={props.href}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-current={ariaCurrent}
-        className={className}
-      >
-        {children}
-      </a>
-    );
-  }
-
+  // `<Link>` handles external hrefs too — they only need the `target`/`rel` pair.
   return (
-    <Link href={props.href} aria-current={ariaCurrent} className={className}>
+    <Link
+      href={href}
+      target={external ? "_blank" : undefined}
+      rel={external ? "noopener noreferrer" : undefined}
+      aria-current={ariaCurrent}
+      className={className}
+    >
       {children}
     </Link>
   );
