@@ -8,6 +8,18 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 <!-- END:nextjs-agent-rules -->
 
+# Git restriction
+
 Do not add co-authored by Claude in the commits nor the pull request description.
 
 Create pull requests on the 'staging' branch, not 'main'.
+
+# Project constraints
+
+This site must stay **strictly static**. `output: "export"` in `next.config.ts` is not
+negotiable: everything has to be computable at build time.
+
+Therefore off-limits: Server Actions, request-dependent Route Handlers, `cookies()`,
+`headers()`, ISR, middleware/proxy, `rewrites`, `redirects`, dynamic routes without
+`generateStaticParams`, and image optimization through the default loader (hence
+`images: { unoptimized: true }`).
