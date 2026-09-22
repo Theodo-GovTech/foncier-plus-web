@@ -23,3 +23,4 @@ Therefore off-limits: Server Actions, request-dependent Route Handlers, `cookies
 `headers()`, ISR, middleware/proxy, `rewrites`, `redirects`, dynamic routes without
 `generateStaticParams`, and image optimization through the default loader (hence
 `images: { unoptimized: true }`).
+Never push on 'main' nor 'staging'.
