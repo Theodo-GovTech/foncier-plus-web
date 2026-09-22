@@ -14,7 +14,9 @@
 
 @theme {
   --color-brand: #043f54;
+  --color-brand-hover: #03303f;
   --color-brand-accent: #e42319;
+  --color-brand-accent-hover: #c41d12;
   --color-line: #e4e6ea;
 
   --container-rule: 87.5rem;
