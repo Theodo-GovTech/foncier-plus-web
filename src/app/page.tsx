@@ -1,9 +1,6 @@
-import { SearchSection } from "@/components/SearchSection";
+import { redirect } from "next/navigation";
+import { routing } from "@/i18n/routing";
 
-export default function Home() {
-  return (
-    <main className="flex-1">
-      <SearchSection />
-    </main>
-  );
+export default function RootPage() {
+  redirect(`/${routing.defaultLocale}`);
 }
