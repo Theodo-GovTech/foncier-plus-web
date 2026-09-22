@@ -3,7 +3,7 @@ import Link from "next/link";
 import logoFoncierPlus from "@/assets/logo-foncier-plus.svg";
 import { NavButton } from "@/components/NavButton";
 
-export function Header() {
+export const Header = () => {
   return (
     <header className="sticky top-0 z-50 bg-white">
       <div className="mx-auto flex min-h-16 max-w-page flex-wrap items-center justify-between gap-x-6 gap-y-3 border-b border-line px-4 py-3 lg:px-[114px]">
@@ -34,4 +34,4 @@ export function Header() {
       </div>
     </header>
   );
-}
+};

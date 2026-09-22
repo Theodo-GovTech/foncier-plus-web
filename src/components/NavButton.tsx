@@ -24,13 +24,13 @@ type NavButtonBaseProps = {
 type NavButtonProps = NavButtonBaseProps &
   ({ href: string; external?: boolean } | { href?: never; external?: never });
 
-export function NavButton({
+export const NavButton = ({
   variant,
   children,
   href,
   external,
   "aria-current": ariaCurrent,
-}: NavButtonProps) {
+}: NavButtonProps) => {
   const className = `${baseClassName} ${variantClassName[variant]}`;
 
   if (href === undefined) {
@@ -53,4 +53,4 @@ export function NavButton({
       {children}
     </Link>
   );
-}
+};
