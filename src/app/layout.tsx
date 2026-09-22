@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Foncier+ web",
+  title: "Foncier+",
   description: "Trouvez le foncier idéal pour réaliser votre projet économique",
 };
 

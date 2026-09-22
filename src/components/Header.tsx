@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import logoFoncierPlus from "@/assets/logo-foncier-plus.png";
+import logoFoncierPlus from "@/assets/logo-foncier-plus.svg";
 
 export function Header() {
   return (
