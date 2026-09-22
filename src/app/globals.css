@@ -19,8 +19,7 @@
   --color-brand-accent-hover: #c41d12;
   --color-line: #e4e6ea;
 
-  --container-rule: 87.5rem;
-  --container-page: 75rem;
+  --container-page: 87.5rem;
 }
 
 @media (prefers-color-scheme: dark) {
