@@ -23,7 +23,7 @@ export function Header() {
             Entreprise
           </NavButton>
           <NavButton
-            href="https://www.banquedesterritoires.fr"
+            href="https://www.banquedesterritoires.fr/produits-services/services-digitaux/france-foncier"
             external
             variant="outline"
           >
