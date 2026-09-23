@@ -6,7 +6,7 @@ type NavButtonVariant = "solid" | "outline" | "accent";
 // `border` sets the width only — each variant owns its border-color, otherwise
 // two border-color utilities collide and CSS source order decides the winner.
 const baseClassName =
-  "inline-flex h-[30px] items-center justify-center rounded-xs border px-4 text-[15px] leading-none font-bold whitespace-nowrap transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand";
+  "inline-flex h-[30px] items-center justify-center rounded-xs border px-4 text-[15px] leading-none font-extrabold whitespace-nowrap transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand";
 
 const variantClassName: Record<NavButtonVariant, string> = {
   solid: "border-brand bg-brand text-white hover:bg-brand-hover",

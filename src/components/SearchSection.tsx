@@ -2,6 +2,8 @@ import Image from "next/image";
 import boxIconCompass from "@/assets/box_icon_compass.svg";
 import searchSectionBg from "@/assets/search-section-bg.png";
 
+export const searchSectionId = "recherche";
+
 const highlights = [
   "Offres qualifiées",
   "Accompagnement dans la recherche de foncier et l'implantation",
@@ -10,6 +12,7 @@ const highlights = [
 export const SearchSection = () => {
   return (
     <section
+      id={searchSectionId}
       className="bg-brand bg-cover bg-position-[center_10%]"
       style={{ backgroundImage: `url(${searchSectionBg.src})` }}
     >

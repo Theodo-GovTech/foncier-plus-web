@@ -2,6 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 import logoFoncierPlus from "@/assets/logo-foncier-plus.svg";
 import { NavButton } from "@/components/NavButton";
+import { searchSectionId } from "@/components/SearchSection";
+import { SectionNav } from "@/components/SectionNav";
+
+const sections = [{ id: searchSectionId, label: "Rechercher un terrain" }];
 
 export const Header = () => {
   return (
@@ -12,7 +16,7 @@ export const Header = () => {
             src={logoFoncierPlus}
             alt="Foncier +"
             loading="eager"
-            className="h-9 w-auto"
+            className="h-8 w-auto"
           />
         </Link>
         <nav
@@ -32,6 +36,7 @@ export const Header = () => {
           <NavButton variant="accent">Nous contacter</NavButton>
         </nav>
       </div>
+      <SectionNav sections={sections} />
     </header>
   );
 };
