@@ -22,13 +22,6 @@
   --container-page: 87.5rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 html {
   scroll-padding-top: 8.5rem;
 }
