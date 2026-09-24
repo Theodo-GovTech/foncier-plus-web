@@ -35,9 +35,6 @@ const ambitions = [
 export const AmbitionsSection = () => {
   return (
     <section className="mx-auto max-w-page px-4 py-10.5 lg:px-[114px]">
-      {/* The icon hangs top-left of the title's first letter at every width
-          (30px wide + 4px gap). The left gutter hosts it on desktop, but is too
-          narrow on mobile: the title is indented there to make room. */}
       <div className="pl-[34px] lg:pl-0">
         <Image src={iconPlusNW} alt="" className="mb-1 -ml-[34px]" />
         <h2 className="text-[40px] leading-[46px] font-semibold text-brand">
@@ -50,10 +47,8 @@ export const AmbitionsSection = () => {
         aliqua.
       </p>
       <ul className="mt-10.5 grid gap-x-11 gap-y-10 sm:grid-cols-2 xl:grid-cols-4">
-        {/* Keyed by icon: the placeholder titles aren't unique yet. */}
         {ambitions.map(({ icon, title, description }) => (
           <li key={icon.src}>
-            {/* Icons keep their own size, centered in a shared 48px box. */}
             <Image src={icon} alt="" className="size-12 object-scale-down" />
             <h3 className="mt-4 text-xl font-semibold text-brand">{title}</h3>
             <p className="mt-1.5 text-muted">{description}</p>

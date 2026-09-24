@@ -6,7 +6,7 @@ export default function Home() {
     <main className="flex-1">
       <SearchSection />
       <AmbitionsSection />
-      {/* TEMP: scroll filler to check the header shadow, don't commit. */}
+      {/* TEMP: scroll filler for test */}
       <div className="h-[200vh]" />
     </main>
   );
