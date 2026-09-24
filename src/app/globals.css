@@ -30,7 +30,6 @@
 }
 
 html {
-  /* Sticky header height (top row + section nav), so anchored sections aren't hidden behind it. */
   scroll-padding-top: 8.5rem;
 }
 

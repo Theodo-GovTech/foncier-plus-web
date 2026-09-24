@@ -4,7 +4,6 @@ import localFont from "next/font/local";
 import { Header } from "@/components/Header";
 import "./globals.css";
 
-// Free stand-in for Gotham until the licensed font files are available.
 const metropolis = localFont({
   src: [
     { path: "../assets/fonts/metropolis-400.woff2", weight: "400" },

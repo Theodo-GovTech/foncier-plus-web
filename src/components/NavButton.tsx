@@ -41,7 +41,7 @@ export const NavButton = ({
     );
   }
 
-  // `<Link>` handles external hrefs too — they only need the `target`/`rel` pair.
+  // `<Link>` handles external hrefs, they need the `target`/`rel` pair
   return (
     <Link
       href={href}

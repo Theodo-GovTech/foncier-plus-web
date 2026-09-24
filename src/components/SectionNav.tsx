@@ -14,7 +14,7 @@ const subscribeToScroll = (onScroll: () => void) => {
   return () => window.removeEventListener("scroll", onScroll);
 };
 
-// The active section is the one showing right below the sticky header.
+// The active section is the one showing right below the sticky header
 const getActiveSectionId = (sections: Section[]) => {
   const headerBottom =
     document.querySelector("header")?.getBoundingClientRect().bottom ?? 0;
@@ -32,7 +32,6 @@ export const SectionNav = ({ sections }: SectionNavProps) => {
   const activeSectionId = useSyncExternalStore(
     subscribeToScroll,
     () => getActiveSectionId(sections),
-    // The page loads at its top, on the first section.
     () => sections[0].id,
   );
 
@@ -41,7 +40,6 @@ export const SectionNav = ({ sections }: SectionNavProps) => {
       aria-label="Sections de la page"
       className="mx-auto flex max-w-page gap-6 px-4 py-6 lg:px-[114px]"
     >
-      {/* Plain anchors: unlike `<Link>`, they scroll again when the URL already has this hash. */}
       {sections.map(({ id, label }) => (
         <a
           key={id}
