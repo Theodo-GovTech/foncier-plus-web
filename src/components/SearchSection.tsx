@@ -5,13 +5,9 @@ import searchSectionBg from "@/assets/search-section-bg.png";
 
 export const searchSectionId = "recherche";
 
-const highlights = [
-  "Offres qualifiées",
-  "Accompagnement dans la recherche de foncier et l'implantation",
-];
-
 export const SearchSection = async () => {
   const t = await getTranslations("SearchSection");
+  const highlights = t.raw("highlights") as string[];
 
   return (
     <section

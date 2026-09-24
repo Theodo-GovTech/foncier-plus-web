@@ -1,17 +1,22 @@
 import Image from "next/image";
 import iconExternalLink from "@/assets/icon-external-link.svg";
 import logoFoncierPlusW from "@/assets/logo-foncier-plus-white.svg";
-import { sections } from "./Header";
+import { getSections } from "./Header";
 
 type FooterLink = { label: string; href?: string; external?: boolean };
 
 const COPYRIGHT_DATE = 2026;
 const EXTERNAL_LINK_ICON = `url(${iconExternalLink.src})`;
 
-const linkGroups: { title: string; links: FooterLink[] }[] = [
+const getLinkGroups = async (): Promise<
+  { title: string; links: FooterLink[] }[]
+> => [
   {
     title: "Plan du site",
-    links: sections.map(({ id, label }) => ({ label, href: `#${id}` })),
+    links: (await getSections()).map(({ id, label }) => ({
+      label,
+      href: `#${id}`,
+    })),
   },
   {
     title: "Nous contacter",
@@ -40,7 +45,9 @@ const linkGroups: { title: string; links: FooterLink[] }[] = [
   },
 ];
 
-export const Footer = () => {
+export const Footer = async () => {
+  const linkGroups = await getLinkGroups();
+
   return (
     <section className="bg-brand bg-cover bg-position-[center_10%]">
       <div className="mx-auto flex max-w-page flex-col gap-35 px-4 pt-25 pb-12 text-white lg:flex-row lg:px-[114px]">
