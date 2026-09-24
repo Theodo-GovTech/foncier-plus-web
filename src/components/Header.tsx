@@ -1,20 +1,24 @@
 import Image from "next/image";
-import Link from "next/link";
 import logoFoncierPlus from "@/assets/logo-foncier-plus.svg";
+import { HomeLink } from "@/components/HomeLink";
 import { NavButton } from "@/components/NavButton";
+import { searchSectionId } from "@/components/SearchSection";
+import { SectionNav } from "@/components/SectionNav";
+
+const sections = [{ id: searchSectionId, label: "Rechercher un terrain" }];
 
 export const Header = () => {
   return (
     <header className="sticky top-0 z-50 bg-white">
       <div className="mx-auto flex min-h-16 max-w-page flex-wrap items-center justify-between gap-x-6 gap-y-3 border-b border-line px-4 py-3 lg:px-[114px]">
-        <Link href="/">
+        <HomeLink>
           <Image
             src={logoFoncierPlus}
             alt="Foncier +"
             loading="eager"
-            className="h-9 w-auto"
+            className="h-8 w-auto select-none"
           />
-        </Link>
+        </HomeLink>
         <nav
           aria-label="Navigation principale"
           className="flex flex-wrap items-center gap-2"
@@ -32,6 +36,7 @@ export const Header = () => {
           <NavButton variant="accent">Nous contacter</NavButton>
         </nav>
       </div>
+      <SectionNav sections={sections} />
     </header>
   );
 };

@@ -1,11 +1,17 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import { Header } from "@/components/Header";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const metropolis = localFont({
+  src: [
+    { path: "../assets/fonts/metropolis-400.woff2", weight: "400" },
+    { path: "../assets/fonts/metropolis-600.woff2", weight: "600" },
+    { path: "../assets/fonts/metropolis-700.woff2", weight: "700" },
+    { path: "../assets/fonts/metropolis-800.woff2", weight: "800" },
+  ],
+  variable: "--font-metropolis",
 });
 
 const geistMono = Geist_Mono({
@@ -22,7 +28,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="fr"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${metropolis.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <Header />
