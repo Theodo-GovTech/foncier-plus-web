@@ -1,5 +1,26 @@
 {
   "HomePage": {
     "title": "Welcome to Foncier plus"
+  },
+  "Metadata": {
+    "title": "Foncier+",
+    "description": "Find the ideal land to bring your economic project to life"
+  },
+  "Header": {
+    "navAriaLabel": "Main navigation",
+    "searchNavLabel": "Search for land",
+    "business": "Business",
+    "localAuthority": "Local authority",
+    "contact": "Contact us"
+  },
+  "SectionNav": {
+    "ariaLabel": "Page sections"
+  },
+  "SearchSection": {
+    "title": "Find the ideal land to bring your economic project to life",
+    "highlights": [
+      "Qualified listings",
+      "Support finding land and setting up your business"
+    ]
   }
 }

@@ -4,7 +4,7 @@ import { useSyncExternalStore } from "react";
 
 type Section = { id: string; label: string };
 
-type SectionNavProps = { sections: Section[] };
+type SectionNavProps = { sections: Section[]; ariaLabel: string };
 
 const linkClassName =
   "font-semibold text-[17px] text-brand transition-colors hover:text-brand/70 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand aria-current:text-brand-accent aria-current:hover:text-brand-accent/70";
@@ -28,7 +28,7 @@ const getActiveSectionId = (sections: Section[]) => {
   })?.id;
 };
 
-export const SectionNav = ({ sections }: SectionNavProps) => {
+export const SectionNav = ({ sections, ariaLabel }: SectionNavProps) => {
   const activeSectionId = useSyncExternalStore(
     subscribeToScroll,
     () => getActiveSectionId(sections),
@@ -37,7 +37,7 @@ export const SectionNav = ({ sections }: SectionNavProps) => {
 
   return (
     <nav
-      aria-label="Sections de la page"
+      aria-label={ariaLabel}
       className="mx-auto flex max-w-page gap-6 px-4 py-6 lg:px-[114px]"
     >
       {sections.map(({ id, label }) => (
