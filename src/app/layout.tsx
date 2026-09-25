@@ -19,9 +19,12 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const allowIndexing = process.env.ALLOW_INDEXING === "true";
+
 export const metadata: Metadata = {
   title: "Foncier+",
   description: "Trouvez le foncier idéal pour réaliser votre projet économique",
+  robots: allowIndexing ? undefined : { index: false, follow: false },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
