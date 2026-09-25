@@ -1,15 +1,14 @@
+import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 import boxIconCompass from "@/assets/box_icon_compass.svg";
 import searchSectionBg from "@/assets/search-section-bg.png";
 
 export const searchSectionId = "recherche";
 
-const highlights = [
-  "Offres qualifiées",
-  "Accompagnement dans la recherche de foncier et l'implantation",
-];
+export const SearchSection = async () => {
+  const t = await getTranslations("SearchSection");
+  const highlights = t.raw("highlights") as string[];
 
-export const SearchSection = () => {
   return (
     <section
       id={searchSectionId}
@@ -18,7 +17,7 @@ export const SearchSection = () => {
     >
       <div className="mx-auto max-w-page px-4 pt-15 pb-12 text-white lg:px-[114px]">
         <h1 className="max-w-[860px] text-4xl font-extrabold lg:text-[66px] lg:leading-[78px]">
-          Trouvez le foncier idéal pour réaliser votre projet économique
+          {t("title")}
         </h1>
         <ul className="mt-9 flex flex-wrap gap-x-5 gap-y-3">
           {highlights.map((highlight) => (

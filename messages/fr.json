@@ -1,0 +1,26 @@
+{
+  "HomePage": {
+    "title": "Foncier plus"
+  },
+  "Metadata": {
+    "title": "Foncier+",
+    "description": "Trouvez le foncier idéal pour réaliser votre projet économique"
+  },
+  "Header": {
+    "navAriaLabel": "Navigation principale",
+    "searchNavLabel": "Rechercher un terrain",
+    "business": "Entreprise",
+    "localAuthority": "Collectivité",
+    "contact": "Nous contacter"
+  },
+  "SectionNav": {
+    "ariaLabel": "Sections de la page"
+  },
+  "SearchSection": {
+    "title": "Trouvez le foncier idéal pour réaliser votre projet économique",
+    "highlights": [
+      "Offres qualifiées",
+      "Accompagnement dans la recherche de foncier et l'implantation"
+    ]
+  }
+}
