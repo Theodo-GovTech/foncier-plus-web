@@ -4,6 +4,8 @@ import { sections } from "./Header";
 
 type FooterLink = { label: string; href?: string; external?: boolean };
 
+const COPYRIGHT_DATE = 2026
+
 const linkGroups: { title: string; links: FooterLink[] }[] = [
   {
     title: "Plan du site",
@@ -74,7 +76,7 @@ export const Footer = () => {
         </div>
       </div>
       <p className="px-4 pt-13 pb-12 text-center text-[13px] font-semibold text-white">
-        © {new Date().getFullYear()} Foncier +. Tous droits réservés.
+        © {COPYRIGHT_DATE} Foncier +. Tous droits réservés.
       </p>
     </section>
   );
