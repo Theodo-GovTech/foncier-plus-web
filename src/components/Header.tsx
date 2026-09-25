@@ -5,7 +5,7 @@ import { NavButton } from "@/components/NavButton";
 import { searchSectionId } from "@/components/SearchSection";
 import { SectionNav } from "@/components/SectionNav";
 
-const sections = [{ id: searchSectionId, label: "Rechercher un terrain" }];
+export const sections = [{ id: searchSectionId, label: "Rechercher un terrain" }];
 
 export const Header = () => {
   return (
