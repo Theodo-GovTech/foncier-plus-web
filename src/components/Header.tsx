@@ -2,11 +2,10 @@ import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 import logoFoncierPlus from "@/assets/logo-foncier-plus.svg";
 import { HomeLink } from "@/components/HomeLink";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { NavButton } from "@/components/NavButton";
 import { searchSectionId } from "@/components/SearchSection";
 import { SectionNav } from "@/components/SectionNav";
-import { Link } from "@/i18n/navigation";
-import { routing } from "@/i18n/routing";
 
 export const Header = async () => {
   const t = await getTranslations("Header");
@@ -39,13 +38,7 @@ export const Header = async () => {
             {t("localAuthority")}
           </NavButton>
           <NavButton variant="accent">{t("contact")}</NavButton>
-        </nav>
-        <nav className="flex gap-4 text-sm text-zinc-500">
-          {routing.locales.map((locale) => (
-            <Link key={locale} href="/" locale={locale}>
-              {locale.toUpperCase()}
-            </Link>
-          ))}
+          <LanguageSwitcher />
         </nav>
       </div>
       <SectionNav
