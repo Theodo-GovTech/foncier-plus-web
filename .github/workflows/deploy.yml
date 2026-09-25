@@ -24,9 +24,6 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Build
-        run: pnpm build
-
       - name: Load environment config
         run: |
           if [ "${{ github.ref }}" = "refs/heads/main" ]; then
@@ -34,6 +31,9 @@ jobs:
           else
             cat deploy/staging.env >> "$GITHUB_ENV"
           fi
+
+      - name: Build
+        run: pnpm build
 
       - name: Sync to Scaleway Object Storage
         env:
