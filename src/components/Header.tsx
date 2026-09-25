@@ -5,6 +5,8 @@ import { HomeLink } from "@/components/HomeLink";
 import { NavButton } from "@/components/NavButton";
 import { searchSectionId } from "@/components/SearchSection";
 import { SectionNav } from "@/components/SectionNav";
+import { Link } from "@/i18n/navigation";
+import { routing } from "@/i18n/routing";
 
 export const Header = async () => {
   const t = await getTranslations("Header");
@@ -38,8 +40,18 @@ export const Header = async () => {
           </NavButton>
           <NavButton variant="accent">{t("contact")}</NavButton>
         </nav>
+        <nav className="flex gap-4 text-sm text-zinc-500">
+          {routing.locales.map((locale) => (
+            <Link key={locale} href="/" locale={locale}>
+              {locale.toUpperCase()}
+            </Link>
+          ))}
+        </nav>
       </div>
-      <SectionNav sections={sections} ariaLabel={sectionNavTranslations("ariaLabel")} />
+      <SectionNav
+        sections={sections}
+        ariaLabel={sectionNavTranslations("ariaLabel")}
+      />
     </header>
   );
 };
