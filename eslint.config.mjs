@@ -21,6 +21,8 @@ const eslintConfig = defineConfig([
           ],
         },
       ],
+      "no-unused-vars": "off",
+      "@typescript-eslint/no-unused-vars": "error",
     },
   },
   // Override default ignores of eslint-config-next.
