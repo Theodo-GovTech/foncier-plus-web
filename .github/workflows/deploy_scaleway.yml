@@ -1,0 +1,46 @@
+name: Deploy on scaleway
+
+on:
+  push:
+    branches: [main, staging]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: ${{ github.ref == 'refs/heads/main' && 'production' || 'staging' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Load environment config
+        run: |
+          if [ "${{ github.ref }}" = "refs/heads/main" ]; then
+            cat deploy/production.env >> "$GITHUB_ENV"
+          else
+            cat deploy/staging.env >> "$GITHUB_ENV"
+          fi
+
+      - name: Build
+        run: pnpm build
+
+      - name: Sync to Scaleway Object Storage
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.SCW_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.SCW_SECRET_KEY }}
+          AWS_DEFAULT_REGION: ${{ env.SCW_REGION }}
+        run: |
+          aws configure set default.s3.signature_version s3v4
+          aws --endpoint-url "https://s3.${AWS_DEFAULT_REGION}.scw.cloud" \
+            s3 sync ./out "s3://${{ env.SCW_BUCKET_NAME }}" --delete
