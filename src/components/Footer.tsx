@@ -1,10 +1,12 @@
 import Image from "next/image";
+import iconExternalLink from "@/assets/icon-external-link.svg";
 import logoFoncierPlusW from "@/assets/logo-foncier-plus-white.svg";
 import { sections } from "./Header";
 
 type FooterLink = { label: string; href?: string; external?: boolean };
 
-const COPYRIGHT_DATE = 2026
+const COPYRIGHT_DATE = 2026;
+const EXTERNAL_LINK_ICON = `url(${iconExternalLink.src})`;
 
 const linkGroups: { title: string; links: FooterLink[] }[] = [
   {
@@ -14,15 +16,10 @@ const linkGroups: { title: string; links: FooterLink[] }[] = [
   {
     title: "Nous contacter",
     links: [
-      {
-        label: "72, avenue Pierre Mendès-France 75013 PARIS",
-        href: "",
-        external: true,
-      },
+      { label: "72, avenue Pierre Mendès-France 75013 PARIS" },
       {
         label: "contact.servicefoncier@caissedesdepots.fr",
         href: "mailto:contact.servicefoncier@caissedesdepots.fr",
-        external: true,
       },
     ],
   },
@@ -30,7 +27,7 @@ const linkGroups: { title: string; links: FooterLink[] }[] = [
     title: "Partenaires",
     links: [
       {
-        label: "Bpifrance",
+        label: "Banque des Territoires",
         href: "https://www.banquedesterritoires.fr/",
         external: true,
       },
@@ -63,11 +60,31 @@ export const Footer = () => {
         <div className="grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:flex-5">
           {linkGroups.map(({ title, links }) => (
             <div key={title}>
-              <h2 className="text-2xl font-semibold">{title}</h2>
-              <ul className="mt-6 flex flex-col gap-3 lg:text-[15px]">
-                {links.map(({ label, href }) => (
+              <h2 className="text-2xl font-bold">{title}</h2>
+              <ul className="mt-6 flex flex-col gap-3 lg:text-[15px] font-semibold">
+                {links.map(({ label, href, external }) => (
                   <li key={label}>
-                    <a href={href}>{label}</a>
+                    <a
+                      href={href}
+                      target={external ? "_blank" : undefined}
+                      rel={external ? "noopener noreferrer" : undefined}
+                      className="inline-flex items-center gap-2 transition-colors hover:text-white-hover"
+                    >
+                      {label}
+                      {/* If link is external, put EXTERNAL_LINK_ICON next to it
+                          Icon match the text and hover */}
+                      {external && (
+                        <span
+                          role="img"
+                          aria-label="Nouvel onglet"
+                          className="size-[15px] shrink-0 bg-current mask-contain mask-center mask-no-repeat"
+                          style={{
+                            WebkitMaskImage: EXTERNAL_LINK_ICON,
+                            maskImage: EXTERNAL_LINK_ICON,
+                          }}
+                        />
+                      )}
+                    </a>
                   </li>
                 ))}
               </ul>
