@@ -9,7 +9,7 @@ const sections = [{ id: searchSectionId, label: "Rechercher un terrain" }];
 
 export const Header = () => {
   return (
-    <header className="sticky top-0 z-50 bg-white">
+    <header className="sticky top-0 z-50 bg-white shadow-[0_2px_12px] shadow-brand/15">
       <div className="mx-auto flex min-h-16 max-w-page flex-wrap items-center justify-between gap-x-6 gap-y-3 border-b border-line px-4 py-3 lg:px-[114px]">
         <HomeLink>
           <Image
