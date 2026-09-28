@@ -22,5 +22,18 @@
       "Offres qualifiées",
       "Accompagnement dans la recherche de foncier et l'implantation"
     ]
+  },
+  "AmbitionsSection": {
+    "title": "Être le facilitateur public de vos projets",
+    "description": "Foncier + est un regroupement ... Lorem ipsum sit amte, consectur adipiscing elit, sed eiusmod tempor incididunt ut alobre et dolore magna aliqua."
+  },
+  "Footer": {
+    "description": "L'association dédiée au pilotage foncier et à l'accompagnement des entreprises pour une croissance territoriale durable.",
+    "siteMapTitle": "Plan du site",
+    "contactTitle": "Nous contacter",
+    "partnersTitle": "Partenaires",
+    "legalTitle": "Mentions Légales",
+    "newTabLabel": "Nouvel onglet",
+    "copyright": "© {year} Foncier +. Tous droits réservés."
   }
 }

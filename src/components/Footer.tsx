@@ -1,3 +1,4 @@
+import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 import iconExternalLink from "@/assets/icon-external-link.svg";
 import logoFoncierPlusW from "@/assets/logo-foncier-plus-white.svg";
@@ -8,18 +9,18 @@ type FooterLink = { label: string; href?: string; external?: boolean };
 const COPYRIGHT_DATE = 2026;
 const EXTERNAL_LINK_ICON = `url(${iconExternalLink.src})`;
 
-const getLinkGroups = async (): Promise<
-  { title: string; links: FooterLink[] }[]
-> => [
+const getLinkGroups = async (
+  t: Awaited<ReturnType<typeof getTranslations<"Footer">>>,
+): Promise<{ title: string; links: FooterLink[] }[]> => [
   {
-    title: "Plan du site",
+    title: t("siteMapTitle"),
     links: (await getSections()).map(({ id, label }) => ({
       label,
       href: `#${id}`,
     })),
   },
   {
-    title: "Nous contacter",
+    title: t("contactTitle"),
     links: [
       { label: "72, avenue Pierre Mendès-France 75013 PARIS" },
       {
@@ -29,7 +30,7 @@ const getLinkGroups = async (): Promise<
     ],
   },
   {
-    title: "Partenaires",
+    title: t("partnersTitle"),
     links: [
       {
         label: "Banque des Territoires",
@@ -40,13 +41,14 @@ const getLinkGroups = async (): Promise<
     ],
   },
   {
-    title: "Mentions Légales",
+    title: t("legalTitle"),
     links: [],
   },
 ];
 
 export const Footer = async () => {
-  const linkGroups = await getLinkGroups();
+  const t = await getTranslations("Footer");
+  const linkGroups = await getLinkGroups(t);
 
   return (
     <section className="bg-brand bg-cover bg-position-[center_10%]">
@@ -59,9 +61,7 @@ export const Footer = async () => {
             className="h-8 w-auto select-none"
           />
           <p className="mt-8 font-semibold lg:text-[19px]">
-            L&apos;association dédiée au pilotage foncier et à
-            l&apos;accompagnement des entreprises pour une croissance
-            territoriale durable.
+            {t("description")}
           </p>
         </div>
         <div className="grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:flex-5">
@@ -83,7 +83,7 @@ export const Footer = async () => {
                       {external && (
                         <span
                           role="img"
-                          aria-label="Nouvel onglet"
+                          aria-label={t("newTabLabel")}
                           className="size-[15px] shrink-0 bg-current mask-contain mask-center mask-no-repeat"
                           style={{
                             WebkitMaskImage: EXTERNAL_LINK_ICON,
@@ -100,7 +100,7 @@ export const Footer = async () => {
         </div>
       </div>
       <p className="px-4 pt-13 pb-12 text-center text-[13px] font-semibold text-white">
-        © {COPYRIGHT_DATE} Foncier +. Tous droits réservés.
+        {t("copyright", { year: COPYRIGHT_DATE })}
       </p>
     </section>
   );
