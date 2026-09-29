@@ -1,6 +1,7 @@
 import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 import logoFoncierPlusW from "@/assets/logo-foncier-plus-white.svg";
+import { NavButton } from "@/components/NavButton";
 import { ExternalLinkIcon } from "./icons/ExternalLinkIcon";
 import { getSections } from "./Header";
 
@@ -62,6 +63,11 @@ export const Footer = async () => {
           <p className="mt-8 font-semibold lg:text-[19px]">
             {t("description")}
           </p>
+          <div className="mt-9">
+            <NavButton href="/contact" variant="accent" size="lg">
+              {t("cta")}
+            </NavButton>
+          </div>
         </div>
         <div className="grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:flex-5">
           {linkGroups.map(({ title, links }) => (

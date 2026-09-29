@@ -42,7 +42,9 @@ export const Header = async () => {
           >
             {t("localAuthority")}
           </NavButton>
-          <NavButton variant="accent">{t("contact")}</NavButton>
+          <NavButton href="/contact" variant="accent">
+            {t("contact")}
+          </NavButton>
           <LanguageSwitcher />
         </nav>
       </div>

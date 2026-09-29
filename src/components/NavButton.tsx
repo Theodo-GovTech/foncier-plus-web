@@ -5,10 +5,8 @@ type NavButtonVariant = "solid" | "outline" | "accent";
 
 type NavButtonSize = "sm" | "lg";
 
-// `border` sets the width only — each variant owns its border-color, otherwise
-// two border-color utilities collide and CSS source order decides the winner.
 const baseClassName =
-  "inline-flex items-center justify-center rounded-xs border px-4 text-[15px] leading-none font-bold whitespace-nowrap transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand";
+  "inline-flex items-center justify-center rounded-xs border px-4 text-[16px] leading-none font-bold whitespace-nowrap transition-colors";
 
 const sizeClassName: Record<NavButtonSize, string> = {
   sm: "h-[30px]",
