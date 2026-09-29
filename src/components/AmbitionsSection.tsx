@@ -1,3 +1,4 @@
+import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 import iconFolder from "@/assets/icon-folder.svg";
 import iconGauge from "@/assets/icon-gauge.svg";
@@ -32,13 +33,15 @@ const ambitions = [
   },
 ];
 
-export const AmbitionsSection = () => {
+export const AmbitionsSection = async () => {
+  const t = await getTranslations("AmbitionsSection");
+
   return (
     <section className="mx-auto max-w-page px-4 py-10.5 lg:px-[114px]">
       <div className="pl-[34px] lg:pl-0">
         <Image src={iconPlusNW} alt="" className="mb-1 -ml-[34px]" />
         <h2 className="text-[36px] leading-[46px] font-semibold text-brand">
-          Être le facilitateur public de vos projets
+          {t("title")}
         </h2>
       </div>
       <p className="mt-6 max-w-[860px] text-brand">

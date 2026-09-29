@@ -1,0 +1,39 @@
+{
+  "HomePage": {
+    "title": "Welcome to Foncier plus"
+  },
+  "Metadata": {
+    "title": "Foncier+",
+    "description": "Find the ideal land to bring your economic project to life"
+  },
+  "Header": {
+    "navAriaLabel": "Main navigation",
+    "searchNavLabel": "Search for land",
+    "business": "Business",
+    "localAuthority": "Local authority",
+    "contact": "Contact us"
+  },
+  "SectionNav": {
+    "ariaLabel": "Page sections"
+  },
+  "SearchSection": {
+    "title": "Find the ideal land to bring your economic project to life",
+    "highlights": [
+      "Qualified listings",
+      "Support finding land and setting up your business"
+    ]
+  },
+  "AmbitionsSection": {
+    "title": "Be the public facilitator of your projects",
+    "description": "Foncier + is an association ... Lorem ipsum sit amte, consectur adipiscing elit, sed eiusmod tempor incididunt ut alobre et dolore magna aliqua."
+  },
+  "Footer": {
+    "description": "The association dedicated to land management and supporting businesses for sustainable territorial growth.",
+    "siteMapTitle": "Site map",
+    "contactTitle": "Contact us",
+    "partnersTitle": "Partners",
+    "legalTitle": "Legal notice",
+    "newTabLabel": "New tab",
+    "copyright": "© {year} Foncier +. All rights reserved."
+  }
+}
