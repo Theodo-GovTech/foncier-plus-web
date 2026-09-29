@@ -1,13 +1,12 @@
 import { getTranslations } from "next-intl/server";
 import Image from "next/image";
-import iconExternalLink from "@/assets/icon-external-link.svg";
 import logoFoncierPlusW from "@/assets/logo-foncier-plus-white.svg";
+import { ExternalLinkIcon } from "./icons/ExternalLinkIcon";
 import { getSections } from "./Header";
 
 type FooterLink = { label: string; href?: string; external?: boolean };
 
 const COPYRIGHT_DATE = 2026;
-const EXTERNAL_LINK_ICON = `url(${iconExternalLink.src})`;
 
 const getLinkGroups = async (
   t: Awaited<ReturnType<typeof getTranslations<"Footer">>>,
@@ -78,17 +77,11 @@ export const Footer = async () => {
                       className="inline-flex items-center gap-2 transition-colors hover:text-white-hover"
                     >
                       {label}
-                      {/* If link is external, put EXTERNAL_LINK_ICON next to it
-                          Icon match the text and hover */}
                       {external && (
-                        <span
+                        <ExternalLinkIcon
                           role="img"
                           aria-label={t("newTabLabel")}
-                          className="size-[15px] shrink-0 bg-current mask-contain mask-center mask-no-repeat"
-                          style={{
-                            WebkitMaskImage: EXTERNAL_LINK_ICON,
-                            maskImage: EXTERNAL_LINK_ICON,
-                          }}
+                          className="size-[15px] shrink-0"
                         />
                       )}
                     </a>

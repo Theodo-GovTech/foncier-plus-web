@@ -14,7 +14,7 @@ const localeLabels: Record<(typeof routing.locales)[number], string> = {
 };
 
 export const LanguageSwitcher = () => {
-  const locale = useLocale();
+  const selectedLocale = useLocale();
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -47,23 +47,23 @@ export const LanguageSwitcher = () => {
       >
         <GlobeIcon aria-hidden="true" />
         <span className="underline underline-offset-4">
-          {locale.toUpperCase()}
+          {selectedLocale.toUpperCase()}
         </span>
         <Caret aria-hidden="true" />
       </button>
       {isOpen && (
         <ul className="absolute top-full right-0 z-10 mt-2 w-36 rounded-xs border border-line bg-white py-2 shadow-lg">
-          {routing.locales.map((loc) => (
-            <li key={loc}>
+          {routing.locales.map((locale) => (
+            <li key={locale}>
               <Link
                 href={pathname}
-                locale={loc}
+                locale={locale}
                 onClick={() => setIsOpen(false)}
                 className={`block px-4 py-1.5 text-brand hover:bg-brand/5 ${
-                  loc === locale ? "font-bold" : "font-normal"
+                  locale === selectedLocale ? "font-semibold" : "font-normal"
                 }`}
               >
-                {localeLabels[loc]}
+                {localeLabels[locale]}
               </Link>
             </li>
           ))}
