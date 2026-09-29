@@ -27,6 +27,12 @@
     "title": "Be the public facilitator of your projects",
     "description": "Foncier + is an association ... Lorem ipsum sit amte, consectur adipiscing elit, sed eiusmod tempor incididunt ut alobre et dolore magna aliqua."
   },
+  "ContactSection": {
+    "title": "No project goes unanswered. <line>Our network steps up</line>",
+    "description": "Our experts will get back to you within 48 hours to assess your needs and point you in the right direction.",
+    "cta": "Contact us",
+    "reassurance": "Protected data - Guaranteed response within 48 business hours"
+  },
   "Footer": {
     "description": "The association dedicated to land management and supporting businesses for sustainable territorial growth.",
     "siteMapTitle": "Site map",

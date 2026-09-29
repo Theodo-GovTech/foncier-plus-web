@@ -27,6 +27,12 @@
     "title": "Être le facilitateur public de vos projets",
     "description": "Foncier + est un regroupement ... Lorem ipsum sit amte, consectur adipiscing elit, sed eiusmod tempor incididunt ut alobre et dolore magna aliqua."
   },
+  "ContactSection": {
+    "title": "Pas de projet sans réponse. <line>Notre réseau se mobilise</line>",
+    "description": "Nos experts vous recontactent sous 48h pour qualifier et orienter votre besoin.",
+    "cta": "Nous contacter",
+    "reassurance": "Données protégées - Réponse sous 48h ouvrées garantie"
+  },
   "Footer": {
     "description": "L'association dédiée au pilotage foncier et à l'accompagnement des entreprises pour une croissance territoriale durable.",
     "siteMapTitle": "Plan du site",
