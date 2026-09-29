@@ -2,6 +2,9 @@
   "HomePage": {
     "title": "Foncier plus"
   },
+  "ContactPage": {
+    "title": "Nous contacter"
+  },
   "Metadata": {
     "title": "Foncier+",
     "description": "Trouvez le foncier idéal pour réaliser votre projet économique"
@@ -15,6 +18,10 @@
   },
   "SectionNav": {
     "ariaLabel": "Sections de la page"
+  },
+  "Breadcrumb": {
+    "ariaLabel": "Fil d'Ariane",
+    "home": "Accueil"
   },
   "SearchSection": {
     "title": "Trouvez le foncier idéal pour réaliser votre projet économique",
