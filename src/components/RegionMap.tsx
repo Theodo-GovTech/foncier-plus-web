@@ -1,7 +1,9 @@
 "use client";
 
 import { useTranslations } from "next-intl";
+import Image from "next/image";
 import { type MouseEvent, useState } from "react";
+import iconPlusSE from "@/assets/icon-plus-SE.svg";
 import { franceMapViewBox, regions, type Region } from "@/data/regions";
 
 interface RegionMapProps {
@@ -26,7 +28,7 @@ export const RegionMap = ({ className, onRegionSelect }: RegionMapProps) => {
 
   return (
     <div
-      className={`${className ?? ""}`}
+      className={`relative ${className ?? ""}`}
       onMouseMove={handlePointerMove}
       onMouseLeave={() => setHoveredRegionId(null)}
     >
@@ -57,10 +59,17 @@ export const RegionMap = ({ className, onRegionSelect }: RegionMapProps) => {
       </svg>
       {hoveredRegionId && (
         <div
-          className="pointer-events-none absolute z-10 -translate-x-1/2 -translate-y-[calc(100%+12px)] rounded-xs border border-line bg-white px-3 py-1.5 text-sm font-semibold whitespace-nowrap text-brand shadow-lg"
+          className="pointer-events-none absolute z-10 -translate-x-1/2 -translate-y-[calc(100%+12px)] rounded-xs border border-line bg-white px-5 py-4 shadow-lg"
           style={{ left: pointerPosition.x, top: pointerPosition.y }}
         >
-          {t(hoveredRegionId)}
+          <Image
+            src={iconPlusSE}
+            alt=""
+            className="absolute bottom-0 left-0 size-5 -translate-x-full translate-y-full"
+          />
+          <p className="text-lg font-bold whitespace-nowrap text-brand">
+            {t(hoveredRegionId)}
+          </p>
         </div>
       )}
     </div>
