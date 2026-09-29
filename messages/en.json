@@ -2,6 +2,9 @@
   "HomePage": {
     "title": "Welcome to Foncier plus"
   },
+  "ContactPage": {
+    "title": "Contact us"
+  },
   "Metadata": {
     "title": "Foncier+",
     "description": "Find the ideal land to bring your economic project to life"
@@ -15,6 +18,10 @@
   },
   "SectionNav": {
     "ariaLabel": "Page sections"
+  },
+  "Breadcrumb": {
+    "ariaLabel": "Breadcrumb",
+    "home": "Home"
   },
   "SearchSection": {
     "title": "Find the ideal land to bring your economic project to life",
