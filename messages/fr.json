@@ -35,8 +35,8 @@
     "description": "Foncier + est un regroupement ... Lorem ipsum sit amte, consectur adipiscing elit, sed eiusmod tempor incididunt ut alobre et dolore magna aliqua."
   },
   "ContactSection": {
-    "title": "Pas de projet sans réponse. <line>Notre réseau se mobilise</line>",
-    "description": "Nos experts vous recontactent sous 48h pour qualifier et orienter votre besoin.",
+    "title": "<bold>Pas de projet sans réponse.</bold> <line>Notre réseau se mobilise</line>",
+    "description": "Vous ne trouvez pas l’offre ou le contact qui correspond à votre besoin ? Écrivez-nous : Foncier+ vous oriente vers l’interlocuteur le plus pertinent.",
     "cta": "Nous contacter",
     "reassurance": "Données protégées - Réponse sous 48h ouvrées garantie"
   },

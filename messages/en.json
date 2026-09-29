@@ -35,8 +35,8 @@
     "description": "Foncier + is an association ... Lorem ipsum sit amte, consectur adipiscing elit, sed eiusmod tempor incididunt ut alobre et dolore magna aliqua."
   },
   "ContactSection": {
-    "title": "No project goes unanswered. <line>Our network steps up</line>",
-    "description": "Our experts will get back to you within 48 hours to assess your needs and point you in the right direction.",
+    "title": "<bold>No project goes unanswered.</bold> <line>Our network steps up</line>",
+    "description": "Can’t find the listing or contact that matches your needs? Write to us: Foncier+ will point you to the most relevant contact person.",
     "cta": "Contact us",
     "reassurance": "Protected data - Guaranteed response within 48 business hours"
   },
