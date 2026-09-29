@@ -1,7 +1,8 @@
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import Image from "next/image";
 import logoFoncierPlusW from "@/assets/logo-foncier-plus-white.svg";
 import { NavButton } from "@/components/NavButton";
+import { getPathname } from "@/i18n/navigation";
 import { ExternalLinkIcon } from "./icons/ExternalLinkIcon";
 import { getSections } from "./Header";
 
@@ -11,12 +12,13 @@ const COPYRIGHT_DATE = 2026;
 
 const getLinkGroups = async (
   t: Awaited<ReturnType<typeof getTranslations<"Footer">>>,
+  homePathname: string,
 ): Promise<{ title: string; links: FooterLink[] }[]> => [
   {
     title: t("siteMapTitle"),
     links: (await getSections()).map(({ id, label }) => ({
       label,
-      href: `#${id}`,
+      href: `${homePathname}#${id}`,
     })),
   },
   {
@@ -48,7 +50,8 @@ const getLinkGroups = async (
 
 export const Footer = async () => {
   const t = await getTranslations("Footer");
-  const linkGroups = await getLinkGroups(t);
+  const homePathname = getPathname({ href: "/", locale: await getLocale() });
+  const linkGroups = await getLinkGroups(t, homePathname);
 
   return (
     <section className="bg-brand bg-cover bg-position-[center_10%]">
