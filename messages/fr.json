@@ -35,6 +35,21 @@
     "title": "<line>Demain,</line> <bold>une recherche mieux adaptée à votre filière</bold>",
     "description": "Industrie, logistique, artisanat ou services : les critères d’implantation varient fortement selon les activités. À terme, Foncier+ a vocation à enrichir la recherche par filière pour mieux qualifier les offres au regard de vos contraintes. Cette approche sera déployée progressivement."
   },
+  "Regions": {
+    "auvergne-rhone-alpes": "Auvergne-Rhône-Alpes",
+    "bourgogne-franche-comte": "Bourgogne-Franche-Comté",
+    "bretagne": "Bretagne",
+    "centre-val-de-loire": "Centre-Val de Loire",
+    "corse": "Corse",
+    "grand-est": "Grand Est",
+    "hauts-de-france": "Hauts-de-France",
+    "ile-de-france": "Île-de-France",
+    "normandie": "Normandie",
+    "nouvelle-aquitaine": "Nouvelle-Aquitaine",
+    "occitanie": "Occitanie",
+    "pays-de-la-loire": "Pays de la Loire",
+    "provence-alpes-cote-d-azur": "Provence-Alpes-Côte d'Azur"
+  },
   "AmbitionsSection": {
     "title": "Relier les projets d’implantation aux territoires",
     "description": "Foncier+ est un point d’entrée national qui met en visibilité des offres de foncier économique issues des territoires et facilite le contact avec les acteurs locaux qui les portent.",
