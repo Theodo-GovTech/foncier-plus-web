@@ -10,8 +10,9 @@ export const ContactSection = async () => {
     <section className="bg-linear-to-b from-brand/2 to-white">
       <div className="mx-auto max-w-page px-4 py-10 lg:px-[114px]">
         <div className="bg-white p-5">
-          <h2 className="text-4xl font-bold text-brand lg:text-[40px] lg:leading-[46px]">
+          <h2 className="text-4xl text-brand lg:text-[40px] lg:leading-[46px]">
             {t.rich("title", {
+              bold: (chunks) => <span className="font-bold">{chunks}</span>,
               line: (chunks) => <span className="block">{chunks}</span>,
             })}
           </h2>
