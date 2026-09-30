@@ -6,7 +6,7 @@ type NavButtonVariant = "solid" | "outline" | "accent";
 type NavButtonSize = "sm" | "lg";
 
 const baseClassName =
-  "inline-flex items-center justify-center rounded-xs border px-4 text-[16px] leading-none font-bold whitespace-nowrap transition-colors";
+  "inline-flex items-center justify-center border px-4 text-[16px] leading-none font-bold whitespace-nowrap transition-colors";
 
 const sizeClassName: Record<NavButtonSize, string> = {
   sm: "h-[30px]",
