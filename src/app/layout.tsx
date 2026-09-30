@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Geist_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import { Header } from "@/components/Header";
@@ -35,6 +36,18 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${metropolis.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <Script id="matomo-tag-manager" strategy="afterInteractive">
+          {`
+            var _mtm = window._mtm = window._mtm || [];
+            _mtm.push({'mtm.startTime': (new Date().getTime()), 'event': 'mtm.Start'});
+            (function() {
+              var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+              g.async = true;
+              g.src = 'https://cdn.matomo.cloud/foncierpluss3websitefrparscwcloud.matomo.cloud/container_t2LCTS8k.js';
+              s.parentNode.insertBefore(g, s);
+            })();
+          `}
+        </Script>
         <Header />
         {children}
         <Footer />
