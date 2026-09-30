@@ -31,8 +31,26 @@
     ]
   },
   "AmbitionsSection": {
-    "title": "Be the public facilitator of your projects",
-    "description": "Foncier + is an association ... Lorem ipsum sit amte, consectur adipiscing elit, sed eiusmod tempor incididunt ut alobre et dolore magna aliqua."
+    "title": "Connecting business location projects with local areas",
+    "description": "Foncier+ is a national entry point that showcases business land listings from local areas and makes it easier to reach the local stakeholders behind them.",
+    "ambitionsList": {
+      "section1": {
+        "title": "Get a clearer view of available land",
+        "description": "Access listings published nationwide to quickly spot the sites worth looking into."
+      },
+      "section2": {
+        "title": "Get in touch with the right contact",
+        "description": "Listings point you to the local stakeholders to contact, so you can take your project further and move forward with setting up your business."
+      },
+      "section3": {
+        "title": "Never be left without an answer",
+        "description": "If your search is unsuccessful or you’re not sure who to turn to, Foncier+ can relay your request to its network of partners."
+      },
+      "section4": {
+        "title": "A national network supporting projects",
+        "description": "Foncier+ draws on local authorities, their development agencies and national partners to connect projects with the right contacts, without replacing local support."
+      }
+    }
   },
   "ContactSection": {
     "title": "<bold>No project goes unanswered.</bold> <line>Our network steps up</line>",
