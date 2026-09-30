@@ -33,7 +33,7 @@ export const AmbitionsSection = async () => {
   ];
 
   return (
-    <section className="mx-auto max-w-page px-4 py-10.5 lg:px-[114px]">
+    <section className="mx-auto max-w-page px-4 py-20 lg:px-[114px]">
       <div className="pl-[34px] lg:pl-0">
         <Image src={iconPlusNW} alt="" className="mb-1 -ml-[34px]" />
         <h2 className="text-[36px] leading-[46px] font-semibold text-brand">
