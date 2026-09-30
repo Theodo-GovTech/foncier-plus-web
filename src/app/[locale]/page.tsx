@@ -8,8 +8,6 @@ export default async function Home() {
       <SearchSection />
       <AmbitionsSection />
       <ContactSection />
-      {/* TEMP: scroll filler for test */}
-      <div className="h-[200vh]" />
     </main>
   );
 }

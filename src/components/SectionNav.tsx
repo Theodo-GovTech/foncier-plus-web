@@ -1,7 +1,7 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
-import { Link } from "@/i18n/navigation";
+import { Link, usePathname } from "@/i18n/navigation";
 
 type Section = { id: string; label: string };
 
@@ -30,10 +30,11 @@ const getActiveSectionId = (sections: Section[]) => {
 };
 
 export const SectionNav = ({ sections, ariaLabel }: SectionNavProps) => {
+  const isHomePage = usePathname() === "/";
   const activeSectionId = useSyncExternalStore(
     subscribeToScroll,
-    () => getActiveSectionId(sections),
-    () => sections[0].id,
+    () => (isHomePage ? getActiveSectionId(sections) : undefined),
+    () => (isHomePage ? sections[0].id : undefined),
   );
 
   return (
