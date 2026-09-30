@@ -40,9 +40,7 @@ export const AmbitionsSection = async () => {
           {t("title")}
         </h2>
       </div>
-      <p className="mt-6 max-w-[860px] text-brand">
-        {t("description")}
-      </p>
+      <p className="mt-6 max-w-[860px] text-brand">{t("description")}</p>
       <ul className="mt-10.5 grid gap-x-11 gap-y-10 sm:grid-cols-2 xl:grid-cols-4">
         {ambitions.map(({ icon, title, description }) => (
           <li key={title}>
