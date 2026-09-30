@@ -1,24 +1,31 @@
-import { getLocale, getTranslations } from "next-intl/server";
+import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 import logoFoncierPlusW from "@/assets/logo-foncier-plus-white.svg";
 import { NavButton } from "@/components/NavButton";
-import { getPathname } from "@/i18n/navigation";
+import { SectionLink } from "@/components/SectionLink";
 import { ExternalLinkIcon } from "./icons/ExternalLinkIcon";
 import { getSections } from "./Header";
 
-type FooterLink = { label: string; href?: string; external?: boolean };
+type FooterLink = {
+  label: string;
+  href?: string;
+  external?: boolean;
+  sectionId?: string;
+};
 
 const COPYRIGHT_DATE = 2026;
 
+const linkClassName =
+  "inline-flex items-center gap-2 transition-colors hover:text-white-hover";
+
 const getLinkGroups = async (
   t: Awaited<ReturnType<typeof getTranslations<"Footer">>>,
-  homePathname: string,
 ): Promise<{ title: string; links: FooterLink[] }[]> => [
   {
     title: t("siteMapTitle"),
     links: (await getSections()).map(({ id, label }) => ({
       label,
-      href: `${homePathname}#${id}`,
+      sectionId: id,
     })),
   },
   {
@@ -50,8 +57,7 @@ const getLinkGroups = async (
 
 export const Footer = async () => {
   const t = await getTranslations("Footer");
-  const homePathname = getPathname({ href: "/", locale: await getLocale() });
-  const linkGroups = await getLinkGroups(t, homePathname);
+  const linkGroups = await getLinkGroups(t);
 
   return (
     <section className="bg-brand bg-cover bg-position-[center_10%]">
@@ -77,23 +83,29 @@ export const Footer = async () => {
             <div key={title}>
               <h2 className="text-2xl font-bold">{title}</h2>
               <ul className="mt-6 flex flex-col gap-3 lg:text-[15px] font-semibold">
-                {links.map(({ label, href, external }) => (
+                {links.map(({ label, href, external, sectionId }) => (
                   <li key={label}>
-                    <a
-                      href={href}
-                      target={external ? "_blank" : undefined}
-                      rel={external ? "noopener noreferrer" : undefined}
-                      className="inline-flex items-center gap-2 transition-colors hover:text-white-hover"
-                    >
-                      {label}
-                      {external && (
-                        <ExternalLinkIcon
-                          role="img"
-                          aria-label={t("newTabLabel")}
-                          className="size-[15px] shrink-0"
-                        />
-                      )}
-                    </a>
+                    {sectionId !== undefined ? (
+                      <SectionLink id={sectionId} className={linkClassName}>
+                        {label}
+                      </SectionLink>
+                    ) : (
+                      <a
+                        href={href}
+                        target={external ? "_blank" : undefined}
+                        rel={external ? "noopener noreferrer" : undefined}
+                        className={linkClassName}
+                      >
+                        {label}
+                        {external && (
+                          <ExternalLinkIcon
+                            role="img"
+                            aria-label={t("newTabLabel")}
+                            className="size-[15px] shrink-0"
+                          />
+                        )}
+                      </a>
+                    )}
                   </li>
                 ))}
               </ul>
