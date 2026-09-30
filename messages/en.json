@@ -12,6 +12,7 @@
   "Header": {
     "navAriaLabel": "Main navigation",
     "searchNavLabel": "Search for land",
+    "businessSectorsPathNavLabel": "Our ambitions",
     "business": "Business",
     "localAuthority": "Local authority",
     "contact": "Contact us"
@@ -29,6 +30,10 @@
       "Qualified listings",
       "Support finding land and setting up your business"
     ]
+  },
+  "BusinessSectorsPathSection": {
+    "title": "<line>Tomorrow,</line> <bold>a search better tailored to your sector</bold>",
+    "description": "Industry, logistics, crafts or services: location criteria vary widely from one activity to another. Over time, Foncier+ aims to enhance its search by sector to better qualify listings in light of your constraints. This approach will be rolled out gradually."
   },
   "AmbitionsSection": {
     "title": "Connecting business location projects with local areas",
