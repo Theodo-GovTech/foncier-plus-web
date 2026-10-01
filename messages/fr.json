@@ -2,6 +2,9 @@
   "HomePage": {
     "title": "Foncier plus"
   },
+  "ContactPage": {
+    "title": "Nous contacter"
+  },
   "Metadata": {
     "title": "Foncier+",
     "description": "Trouvez le foncier idéal pour réaliser votre projet économique"
@@ -16,6 +19,10 @@
   "SectionNav": {
     "ariaLabel": "Sections de la page"
   },
+  "Breadcrumb": {
+    "ariaLabel": "Fil d'Ariane",
+    "home": "Accueil"
+  },
   "SearchSection": {
     "title": "Trouvez le foncier idéal pour réaliser votre projet économique",
     "highlights": [
@@ -24,11 +31,36 @@
     ]
   },
   "AmbitionsSection": {
-    "title": "Être le facilitateur public de vos projets",
-    "description": "Foncier + est un regroupement ... Lorem ipsum sit amte, consectur adipiscing elit, sed eiusmod tempor incididunt ut alobre et dolore magna aliqua."
+    "title": "Relier les projets d’implantation aux territoires",
+    "description": "Foncier+ est un point d’entrée national qui met en visibilité des offres de foncier économique issues des territoires et facilite le contact avec les acteurs locaux qui les portent.",
+    "ambitionsList": {
+      "section1": {
+        "title": "Voir plus clairement l’offre foncière disponible",
+        "description": "Accédez à des offres publiées à l’échelle nationale pour repérer rapidement les sites qui méritent d’être étudiés."
+      },
+      "section2": {
+        "title": "Entrer en relation avec le bon interlocuteur",
+        "description": "Les offres vous orientent vers les acteurs territoriaux à contacter pour approfondir votre projet et poursuivre vos démarches d’implantation."
+      },
+      "section3": {
+        "title": "Ne pas rester sans réponse",
+        "description": "Si votre recherche n’aboutit pas ou si vous ne savez pas à qui vous adresser, Foncier+ peut jouer un rôle de relais vers son réseau de partenaires."
+      },
+      "section4": {
+        "title": "Un réseau national au service des projets",
+        "description": "Foncier+ s’appuie sur les collectivités, leurs agences de développement et des partenaires nationaux pour connecter les projets aux bons interlocuteurs, sans se substituer à l’accompagnement local."
+      }
+    }
+  },
+  "ContactSection": {
+    "title": "<bold>Pas de projet sans réponse.</bold> <line>Notre réseau se mobilise</line>",
+    "description": "Vous ne trouvez pas l’offre ou le contact qui correspond à votre besoin ? Écrivez-nous : Foncier+ vous oriente vers l’interlocuteur le plus pertinent.",
+    "cta": "Nous contacter",
+    "reassurance": "Données protégées - Réponse sous 48h ouvrées garantie"
   },
   "Footer": {
     "description": "L'association dédiée au pilotage foncier et à l'accompagnement des entreprises pour une croissance territoriale durable.",
+    "cta": "Nous contacter",
     "siteMapTitle": "Plan du site",
     "contactTitle": "Nous contacter",
     "partnersTitle": "Partenaires",

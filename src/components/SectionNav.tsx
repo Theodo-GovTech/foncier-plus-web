@@ -1,6 +1,7 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
+import { Link, usePathname } from "@/i18n/navigation";
 
 type Section = { id: string; label: string };
 
@@ -29,10 +30,11 @@ const getActiveSectionId = (sections: Section[]) => {
 };
 
 export const SectionNav = ({ sections, ariaLabel }: SectionNavProps) => {
+  const isHomePage = usePathname() === "/";
   const activeSectionId = useSyncExternalStore(
     subscribeToScroll,
-    () => getActiveSectionId(sections),
-    () => sections[0].id,
+    () => (isHomePage ? getActiveSectionId(sections) : undefined),
+    () => (isHomePage ? sections[0].id : undefined),
   );
 
   return (
@@ -40,15 +42,17 @@ export const SectionNav = ({ sections, ariaLabel }: SectionNavProps) => {
       aria-label={ariaLabel}
       className="mx-auto flex max-w-page gap-6 px-4 py-6 lg:px-[114px]"
     >
+      {/* Sections live on the home page */}
       {sections.map(({ id, label }) => (
-        <a
+        <Link
           key={id}
-          href={`#${id}`}
+          href={{ pathname: "/", hash: id }}
+          onNavigate={() => document.getElementById(id)?.scrollIntoView()}
           aria-current={id === activeSectionId}
           className={linkClassName}
         >
           {label}
-        </a>
+        </Link>
       ))}
     </nav>
   );
