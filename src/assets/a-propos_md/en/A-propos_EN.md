@@ -1,5 +1,4 @@
 ---
-
 type: "article"
 
 title: "About Foncier+ | Business Land in France"
@@ -11,8 +10,6 @@ meta-description: "In-depth analysis of regional dynamics and business setup opp
 cover_image: NA
 
 slug: "/about-us"
-
-
 ---
 
 # About Foncier+: connecting business location projects with territories

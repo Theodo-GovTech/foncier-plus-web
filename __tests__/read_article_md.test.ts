@@ -14,7 +14,7 @@ describe("convertFileIntoArticleMd", () => {
       metaDescription: "Article meta description",
       coverImgPath: "cover.png",
       slug: "/article",
-      text: "# Article heading\n\nArticle body.",
+      body: "# Article heading\n\nArticle body.",
     });
   });
 
@@ -46,10 +46,28 @@ describe("convertFileIntoArticleMd", () => {
     ).toThrow('Missing metadata "title"');
   });
 
-  it("throws when the slug is missing", () => {
+  it("throws when the slug of an article is missing", () => {
     expect(() =>
       convertFileIntoArticleMd(testArticle("missing-slug.md")),
     ).toThrow('Missing metadata "slug"');
+  });
+
+  it.each(["pdf", "url"])("does not require a slug for a %s", (type) => {
+    expect(
+      convertFileIntoArticleMd(testArticle(`${type}-without-slug.md`)).slug,
+    ).toBeUndefined();
+  });
+
+  it("returns the slug of a non-article when it is provided", () => {
+    expect(convertFileIntoArticleMd(testArticle("pdf-with-slug.md")).slug).toBe(
+      "/pdf",
+    );
+  });
+
+  it("accepts an article type written in uppercase", () => {
+    expect(
+      convertFileIntoArticleMd(testArticle("uppercase-article.md")),
+    ).toMatchObject({ type: "article", slug: "/article" });
   });
 
   it("throws when the type is not supported", () => {
