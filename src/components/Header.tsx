@@ -5,11 +5,18 @@ import { HomeLink } from "@/components/HomeLink";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { NavButton } from "@/components/NavButton";
 import { searchSectionId } from "@/components/SearchSection";
+import { businessSectorsPathSectionId } from "@/components/BusinessSectorsPathSection";
 import { SectionNav } from "@/components/SectionNav";
 
 export const getSections = async () => {
   const t = await getTranslations("Header");
-  return [{ id: searchSectionId, label: t("searchNavLabel") }];
+  return [
+    { id: searchSectionId, label: t("searchNavLabel") },
+    {
+      id: businessSectorsPathSectionId,
+      label: t("businessSectorsPathNavLabel"),
+    },
+  ];
 };
 
 export const Header = async () => {
