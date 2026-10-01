@@ -6,8 +6,8 @@ export const RegionMapSection = async () => {
 
   return (
     <section className="bg-linear-to-b from-gradient-start to-gradient-end">
-      <div className="mx-auto max-w-page px-4 py-16 lg:px-[114px] gap-x-16 flex">
-        <RegionMap className="w-140 shrink-0" />
+      <div className="mx-auto flex max-w-page flex-col gap-10 px-4 py-16 lg:flex-row lg:gap-16 lg:px-[114px]">
+        <RegionMap className="w-full max-w-140 self-center lg:w-140 lg:shrink-0 lg:self-auto" />
         <div className="gap-y-6 flex flex-col">
           <h2 className="leading-[1.15] text-[28px] text-brand lg:text-[40px]">
             {t.rich("title", {
