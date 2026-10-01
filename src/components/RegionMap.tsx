@@ -5,13 +5,13 @@ import Image from "next/image";
 import { type MouseEvent, useState } from "react";
 import iconPlusSE from "@/assets/icon-plus-SE.svg";
 import { franceMapViewBox, regions, type Region } from "@/data/regions";
+import { buildFranceFoncierRegionSearchUrl } from "@/lib/franceFoncierSearchUrl";
 
 interface RegionMapProps {
   className?: string;
-  onRegionSelect?: (region: Region) => void;
 }
 
-export const RegionMap = ({ className, onRegionSelect }: RegionMapProps) => {
+export const RegionMap = ({ className }: RegionMapProps) => {
   const t = useTranslations("Regions");
   const [hoveredRegionId, setHoveredRegionId] = useState<Region["id"] | null>(
     null,
@@ -34,27 +34,24 @@ export const RegionMap = ({ className, onRegionSelect }: RegionMapProps) => {
     >
       <svg viewBox={franceMapViewBox} className="h-auto w-full">
         {regions.map((region) => (
-          <path
+          <a
             key={region.id}
-            d={region.path}
-            role="button"
-            tabIndex={0}
+            href={buildFranceFoncierRegionSearchUrl(region)}
+            target="_blank"
+            rel="noopener noreferrer"
             aria-label={t(region.id)}
-            className="cursor-pointer outline-none transition-colors duration-150"
-            fill={
-              hoveredRegionId === region.id ? "var(--color-brand)" : "white"
-            }
-            stroke="var(--color-brand-accent)"
-            strokeWidth={1.28}
             onMouseEnter={() => setHoveredRegionId(region.id)}
-            onClick={() => onRegionSelect?.(region)}
-            onKeyDown={(event) => {
-              if (event.key === "Enter" || event.key === " ") {
-                event.preventDefault();
-                onRegionSelect?.(region);
+          >
+            <path
+              d={region.path}
+              className="cursor-pointer outline-none transition-colors duration-150"
+              fill={
+                hoveredRegionId === region.id ? "var(--color-brand)" : "white"
               }
-            }}
-          />
+              stroke="var(--color-brand-accent)"
+              strokeWidth={1.28}
+            />
+          </a>
         ))}
       </svg>
       {hoveredRegionId && (
