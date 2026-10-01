@@ -35,6 +35,16 @@
     "title": "<line>Demain,</line> <bold>une recherche mieux adaptée à votre filière</bold>",
     "description": "Industrie, logistique, artisanat ou services : les critères d’implantation varient fortement selon les activités. À terme, Foncier+ a vocation à enrichir la recherche par filière pour mieux qualifier les offres au regard de vos contraintes. Cette approche sera déployée progressivement."
   },
+  "RegionMapSection": {
+    "title": "<bold>Une offre nationale</bold> <line>de foncier économique</line>",
+    "subtitle": "Plus de 1 000 sites référencés et plus de 8 000 hectares disponibles partout en France",
+    "description": "Foncier+ rassemble des offres publiées par les collectivités et leurs partenaires pour vous donner une vision nationale du foncier économique disponible et vous permettre d’identifier les interlocuteurs à contacter.",
+    "categories": {
+      "wasteland": "Friches à réhabiliter",
+      "land": "Foncier aménagé",
+      "deposits": "Gisements"
+    }
+  },
   "Regions": {
     "auvergne-rhone-alpes": "Auvergne-Rhône-Alpes",
     "bourgogne-franche-comte": "Bourgogne-Franche-Comté",

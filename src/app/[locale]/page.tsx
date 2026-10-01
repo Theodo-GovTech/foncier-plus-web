@@ -10,8 +10,8 @@ export default async function Home() {
       <SearchSection />
       <BusinessSectorsPathSection />
       <AmbitionsSection />
-      <ContactSection />
       <RegionMapSection />
+      <ContactSection />
     </main>
   );
 }

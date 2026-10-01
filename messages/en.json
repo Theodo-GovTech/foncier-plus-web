@@ -35,6 +35,16 @@
     "title": "<line>Tomorrow,</line> <bold>a search better tailored to your sector</bold>",
     "description": "Industry, logistics, crafts or services: location criteria vary widely from one activity to another. Over time, Foncier+ aims to enhance its search by sector to better qualify listings in light of your constraints. This approach will be rolled out gradually."
   },
+  "RegionMapSection": {
+    "title": "<bold>A nationwide supply</bold> <line>of business land</line>",
+    "subtitle": "Over 1,000 listed sites and more than 8,000 hectares available across France",
+    "description": "Foncier+ gathers listings published by local authorities and their partners to give you a nationwide view of the available business land and help you identify who to contact.",
+    "categories": {
+      "wasteland": "Brownfields to redevelop",
+      "land": "Developed land",
+      "deposits": "Land reserves"
+    }
+  },
   "Regions": {
     "auvergne-rhone-alpes": "Auvergne-Rhône-Alpes",
     "bourgogne-franche-comte": "Bourgogne-Franche-Comté",
