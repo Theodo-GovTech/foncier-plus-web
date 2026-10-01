@@ -1,0 +1,60 @@
+import { describe, expect, it } from "vitest";
+import { convertFileIntoArticleMd } from "@/helper/read_article_md";
+
+const testArticle = (name: string) => `__tests__/test_articles/${name}`;
+
+describe("convertFileIntoArticleMd", () => {
+  it("returns the article metadata and its trimmed content", () => {
+    expect(
+      convertFileIntoArticleMd(testArticle("complete-article.md")),
+    ).toEqual({
+      type: "article",
+      title: "Article title",
+      description: "Article description",
+      metaDescription: "Article meta description",
+      coverImgPath: "cover.png",
+      slug: "/article",
+      text: "# Article heading\n\nArticle body.",
+    });
+  });
+
+  it("returns undefined for optional metadata that is NA, empty or missing", () => {
+    const article = convertFileIntoArticleMd(
+      testArticle("empty-optional-metadata.md"),
+    );
+
+    expect(article.description).toBeUndefined();
+    expect(article.metaDescription).toBeUndefined();
+    expect(article.coverImgPath).toBeUndefined();
+  });
+
+  it("throws when the type is missing", () => {
+    expect(() =>
+      convertFileIntoArticleMd(testArticle("missing-type.md")),
+    ).toThrow('Missing metadata "type"');
+  });
+
+  it("throws when the title is missing", () => {
+    expect(() =>
+      convertFileIntoArticleMd(testArticle("missing-title.md")),
+    ).toThrow('Missing metadata "title"');
+  });
+
+  it("throws when the title only contains spaces", () => {
+    expect(() =>
+      convertFileIntoArticleMd(testArticle("blank-title.md")),
+    ).toThrow('Missing metadata "title"');
+  });
+
+  it("throws when the slug is missing", () => {
+    expect(() =>
+      convertFileIntoArticleMd(testArticle("missing-slug.md")),
+    ).toThrow('Missing metadata "slug"');
+  });
+
+  it("throws when the type is not supported", () => {
+    expect(() =>
+      convertFileIntoArticleMd(testArticle("invalid-type.md")),
+    ).toThrow('Invalid article type "video"');
+  });
+});
