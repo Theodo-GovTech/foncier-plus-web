@@ -40,11 +40,13 @@ export const RegionMap = ({ className }: RegionMapProps) => {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={t(region.id)}
+            className="group outline-none"
             onMouseEnter={() => setHoveredRegionId(region.id)}
+            onMouseLeave={() => setHoveredRegionId(null)}
           >
             <path
               d={region.path}
-              className="cursor-pointer outline-none transition-colors duration-150"
+              className="cursor-pointer outline-none transition-colors duration-150 group-focus-visible:fill-brand"
               fill={
                 hoveredRegionId === region.id ? "var(--color-brand)" : "white"
               }
