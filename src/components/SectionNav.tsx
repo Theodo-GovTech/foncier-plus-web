@@ -1,10 +1,12 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
+import { SectionLink } from "@/components/SectionLink";
+import { usePathname } from "@/i18n/navigation";
 
 type Section = { id: string; label: string };
 
-type SectionNavProps = { sections: Section[] };
+type SectionNavProps = { sections: Section[]; ariaLabel: string };
 
 const linkClassName =
   "font-semibold text-[17px] text-brand transition-colors hover:text-brand/70 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand aria-current:text-brand-accent aria-current:hover:text-brand-accent/70";
@@ -28,27 +30,28 @@ const getActiveSectionId = (sections: Section[]) => {
   })?.id;
 };
 
-export const SectionNav = ({ sections }: SectionNavProps) => {
+export const SectionNav = ({ sections, ariaLabel }: SectionNavProps) => {
+  const isHomePage = usePathname() === "/";
   const activeSectionId = useSyncExternalStore(
     subscribeToScroll,
-    () => getActiveSectionId(sections),
-    () => sections[0].id,
+    () => (isHomePage ? getActiveSectionId(sections) : undefined),
+    () => (isHomePage ? sections[0].id : undefined),
   );
 
   return (
     <nav
-      aria-label="Sections de la page"
+      aria-label={ariaLabel}
       className="mx-auto flex max-w-page gap-6 px-4 py-6 lg:px-[114px]"
     >
       {sections.map(({ id, label }) => (
-        <a
+        <SectionLink
           key={id}
-          href={`#${id}`}
+          id={id}
           aria-current={id === activeSectionId}
           className={linkClassName}
         >
           {label}
-        </a>
+        </SectionLink>
       ))}
     </nav>
   );

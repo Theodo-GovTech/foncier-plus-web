@@ -1,12 +1,17 @@
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import type { AriaAttributes, ReactNode } from "react";
 
 type NavButtonVariant = "solid" | "outline" | "accent";
 
-// `border` sets the width only — each variant owns its border-color, otherwise
-// two border-color utilities collide and CSS source order decides the winner.
+type NavButtonSize = "sm" | "lg";
+
 const baseClassName =
-  "inline-flex h-[30px] items-center justify-center rounded-xs border px-4 text-[15px] leading-none font-extrabold whitespace-nowrap transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand";
+  "inline-flex items-center justify-center border px-4 text-[16px] leading-none font-bold whitespace-nowrap transition-colors";
+
+const sizeClassName: Record<NavButtonSize, string> = {
+  sm: "h-[30px]",
+  lg: "h-12",
+};
 
 const variantClassName: Record<NavButtonVariant, string> = {
   solid: "border-brand bg-brand text-white hover:bg-brand-hover",
@@ -17,6 +22,7 @@ const variantClassName: Record<NavButtonVariant, string> = {
 
 type NavButtonBaseProps = {
   variant: NavButtonVariant;
+  size?: NavButtonSize;
   children: ReactNode;
   "aria-current"?: AriaAttributes["aria-current"];
 };
@@ -26,12 +32,13 @@ type NavButtonProps = NavButtonBaseProps &
 
 export const NavButton = ({
   variant,
+  size = "sm",
   children,
   href,
   external,
   "aria-current": ariaCurrent,
 }: NavButtonProps) => {
-  const className = `${baseClassName} ${variantClassName[variant]}`;
+  const className = `${baseClassName} ${sizeClassName[size]} ${variantClassName[variant]}`;
 
   if (href === undefined) {
     return (

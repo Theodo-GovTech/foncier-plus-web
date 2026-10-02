@@ -1,0 +1,76 @@
+{
+  "HomePage": {
+    "title": "Welcome to Foncier plus"
+  },
+  "ContactPage": {
+    "title": "Contact us"
+  },
+  "Metadata": {
+    "title": "Foncier+",
+    "description": "Find the ideal land to bring your economic project to life"
+  },
+  "Header": {
+    "navAriaLabel": "Main navigation",
+    "searchNavLabel": "Search for land",
+    "businessSectorsPathNavLabel": "Our ambitions",
+    "business": "Business",
+    "localAuthority": "Local authority",
+    "contact": "Contact us"
+  },
+  "SectionNav": {
+    "ariaLabel": "Page sections"
+  },
+  "Breadcrumb": {
+    "ariaLabel": "Breadcrumb",
+    "home": "Home"
+  },
+  "SearchSection": {
+    "title": "Find the ideal land to bring your economic project to life",
+    "highlights": [
+      "Qualified listings",
+      "Support finding land and setting up your business"
+    ]
+  },
+  "BusinessSectorsPathSection": {
+    "title": "<line>Tomorrow,</line> <bold>a search better tailored to your sector</bold>",
+    "description": "Industry, logistics, crafts or services: location criteria vary widely from one activity to another. Over time, Foncier+ aims to enhance its search by sector to better qualify listings in light of your constraints. This approach will be rolled out gradually."
+  },
+  "AmbitionsSection": {
+    "title": "Connecting business location projects with local areas",
+    "description": "Foncier+ is a national entry point that showcases business land listings from local areas and makes it easier to reach the local stakeholders behind them.",
+    "ambitionsList": {
+      "section1": {
+        "title": "Get a clearer view of available land",
+        "description": "Access listings published nationwide to quickly spot the sites worth looking into."
+      },
+      "section2": {
+        "title": "Get in touch with the right contact",
+        "description": "Listings point you to the local stakeholders to contact, so you can take your project further and move forward with setting up your business."
+      },
+      "section3": {
+        "title": "Never be left without an answer",
+        "description": "If your search is unsuccessful or you’re not sure who to turn to, Foncier+ can relay your request to its network of partners."
+      },
+      "section4": {
+        "title": "A national network supporting projects",
+        "description": "Foncier+ draws on local authorities, their development agencies and national partners to connect projects with the right contacts, without replacing local support."
+      }
+    }
+  },
+  "ContactSection": {
+    "title": "<bold>No project goes unanswered.</bold> <line>Our network steps up</line>",
+    "description": "Can’t find the listing or contact that matches your needs? Write to us: Foncier+ will point you to the most relevant contact person.",
+    "cta": "Contact us",
+    "reassurance": "Protected data - Guaranteed response within 48 business hours"
+  },
+  "Footer": {
+    "description": "The association dedicated to land management and supporting businesses for sustainable territorial growth.",
+    "cta": "Contact us",
+    "siteMapTitle": "Site map",
+    "contactTitle": "Contact us",
+    "partnersTitle": "Partners",
+    "legalTitle": "Legal notice",
+    "newTabLabel": "New tab",
+    "copyright": "© {year} Foncier +. All rights reserved."
+  }
+}
