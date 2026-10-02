@@ -80,30 +80,26 @@ export const getArticlePages = (
     linkToArticleBySlug.set(slug, linkToArticle);
   };
 
-  return (
-    readArticleFiles(directories)
-      .filter((articleFile) => articleFile.locale === locale)
-      .flatMap(({ linkToArticle }) => {
-        const article = convertFileIntoArticleMd(linkToArticle);
-        const articleDirectory = dirname(linkToArticle);
+  return readArticleFiles(directories)
+    .filter((articleFile) => articleFile.locale === locale)
+    .flatMap(({ linkToArticle }) => {
+      const article = convertFileIntoArticleMd(linkToArticle);
+      const articleDirectory = dirname(linkToArticle);
 
-        if (article.type !== typeNews.ARTICLE || article.slug === undefined) {
-          return [];
-        }
+      if (article.type !== typeNews.ARTICLE || article.slug === undefined) {
+        return [];
+      }
 
-        checkSlugIsFree(article.slug, linkToArticle);
+      checkSlugIsFree(article.slug, linkToArticle);
 
-        if (articleDirectories.has(articleDirectory)) {
-          throw new Error(
-            `${linkToArticle} - Language "${locale}" already used`,
-          );
-        }
+      if (articleDirectories.has(articleDirectory)) {
+        throw new Error(`${linkToArticle} - Language "${locale}" already used`);
+      }
 
-        articleDirectories.add(articleDirectory);
+      articleDirectories.add(articleDirectory);
 
-        return [{ ...article, slug: article.slug, articleDirectory }];
-      })
-  );
+      return [{ ...article, slug: article.slug, articleDirectory }];
+    });
 };
 
 type ArticleRedirect = {
