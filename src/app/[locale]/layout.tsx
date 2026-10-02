@@ -67,12 +67,21 @@ export default async function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         <Script id="matomo-tag-manager" strategy="beforeInteractive">
-          {`var _mtm = window._mtm = window._mtm || [];
-          _mtm.push({'mtm.startTime': (new Date().getTime()), 'event': 'mtm.Start'});
-          (function() {
-            var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-            g.async=true; g.src='https://cdn.matomo.cloud/foncierpluss3websitefrparscwcloud.matomo.cloud/container_t2LCTS8k.js'; s.parentNode.insertBefore(g,s);
-          })();`}
+          {`const isLocalhost = Boolean(
+            window.location.hostname === 'localhost' ||
+            window.location.hostname === '127.0.0.1' ||
+            window.location.hostname.endsWith('.local')
+          );
+
+          if (!isLocalhost) {
+            var _mtm = window._mtm = window._mtm || [];
+            _mtm.push({'mtm.startTime': (new Date().getTime()), 'event': 'mtm.Start'});
+            const d = document;
+            const g = d.createElement('script');
+            const s = d.getElementsByTagName('script')[0];
+            g.async=true; g.src='https://cdn.matomo.cloud/foncierpluss3websitefrparscwcloud.matomo.cloud/container_t2LCTS8k.js';
+            s.parentNode.insertBefore(g,s);
+          }`}
         </Script>
         <NextIntlClientProvider>
           <Header />
