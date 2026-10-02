@@ -1,11 +1,11 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 import { type MouseEvent, useState } from "react";
 import iconPlusSE from "@/assets/icon-plus-SE.svg";
 import { franceMapViewBox, regions, type Region } from "@/data/regions";
-import { buildFranceFoncierRegionSearchUrl } from "@/lib/franceFoncierSearchUrl";
+import { buildFranceFoncierRegionSearchUrl } from "@/lib/franceFoncierUrls";
 
 interface RegionMapProps {
   className?: string;
@@ -13,6 +13,7 @@ interface RegionMapProps {
 
 export const RegionMap = ({ className }: RegionMapProps) => {
   const t = useTranslations("Regions");
+  const locale = useLocale();
   const [hoveredRegionId, setHoveredRegionId] = useState<Region["id"] | null>(
     null,
   );
@@ -36,7 +37,7 @@ export const RegionMap = ({ className }: RegionMapProps) => {
         {regions.map((region) => (
           <a
             key={region.id}
-            href={buildFranceFoncierRegionSearchUrl(region)}
+            href={buildFranceFoncierRegionSearchUrl(region, locale)}
             target="_blank"
             rel="noopener noreferrer"
             aria-label={t(region.id)}

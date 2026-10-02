@@ -1,4 +1,4 @@
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import Image from "next/image";
 import logoFoncierPlus from "@/assets/logo-foncier-plus.svg";
 import { HomeLink } from "@/components/HomeLink";
@@ -7,6 +7,7 @@ import { NavButton } from "@/components/NavButton";
 import { searchSectionId } from "@/components/SearchSection";
 import { businessSectorsPathSectionId } from "@/components/BusinessSectorsPathSection";
 import { SectionNav } from "@/components/SectionNav";
+import { getFranceFoncierUrl } from "@/lib/franceFoncierUrls";
 
 export const getSections = async () => {
   const t = await getTranslations("Header");
@@ -23,6 +24,7 @@ export const Header = async () => {
   const t = await getTranslations("Header");
   const sectionNavTranslations = await getTranslations("SectionNav");
   const sections = await getSections();
+  const locale = await getLocale();
 
   return (
     <header className="sticky top-0 z-50 bg-white shadow-[0_2px_12px] shadow-brand/15">
@@ -43,7 +45,7 @@ export const Header = async () => {
             {t("business")}
           </NavButton>
           <NavButton
-            href="https://www.banquedesterritoires.fr/produits-services/services-digitaux/france-foncier"
+            href={getFranceFoncierUrl(locale)}
             external
             variant="outline"
           >
