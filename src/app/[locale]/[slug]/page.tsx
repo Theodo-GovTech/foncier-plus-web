@@ -7,7 +7,7 @@ import { getArticlePages, getArticleRedirects } from "@/helper/article_pages";
 import { redirect } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 
-// Static export: only the articles found at build time have a page
+// Only the articles found at build time have a page
 export const dynamicParams = false;
 
 export function generateStaticParams({
