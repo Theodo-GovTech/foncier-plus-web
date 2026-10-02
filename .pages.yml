@@ -1,0 +1,113 @@
+# 1. Named Media Sources: routes uploads to their respective directories
+media:
+  - name: articles_media
+    label: Articles Media
+    input: src/app/assets/articles_md
+    output: ./
+
+  - name: apropos_media
+    label: À Propos Media
+    input: src/app/assets/apropos-md
+    output: ./
+
+# 2. Content Collections
+content:
+  # Collection 1: Articles (src/app/articles_md)
+  - name: articles
+    label: Articles
+    type: collection
+    path: src/app/assets/articles_md
+    subfolders: true
+
+    view:
+      fields: [title, type, slug]
+
+    fields:
+      - name: type
+        label: Article Type
+        type: select
+        options:
+          - label: Standard Article
+            value: article
+          - label: External URL
+            value: url
+        default: article
+
+      - name: title
+        label: Title
+        type: string
+        required: true
+
+      - name: description
+        label: Description
+        type: text
+
+      - name: meta-description
+        label: Meta Description
+        type: text
+
+      - name: cover_image
+        label: Cover Image
+        type: image
+        options:
+          media: articles_media
+
+      - name: slug
+        label: Slug
+        type: string
+
+      - name: body
+        label: Content (Markdown or URL)
+        type: rich-text
+        options:
+          media: articles_media
+
+  # Collection 2: À Propos (src/app/assets/apropos-md)
+  - name: apropos
+    label: À Propos
+    type: collection
+    path: src/app/assets/apropos-md
+    subfolders: true
+
+    view:
+      fields: [title, type, slug]
+
+    fields:
+      - name: type
+        label: Article Type
+        type: select
+        options:
+          - label: Standard Article
+            value: article
+          - label: External URL
+            value: url
+        default: article
+
+      - name: title
+        label: Title
+        type: string
+        required: true
+
+      - name: description
+        label: Description
+        type: text
+
+      - name: meta-description
+        label: Meta Description
+        type: text
+
+      - name: cover_image
+        label: Cover Image
+        type: image
+        options:
+          media: apropos_media
+
+      - name: slug
+        label: Slug
+        type: string
+
+      - name: body
+        label: Content (Markdown or URL)
+        type: rich-text
+        options:
+          media: apropos_media
