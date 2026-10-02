@@ -16,7 +16,7 @@ slug: "/about-us"
 
 From France Foncier+ to Foncier+: discover the mission, evolution, and operations of the association serving business setup projects.
 
-![picture of an industrial site](ECO_454.svg)
+![picture of an industrial site](/a-propos/ECO_454.svg)
 
 ## From a national portal to a matchmaking service
 

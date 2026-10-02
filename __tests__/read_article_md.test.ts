@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { convertFileIntoArticleMd } from "@/helper/read_article_md";
+import { convertFileIntoArticleMd } from "@/helper/read_news_md";
 
 const testArticle = (name: string) => `__tests__/test_articles/${name}`;
 
@@ -13,7 +13,7 @@ describe("convertFileIntoArticleMd", () => {
       description: "Article description",
       metaDescription: "Article meta description",
       coverImgPath: "cover.png",
-      slug: "/article",
+      slug: "article",
       body: "# Article heading\n\nArticle body.",
     });
   });
@@ -67,7 +67,7 @@ describe("convertFileIntoArticleMd", () => {
   it("accepts an article type written in uppercase", () => {
     expect(
       convertFileIntoArticleMd(testArticle("uppercase-article.md")),
-    ).toMatchObject({ type: "article", slug: "/article" });
+    ).toMatchObject({ type: "article", slug: "article" });
   });
 
   it("throws when the type is not supported", () => {

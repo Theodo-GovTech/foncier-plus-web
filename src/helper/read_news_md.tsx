@@ -2,14 +2,14 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import matter from "gray-matter";
 
-// Type PDF is used only for local pdf file. Link to pdf files are URL.
-enum typeNews {
+// Type PDF is used only for local pdf file, link to pdf files are URL
+export enum typeNews {
   ARTICLE = "article",
   PDF = "pdf",
   URL = "url",
 }
 
-type newsMd = {
+export type newsMd = {
   type: typeNews;
   title: string;
   description?: string;
@@ -50,6 +50,17 @@ const readRequiredMetadata = (
 const isTypeArticle = (value: string) =>
   Object.values<string>(typeNews).includes(value.toLowerCase());
 
+// Leading and trailing "/" are optional. Only ASCII letters, digits, "-" and "_"
+const normalizeSlug = (slug: string, linkToArticle: string): string => {
+  const normalizedSlug = slug.replace(/^\/|\/$/g, "");
+
+  if (!/^[\w-]+$/.test(normalizedSlug)) {
+    throw new Error(`${linkToArticle} - Invalid slug "${slug}"`);
+  }
+
+  return normalizedSlug;
+};
+
 export const convertFileIntoArticleMd = (linkToArticle: string): newsMd => {
   const file = readFileSync(join(process.cwd(), linkToArticle), "utf-8");
   const { data, content } = matter(file);
@@ -60,7 +71,7 @@ export const convertFileIntoArticleMd = (linkToArticle: string): newsMd => {
     throw new Error(`${linkToArticle} - Invalid article type "${type}"`);
   }
 
-  const verifiedType = type as typeNews;
+  const verifiedType = type.toLowerCase() as typeNews;
 
   return {
     type: verifiedType,
@@ -70,8 +81,11 @@ export const convertFileIntoArticleMd = (linkToArticle: string): newsMd => {
     coverImgPath: readMetadata(data, "cover_image"),
     slug:
       verifiedType === typeNews.ARTICLE
-        ? readRequiredMetadata(data, "slug", linkToArticle)
-        : readMetadata(data, "meta-description"),
+        ? normalizeSlug(
+            readRequiredMetadata(data, "slug", linkToArticle),
+            linkToArticle,
+          )
+        : readMetadata(data, "slug"),
     body: content.trim(),
   };
 };

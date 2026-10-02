@@ -16,7 +16,7 @@ slug: "/a-propos"
 
 De France Foncier+ à Foncier+ : découvrez la mission, l’évolution et le fonctionnement de l’association au service des projets d’implantation.
 
-![photo d'un site industriel](ECO_454.svg)
+![photo d'un site industriel](/a-propos/ECO_454.svg)
 
 ## D’un portail national à un service de mise en relation
 
@@ -38,7 +38,7 @@ France Foncier+ a démontré l’intérêt d’un point d’entrée national. Fo
 
 Foncier+ devient la marque porteuse de cette démarche. L’objectif n’est plus seulement de rendre les offres visibles, mais d’aider chaque projet à identifier le territoire et l’interlocuteur avec lesquels poursuivre.
 
-**Ce qui change avec Foncier+ : **
+**Ce qui change avec Foncier+ :**
 
 - Un point d’entrée national pour rechercher du foncier économique et identifier les interlocuteurs locaux.
 
