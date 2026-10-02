@@ -2,6 +2,7 @@ import { SearchSection } from "@/components/SearchSection";
 import { BusinessSectorsPathSection } from "@/components/BusinessSectorsPathSection";
 import { AmbitionsSection } from "@/components/AmbitionsSection";
 import { ContactSection } from "@/components/ContactSection";
+import { RegionMapSection } from "@/components/RegionMapSection";
 
 export default async function Home() {
   return (
@@ -9,6 +10,7 @@ export default async function Home() {
       <SearchSection />
       <BusinessSectorsPathSection />
       <AmbitionsSection />
+      <RegionMapSection />
       <ContactSection />
     </main>
   );

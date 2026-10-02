@@ -7,7 +7,7 @@ export const ContactSection = async () => {
   const t = await getTranslations("ContactSection");
 
   return (
-    <section className="bg-linear-to-b from-brand/2 to-white">
+    <section className="bg-linear-to-b from-gradient-start to-gradient-end">
       <div className="mx-auto max-w-page px-4 py-10 lg:px-[114px]">
         <div className="bg-white p-5">
           <h2 className="text-4xl text-brand lg:text-[40px] lg:leading-[46px]">

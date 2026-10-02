@@ -15,7 +15,7 @@ export const SearchSection = async () => {
       className="bg-brand bg-cover bg-position-[center_10%]"
       style={{ backgroundImage: `url(${searchSectionBg.src})` }}
     >
-      <div className="mx-auto max-w-page px-4 pt-15 pb-12 text-white lg:px-[114px]">
+      <div className="mx-auto max-w-page px-4 pt-15 pb-12 text-white lg:flex-row lg:items-center lg:px-[114px]">
         <h1 className="max-w-[860px] text-4xl font-extrabold lg:text-[66px] lg:leading-[78px]">
           {t("title")}
         </h1>
