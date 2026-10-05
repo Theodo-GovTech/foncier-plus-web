@@ -1,6 +1,7 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import matter from "gray-matter";
+import { readDate } from "@/helper/date";
 import { readMetadata, readRequiredMetadata } from "@/helper/frontmatter";
 
 // Type PDF is used only for local pdf file, link to pdf files are URL
@@ -17,6 +18,7 @@ export type News = {
   metaDescription?: string;
   coverImgPath?: string | null;
   slug: string;
+  date?: string;
   body: string;
 };
 
@@ -60,6 +62,7 @@ export const convertFileIntoNewsMd = (linkToNews: string): News => {
       readRequiredMetadata(data, "slug", linkToNews),
       linkToNews,
     ),
+    date: readDate(data, linkToNews),
     body: content.trim(),
   };
 };

@@ -12,6 +12,7 @@ describe("convertFileIntoNewsMd", () => {
       metaDescription: "Article meta description",
       coverImgPath: "cover.png",
       slug: "article",
+      date: "2025-10-01",
       body: "# Article heading\n\nArticle body.",
     });
   });
@@ -39,6 +40,13 @@ describe("convertFileIntoNewsMd", () => {
     expect(article.description).toBeUndefined();
     expect(article.metaDescription).toBeUndefined();
     expect(article.coverImgPath).toBeUndefined();
+    expect(article.date).toBeUndefined();
+  });
+
+  it("reads a date written without quotes", () => {
+    expect(convertFileIntoNewsMd(testNews("unquoted-date.md")).date).toBe(
+      "2025-10-01",
+    );
   });
 
   it("throws when the type is missing", () => {
