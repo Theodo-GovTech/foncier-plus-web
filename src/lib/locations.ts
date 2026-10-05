@@ -21,7 +21,7 @@ export type LocationsFile = Record<
   [code: string, libelle: string][]
 >;
 
-interface IndexedLocation extends Location {
+export interface IndexedLocation extends Location {
   searchKey: string;
 }
 
