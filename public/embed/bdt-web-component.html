@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>France Foncier</title>
+    <!-- The stylesheet, and the bundles the loader adds, are proxied to banquedesterritoires.fr, see next.config.ts -->
+    <link
+      rel="stylesheet"
+      media="all"
+      href="/design/pollen/assets/style/style.css?tm6lfi"
+    />
+    <script
+      type="module"
+      src="https://www.banquedesterritoires.fr/themes/custom/theme-bdt-neva/js/fo4-bdt-wc-foncier.js"
+    ></script>
+  </head>
+  <body>
+    <!-- The BdT loader script mounts its bundles into #web-component on DOMContentLoaded -->
+    <div id="web-component"></div>
+    <script>
+      const locale = new URLSearchParams(location.search).get("locale");
+      const webComponent = document.createElement("fo4-bdt-wc-foncier");
+      if (locale === "en") webComponent.setAttribute("locale", "en");
+      document.documentElement.lang = locale === "en" ? "en" : "fr";
+      document.getElementById("web-component").append(webComponent);
+    </script>
+  </body>
+</html>
