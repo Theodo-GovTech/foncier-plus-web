@@ -1,3 +1,4 @@
+import type { Locale } from "next-intl";
 import { type Frontmatter, readMetadata } from "@/helper/frontmatter";
 
 // new Date("2025-02-31") silently moves to March 3rd
@@ -25,3 +26,10 @@ export const readDate = (
 };
 
 export const compareDates = (a: string, b: string) => a.localeCompare(b);
+
+// "15 septembre 2026" in fr. In UTC, so the build time zone can't shift the day
+export const formatDate = (date: string, locale: Locale) =>
+  new Intl.DateTimeFormat(locale, {
+    dateStyle: "long",
+    timeZone: "UTC",
+  }).format(new Date(date));

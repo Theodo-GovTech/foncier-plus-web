@@ -1,6 +1,7 @@
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import Image from "next/image";
 import { CaretDownIcon } from "@/components/icons/CaretDownIcon";
+import { formatDate } from "@/helper/date";
 import type { NewsSectionItem } from "@/helper/news_section";
 import { NewsType } from "@/helper/read_news_md";
 import { Link } from "@/i18n/navigation";
@@ -12,7 +13,8 @@ const linkClassName =
 
 export const NewsCard = async ({ news }: NewsCardProps) => {
   const t = await getTranslations("NewsSection");
-  const { type, title, description, coverImgSrc, href } = news;
+  const locale = await getLocale();
+  const { type, date, title, description, coverImgSrc, href } = news;
 
   const linkContent = (
     <>
@@ -28,7 +30,10 @@ export const NewsCard = async ({ news }: NewsCardProps) => {
           <Image src={coverImgSrc} alt="" fill className="object-cover" />
         )}
       </div>
-      <h3 className="mt-4 text-xl leading-6 font-semibold text-brand">
+      <time dateTime={date} className="mt-4 text-sm text-muted uppercase">
+        {formatDate(date, locale)}
+      </time>
+      <h3 className="mt-3 text-xl leading-6 font-semibold text-brand">
         {title}
       </h3>
       {description !== undefined && (
