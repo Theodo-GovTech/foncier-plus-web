@@ -23,3 +23,5 @@ export const readDate = (
 
   return date;
 };
+
+export const compareDates = (a: string, b: string) => a.localeCompare(b);

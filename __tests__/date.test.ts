@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { readDate } from "@/helper/date";
+import { compareDates, readDate } from "@/helper/date";
 
 const NEWS = "news.md";
 
@@ -27,4 +27,12 @@ describe("readDate", () => {
       );
     },
   );
+});
+
+describe("compareDates", () => {
+  it("sorts the dates from the oldest", () => {
+    expect(
+      ["2026-01-01", "2024-05-12", "2025-10-01"].sort(compareDates),
+    ).toEqual(["2024-05-12", "2025-10-01", "2026-01-01"]);
+  });
 });

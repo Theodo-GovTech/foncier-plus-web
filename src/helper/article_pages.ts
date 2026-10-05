@@ -9,7 +9,8 @@ import {
 import { routing } from "@/i18n/routing";
 
 export const ABOUT_US_DIRECTORY = "src/assets/a-propos";
-export const NEWS_DIRECTORIES = [ABOUT_US_DIRECTORY];
+export const NEWS_SECTION_DIRECTORY = "src/assets/news";
+export const NEWS_DIRECTORIES = [ABOUT_US_DIRECTORY, NEWS_SECTION_DIRECTORY];
 const LOCALE_PAGES_DIRECTORY = "src/app/[locale]";
 
 type NewsFile = {
