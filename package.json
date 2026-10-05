@@ -2,14 +2,19 @@
   "name": "foncier-plus-web",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.18"
+  },
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "node src/data/generate-locations.ts && next dev",
+    "build": "node src/data/generate-locations.ts && next build",
     "start": "next start",
     "lint": "eslint",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "typecheck": "next typegen && tsc --noEmit"
+    "typecheck": "next typegen && tsc --noEmit",
+    "generate:locations": "node src/data/generate-locations.ts"
   },
   "dependencies": {
     "next": "16.3.5",
