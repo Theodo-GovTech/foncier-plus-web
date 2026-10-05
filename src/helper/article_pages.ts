@@ -2,36 +2,36 @@ import { readdirSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { hasLocale, type Locale } from "next-intl";
 import {
-  convertFileIntoArticleMd,
+  convertFileIntoNewsMd,
   type newsMd,
   typeNews,
 } from "@/helper/read_news_md";
 import { routing } from "@/i18n/routing";
 
-export const ARTICLE_DIRECTORIES = ["src/assets/a-propos"];
+export const NEWS_DIRECTORIES = ["src/assets/a-propos"];
 const LOCALE_PAGES_DIRECTORY = "src/app/[locale]";
 
-type ArticleFile = {
-  linkToArticle: string;
+type NewsFile = {
+  linkToNews: string;
   locale: Locale;
 };
 
 export type ArticlePage = newsMd & { slug: string; articleDirectory: string };
 
 // Format : <article_name>_[A-Z]+.md
-export const getLocaleFromFileName = (linkToArticle: string): Locale => {
-  const locale = linkToArticle.match(/([A-Z]+)\.md$/)?.[1].toLowerCase();
+export const getLocaleFromFileName = (linkToNews: string): Locale => {
+  const locale = linkToNews.match(/([A-Z]+)\.md$/)?.[1].toLowerCase();
 
   if (!hasLocale(routing.locales, locale)) {
     throw new Error(
-      `${linkToArticle} - Missing language suffix (${routing.locales.join(", ").toUpperCase()})`,
+      `${linkToNews} - Missing language suffix (${routing.locales.join(", ").toUpperCase()})`,
     );
   }
 
   return locale;
 };
 
-export const readArticleFiles = (directories: string[]): ArticleFile[] => {
+export const readNewsFiles = (directories: string[]): NewsFile[] => {
   return directories.flatMap((directory) =>
     readdirSync(join(process.cwd(), directory), {
       recursive: true,
@@ -40,11 +40,11 @@ export const readArticleFiles = (directories: string[]): ArticleFile[] => {
       .filter((path) => path.endsWith(".md"))
       .sort()
       .map((path) => {
-        const linkToArticle = join(directory, path);
+        const linkToNews = join(directory, path);
 
         return {
-          linkToArticle,
-          locale: getLocaleFromFileName(linkToArticle),
+          linkToNews,
+          locale: getLocaleFromFileName(linkToNews),
         };
       }),
   );
@@ -60,33 +60,33 @@ const getStaticRouteSlugs = (): string[] => {
 
 export const getArticlePages = (
   locale: Locale,
-  directories: string[] = ARTICLE_DIRECTORIES,
+  directories: string[] = NEWS_DIRECTORIES,
 ): ArticlePage[] => {
   const usedSlugs = new Set(getStaticRouteSlugs());
   const articleDirectories = new Set<string>();
 
-  const checkSlugIsFree = (slug: string, linkToArticle: string) => {
+  const checkSlugIsFree = (slug: string, linkToNews: string) => {
     if (usedSlugs.has(slug)) {
-      throw new Error(`${linkToArticle} - Slug "${slug}" already used`);
+      throw new Error(`${linkToNews} - Slug "${slug}" already used`);
     }
 
     usedSlugs.add(slug);
   };
 
-  return readArticleFiles(directories)
-    .filter((articleFile) => articleFile.locale === locale)
-    .flatMap(({ linkToArticle }) => {
-      const article = convertFileIntoArticleMd(linkToArticle);
-      const articleDirectory = dirname(linkToArticle);
+  return readNewsFiles(directories)
+    .filter((newsFile) => newsFile.locale === locale)
+    .flatMap(({ linkToNews }) => {
+      const article = convertFileIntoNewsMd(linkToNews);
+      const articleDirectory = dirname(linkToNews);
 
       if (article.type !== typeNews.ARTICLE || article.slug === undefined) {
         return [];
       }
 
-      checkSlugIsFree(article.slug, linkToArticle);
+      checkSlugIsFree(article.slug, linkToNews);
 
       if (articleDirectories.has(articleDirectory)) {
-        throw new Error(`${linkToArticle} - Language "${locale}" already used`);
+        throw new Error(`${linkToNews} - Language "${locale}" already used`);
       }
 
       articleDirectories.add(articleDirectory);
@@ -103,7 +103,7 @@ type ArticleRedirect = {
 // /fr/<slug-en> -> /fr/<slug-fr>
 export const getArticleRedirects = (
   locale: Locale,
-  directories: string[] = ARTICLE_DIRECTORIES,
+  directories: string[] = NEWS_DIRECTORIES,
 ): ArticleRedirect[] => {
   const articlePages = getArticlePages(locale, directories);
   const usedSlugs = new Set(articlePages.map(({ slug }) => slug));
