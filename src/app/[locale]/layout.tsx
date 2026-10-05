@@ -66,7 +66,7 @@ export default async function RootLayout({
       className={`${metropolis.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <Script id="matomo-tag-manager" strategy="beforeInteractive">
+        <Script id="matomo-tag-manager" strategy="afterInteractive">
           {`const isLocalhost = Boolean(
             window.location.hostname === 'localhost' ||
             window.location.hostname === '127.0.0.1' ||

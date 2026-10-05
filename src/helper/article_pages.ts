@@ -8,7 +8,8 @@ import {
 } from "@/helper/read_news_md";
 import { routing } from "@/i18n/routing";
 
-export const NEWS_DIRECTORIES = ["src/assets/a-propos"];
+export const ABOUT_US_DIRECTORY = "src/assets/a-propos";
+export const NEWS_DIRECTORIES = [ABOUT_US_DIRECTORY];
 const LOCALE_PAGES_DIRECTORY = "src/app/[locale]";
 
 type NewsFile = {
@@ -133,4 +134,21 @@ export const getArticleRedirects = (
         },
       ),
     );
+};
+
+// src/assets/a-propos -> /a-propos in fr, /about-us in en
+export const getArticleHref = (
+  locale: Locale,
+  articleDirectory: string,
+  directories: string[] = NEWS_DIRECTORIES,
+): string => {
+  const articlePage = getArticlePages(locale, directories).find(
+    (articlePage) => articlePage.articleDirectory === articleDirectory,
+  );
+
+  if (articlePage === undefined) {
+    throw new Error(`${articleDirectory} - Missing "${locale}" article`);
+  }
+
+  return `/${articlePage.slug}`;
 };

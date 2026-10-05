@@ -2,15 +2,17 @@ import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 import logoFoncierPlusW from "@/assets/logo-foncier-plus-white.svg";
 import { NavButton } from "@/components/NavButton";
+import { PageLink } from "@/components/PageLink";
 import { SectionLink } from "@/components/SectionLink";
 import { ExternalLinkIcon } from "./icons/ExternalLinkIcon";
-import { getSections } from "./Header";
+import { getPageLinks, getSections } from "./Header";
 
 type FooterLink = {
   label: string;
   href?: string;
   external?: boolean;
   sectionId?: string;
+  pageHref?: string;
 };
 
 const COPYRIGHT_DATE = 2026;
@@ -23,10 +25,16 @@ const getLinkGroups = async (
 ): Promise<{ title: string; links: FooterLink[] }[]> => [
   {
     title: t("siteMapTitle"),
-    links: (await getSections()).map(({ id, label }) => ({
-      label,
-      sectionId: id,
-    })),
+    links: [
+      ...(await getSections()).map(({ id, label }) => ({
+        label,
+        sectionId: id,
+      })),
+      ...(await getPageLinks()).map(({ href, label }) => ({
+        label,
+        pageHref: href,
+      })),
+    ],
   },
   {
     title: t("contactTitle"),
@@ -83,12 +91,16 @@ export const Footer = async () => {
             <div key={title}>
               <h2 className="text-2xl font-bold">{title}</h2>
               <ul className="mt-6 flex flex-col gap-3 lg:text-[15px] font-semibold">
-                {links.map(({ label, href, external, sectionId }) => (
+                {links.map(({ label, href, external, sectionId, pageHref }) => (
                   <li key={label}>
                     {sectionId !== undefined ? (
                       <SectionLink id={sectionId} className={linkClassName}>
                         {label}
                       </SectionLink>
+                    ) : pageHref !== undefined ? (
+                      <PageLink href={pageHref} className={linkClassName}>
+                        {label}
+                      </PageLink>
                     ) : (
                       <a
                         href={href}
