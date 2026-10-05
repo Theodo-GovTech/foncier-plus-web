@@ -17,8 +17,10 @@ export const SearchSection = async () => {
       style={{ backgroundImage: `url(${searchSectionBg.src})` }}
     >
       <div className="mx-auto max-w-page px-4 pt-15 pb-12 text-white lg:flex-row lg:items-center lg:px-[114px]">
-        <h1 className="max-w-[860px] text-4xl font-extrabold lg:text-[66px] lg:leading-[78px]">
-          {t("title")}
+        <h1 className="max-w-[1100px] text-4xl font-extrabold lg:text-[66px] lg:leading-[78px]">
+          {t.rich("title", {
+            line: (chunks) => <span className="block">{chunks}</span>,
+          })}
         </h1>
         <ul className="mt-9 flex flex-wrap gap-x-5 gap-y-3">
           {highlights.map((highlight) => (

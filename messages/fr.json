@@ -25,10 +25,10 @@
     "home": "Accueil"
   },
   "SearchSection": {
-    "title": "Trouvez le foncier idéal pour réaliser votre projet économique",
+    "title": "<line>Le point de rencontre national</line> <line>entre votre projet d’implantation</line> <line>et les territoires</line>",
     "highlights": [
-      "Offres qualifiées",
-      "Accompagnement dans la recherche de foncier et l'implantation"
+      "Offres de foncier économique à l’échelle nationale",
+      "Mise en relation avec les acteurs territoriaux"
     ]
   },
   "SearchBox": {
