@@ -35,6 +35,9 @@ jobs:
       - name: Build
         run: pnpm build
 
+      - name: Compress files
+        run: find out -type f -exec sh -c 'gzip -9 -n -c "$1" > "$1.gz" && mv "$1.gz" "$1"' _ {} \;
+
       - name: Sync to Scaleway Object Storage
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.SCW_ACCESS_KEY }}
@@ -43,4 +46,4 @@ jobs:
         run: |
           aws configure set default.s3.signature_version s3v4
           aws --endpoint-url "https://s3.${AWS_DEFAULT_REGION}.scw.cloud" \
-            s3 sync ./out "s3://${{ env.SCW_BUCKET_NAME }}" --delete
+            s3 sync ./out "s3://${{ env.SCW_BUCKET_NAME }}" --delete --content-encoding gzip
