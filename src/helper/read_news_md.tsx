@@ -16,7 +16,7 @@ export type News = {
   description?: string;
   metaDescription?: string;
   coverImgPath?: string | null;
-  slug?: string;
+  slug: string;
   body: string;
 };
 
@@ -55,13 +55,11 @@ export const convertFileIntoNewsMd = (linkToNews: string): News => {
     description: readMetadata(data, "description"),
     metaDescription: readMetadata(data, "meta-description"),
     coverImgPath: readMetadata(data, "cover_image"),
-    slug:
-      lowercaseType === NewsType.ARTICLE
-        ? normalizeSlug(
-            readRequiredMetadata(data, "slug", linkToNews),
-            linkToNews,
-          )
-        : readMetadata(data, "slug"),
+    // Also the folder of the news files in public/
+    slug: normalizeSlug(
+      readRequiredMetadata(data, "slug", linkToNews),
+      linkToNews,
+    ),
     body: content.trim(),
   };
 };

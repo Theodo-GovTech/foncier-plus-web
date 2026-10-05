@@ -59,21 +59,18 @@ describe("convertFileIntoNewsMd", () => {
     );
   });
 
-  it("throws when the slug of an article is missing", () => {
-    expect(() => convertFileIntoNewsMd(testNews("missing-slug.md"))).toThrow(
-      'Missing metadata "slug"',
-    );
-  });
+  it.each(["missing-slug.md", "pdf-without-slug.md", "url-without-slug.md"])(
+    "throws when the slug of %s is missing",
+    (fileName) => {
+      expect(() => convertFileIntoNewsMd(testNews(fileName))).toThrow(
+        'Missing metadata "slug"',
+      );
+    },
+  );
 
-  it.each(["pdf", "url"])("does not require a slug for a %s", (type) => {
-    expect(
-      convertFileIntoNewsMd(testNews(`${type}-without-slug.md`)).slug,
-    ).toBeUndefined();
-  });
-
-  it("returns the slug of a non-article when it is provided", () => {
+  it("removes the leading slash of a non-article slug", () => {
     expect(convertFileIntoNewsMd(testNews("pdf-with-slug.md")).slug).toBe(
-      "/pdf",
+      "pdf",
     );
   });
 

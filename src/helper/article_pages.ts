@@ -17,7 +17,7 @@ type NewsFile = {
   locale: Locale;
 };
 
-export type ArticlePage = News & { slug: string; articleDirectory: string };
+export type ArticlePage = News & { articleDirectory: string };
 
 // Format : <article_name>_[A-Z]+.md
 export const getLocaleFromFileName = (linkToNews: string): Locale => {
@@ -78,9 +78,7 @@ export const getArticlePages = (
       const article = convertFileIntoNewsMd(linkToNews);
       const articleDirectory = dirname(linkToNews);
 
-      if (article.type !== NewsType.ARTICLE || article.slug === undefined) {
-        return [];
-      }
+      if (article.type !== NewsType.ARTICLE) return [];
 
       checkSlugIsFree(article.slug, linkToNews);
 
@@ -90,7 +88,7 @@ export const getArticlePages = (
 
       articleDirectories.add(articleDirectory);
 
-      return [{ ...article, slug: article.slug, articleDirectory }];
+      return [{ ...article, articleDirectory }];
     });
 };
 
