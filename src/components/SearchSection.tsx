@@ -2,6 +2,7 @@ import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 import boxIconCompass from "@/assets/box_icon_compass.svg";
 import searchSectionBg from "@/assets/search-section-bg.png";
+import { SearchBox } from "@/components/SearchBox";
 
 export const searchSectionId = "recherche";
 
@@ -30,6 +31,7 @@ export const SearchSection = async () => {
             </li>
           ))}
         </ul>
+        <SearchBox />
       </div>
     </section>
   );
