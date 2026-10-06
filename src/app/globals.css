@@ -20,6 +20,8 @@
   --color-white-hover: rgb(255 255 255 / 70%);
   --color-line: #e4e6ea;
   --color-muted: #626c7f;
+  --color-gradient-start: var(--color-gray-50);
+  --color-gradient-end: var(--color-white);
 
   --container-page: 87.5rem;
 }

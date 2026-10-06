@@ -1,6 +1,6 @@
 "use client";
 
-import { useLocale } from "next-intl";
+import { type Locale, useLocale } from "next-intl";
 import { useEffect, useRef, useState } from "react";
 import { CaretDownIcon } from "@/components/icons/CaretDownIcon";
 import { CaretTopIcon } from "@/components/icons/CaretTopIcon";
@@ -8,7 +8,7 @@ import { GlobeIcon } from "@/components/icons/GlobeIcon";
 import { Link, usePathname } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 
-const localeLabels: Record<(typeof routing.locales)[number], string> = {
+const localeLabels: Record<Locale, string> = {
   fr: "Français",
   en: "English",
 };
