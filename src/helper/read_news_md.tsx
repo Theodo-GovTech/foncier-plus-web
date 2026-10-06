@@ -3,14 +3,14 @@ import { join } from "node:path";
 import matter from "gray-matter";
 
 // Type PDF is used only for local pdf file, link to pdf files are URL
-export enum typeNews {
+export enum NewsType {
   ARTICLE = "article",
   PDF = "pdf",
   URL = "url",
 }
 
-export type newsMd = {
-  type: typeNews;
+export type News = {
+  type: NewsType;
   title: string;
   description?: string;
   metaDescription?: string;
@@ -31,7 +31,7 @@ const readMetadata = (
 
   if (!isString) return undefined;
 
-  const strValue: string = String(value).trim();
+  const strValue: string = value.trim();
 
   return strValue !== "" && strValue !== "NA" ? strValue : undefined;
 };
@@ -47,8 +47,8 @@ const readRequiredMetadata = (
   else throw new Error(`${linkToNews} - Missing metadata "${key}"`);
 };
 
-const isNewsType = (value: string) =>
-  Object.values<string>(typeNews).includes(value.toLowerCase());
+const isNewsType = (value: string): value is NewsType =>
+  Object.values<string>(NewsType).includes(value.toLowerCase());
 
 // Leading and trailing "/" are optional. Only ASCII letters, digits, "-" and "_"
 const normalizeSlug = (slug: string, linkToNews: string): string => {
@@ -61,26 +61,26 @@ const normalizeSlug = (slug: string, linkToNews: string): string => {
   return normalizedSlug;
 };
 
-export const convertFileIntoNewsMd = (linkToNews: string): newsMd => {
+export const convertFileIntoNewsMd = (linkToNews: string): News => {
   const file = readFileSync(join(process.cwd(), linkToNews), "utf-8");
   const { data, content } = matter(file);
 
   const type = readRequiredMetadata(data, "type", linkToNews);
 
-  if (!isNewsType(type)) {
-    throw new Error(`${linkToNews} - Invalid news type "${type}"`);
+  const lowercaseType = type.toLowerCase();
+
+  if (!isNewsType(lowercaseType)) {
+    throw new Error(`${linkToNews} - Invalid news type "${lowercaseType}"`);
   }
 
-  const verifiedType = type.toLowerCase() as typeNews;
-
   return {
-    type: verifiedType,
+    type: lowercaseType,
     title: readRequiredMetadata(data, "title", linkToNews),
     description: readMetadata(data, "description"),
     metaDescription: readMetadata(data, "meta-description"),
     coverImgPath: readMetadata(data, "cover_image"),
     slug:
-      verifiedType === typeNews.ARTICLE
+      lowercaseType === NewsType.ARTICLE
         ? normalizeSlug(
             readRequiredMetadata(data, "slug", linkToNews),
             linkToNews,

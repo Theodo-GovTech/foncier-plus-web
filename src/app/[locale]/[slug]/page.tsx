@@ -7,17 +7,17 @@ import { getArticlePages, getArticleRedirects } from "@/helper/article_pages";
 import { redirect } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 
-export function generateStaticParams({
+export const generateStaticParams = ({
   params: { locale },
 }: {
   params: Awaited<LayoutProps<"/[locale]">["params"]>;
-}) {
+}) => {
   if (!hasLocale(routing.locales, locale)) return [];
 
   return [...getArticlePages(locale), ...getArticleRedirects(locale)].map(
     ({ slug }) => ({ slug }),
   );
-}
+};
 
 const getArticlePage = async (
   params: PageProps<"/[locale]/[slug]">["params"],
@@ -43,17 +43,15 @@ const getArticlePage = async (
   notFound();
 };
 
-export async function generateMetadata({
+export const generateMetadata = async ({
   params,
-}: PageProps<"/[locale]/[slug]">): Promise<Metadata> {
+}: PageProps<"/[locale]/[slug]">): Promise<Metadata> => {
   const { title, metaDescription, description } = await getArticlePage(params);
 
   return { title, description: metaDescription ?? description };
-}
+};
 
-export default async function ArticlePage({
-  params,
-}: PageProps<"/[locale]/[slug]">) {
+const ArticlePage = async ({ params }: PageProps<"/[locale]/[slug]">) => {
   const { title, body } = await getArticlePage(params);
 
   return (
@@ -62,4 +60,6 @@ export default async function ArticlePage({
       <MarkdownContent>{body}</MarkdownContent>
     </main>
   );
-}
+};
+
+export default ArticlePage;

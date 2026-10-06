@@ -3,8 +3,8 @@ import { dirname, join } from "node:path";
 import { hasLocale, type Locale } from "next-intl";
 import {
   convertFileIntoNewsMd,
-  type newsMd,
-  typeNews,
+  type News,
+  NewsType,
 } from "@/helper/read_news_md";
 import { routing } from "@/i18n/routing";
 
@@ -17,7 +17,7 @@ type NewsFile = {
   locale: Locale;
 };
 
-export type ArticlePage = newsMd & { slug: string; articleDirectory: string };
+export type ArticlePage = News & { slug: string; articleDirectory: string };
 
 // Format : <article_name>_[A-Z]+.md
 export const getLocaleFromFileName = (linkToNews: string): Locale => {
@@ -32,8 +32,8 @@ export const getLocaleFromFileName = (linkToNews: string): Locale => {
   return locale;
 };
 
-export const readNewsFiles = (directories: string[]): NewsFile[] => {
-  return directories.flatMap((directory) =>
+export const readNewsFiles = (directories: string[]): NewsFile[] =>
+  directories.flatMap((directory) =>
     readdirSync(join(process.cwd(), directory), {
       recursive: true,
       encoding: "utf-8",
@@ -49,15 +49,13 @@ export const readNewsFiles = (directories: string[]): NewsFile[] => {
         };
       }),
   );
-};
 
-const getStaticRouteSlugs = (): string[] => {
-  return readdirSync(join(process.cwd(), LOCALE_PAGES_DIRECTORY), {
+const getStaticRouteSlugs = (): string[] =>
+  readdirSync(join(process.cwd(), LOCALE_PAGES_DIRECTORY), {
     withFileTypes: true,
   })
     .filter((entry) => entry.isDirectory() && !/^[[(_]/.test(entry.name))
     .map(({ name }) => name);
-};
 
 export const getArticlePages = (
   locale: Locale,
@@ -80,7 +78,7 @@ export const getArticlePages = (
       const article = convertFileIntoNewsMd(linkToNews);
       const articleDirectory = dirname(linkToNews);
 
-      if (article.type !== typeNews.ARTICLE || article.slug === undefined) {
+      if (article.type !== NewsType.ARTICLE || article.slug === undefined) {
         return [];
       }
 
