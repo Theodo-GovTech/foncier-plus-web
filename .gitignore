@@ -17,6 +17,9 @@
 /.next/
 /out/
 
+# generated from src/data/locations.csv at dev/build time
+/public/locations.json
+
 # production
 /build
 

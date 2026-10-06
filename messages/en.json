@@ -25,11 +25,60 @@
     "home": "Home"
   },
   "SearchSection": {
-    "title": "Find the ideal land to bring your economic project to life",
+    "title": "<line>The national meeting point</line> <line>between your location project</line> <line>and the territories</line>",
     "highlights": [
-      "Qualified listings",
-      "Support finding land and setting up your business"
+      "Economic land listings nationwide",
+      "Connection with local stakeholders"
     ]
+  },
+  "SearchBox": {
+    "ariaLabel": "Land search",
+    "locationLabel": "Location",
+    "locationPlaceholder": "Region, department, EPCI, municipality",
+    "locationLoading": "Loading locations…",
+    "locationLoadError": "Locations could not be loaded.",
+    "locationNoResult": "No location matches your search",
+    "locationTypes": {
+      "REGION": "Region",
+      "DEPARTEMENT": "Department",
+      "EPCI": "EPCI",
+      "COMMUNE": "Municipality"
+    },
+    "acquisitionTypeLabel": "Acquisition type",
+    "acquisitionTypes": {
+      "VENTE": "Purchase",
+      "LOCATION": "Lease"
+    },
+    "labelLabel": "Label",
+    "readyToUseSite": "Ready-to-use site",
+    "offerTypeLabel": "Offer type",
+    "offerTypes": {
+      "NU": "Land",
+      "BATI": "Property"
+    },
+    "surfaceLabel": "Minimum area",
+    "surfaceUnitLabel": "Area unit",
+    "surfaceUnits": {
+      "ha": "ha",
+      "m2": "m²"
+    },
+    "advancedFilters": "Advanced filters",
+    "reset": "Reset",
+    "search": "Search",
+    "availabilityLabel": "Availability",
+    "availabilities": {
+      "IMMEDIATLY": "Immediate",
+      "FROM_0_TO_6": "0 to 6 months",
+      "FROM_6_TO_12": "6 to 12 months",
+      "MORE_THAN_12": "more than 12 months"
+    },
+    "destinationLabel": "Purpose",
+    "destinations": {
+      "ART": "Crafts",
+      "INDU": "Industry",
+      "LOG": "Logistics",
+      "MIX": "Mixed use"
+    }
   },
   "BusinessSectorsPathSection": {
     "title": "<line>Tomorrow,</line> <bold>a search better tailored to your sector</bold>",
