@@ -39,7 +39,6 @@ export const getNewsSectionItems = (
   locale: Locale,
   directory: string = NEWS_SECTION_DIRECTORY,
 ): NewsSectionItem[] => {
-  // The files of an article are in public/<fr slug>/ whatever the language
   const frArticleSlugs = new Map(
     getArticlePages("fr", [directory]).map(({ articleDirectory, slug }) => [
       articleDirectory,

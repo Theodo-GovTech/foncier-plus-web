@@ -8,9 +8,9 @@ import {
 } from "@/helper/read_news_md";
 import { routing } from "@/i18n/routing";
 
-export const ABOUT_US_DIRECTORY = "src/assets/a-propos";
+export const ABOUT_US_DIRECTORY = "src/assets/news/a-propos";
 export const NEWS_SECTION_DIRECTORY = "src/assets/news";
-export const NEWS_DIRECTORIES = [ABOUT_US_DIRECTORY, NEWS_SECTION_DIRECTORY];
+export const NEWS_DIRECTORIES = [NEWS_SECTION_DIRECTORY];
 const LOCALE_PAGES_DIRECTORY = "src/app/[locale]";
 
 type NewsFile = {
@@ -133,7 +133,7 @@ export const getArticleRedirects = (
     );
 };
 
-// src/assets/a-propos -> /a-propos in fr, /about-us in en
+// src/assets/news/a-propos -> /a-propos in fr, /about-us in en
 export const getArticleHref = (
   locale: Locale,
   articleDirectory: string,

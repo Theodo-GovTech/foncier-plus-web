@@ -7,9 +7,11 @@ description: "Découvrez Foncier+, l’association d’intérêt général qui r
 
 meta-description: "Découvrez Foncier+, l’association d’intérêt général qui relie les projets d’implantation aux territoires et aux acteurs locaux du développement économique."
 
-cover_image: NA
+cover_image: "ECO_454.svg"
 
 slug: "/a-propos"
+
+date: "2026-10-05"
 ---
 
 # À propos de Foncier+ : relier les projets d’implantation aux territoires
