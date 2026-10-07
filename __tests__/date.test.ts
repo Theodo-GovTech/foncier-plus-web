@@ -13,9 +13,11 @@ describe("readDate", () => {
   });
 
   it.each([undefined, "", "  ", "NA"])(
-    "returns undefined for the date %j",
+    "throws for the missing date %j",
     (date) => {
-      expect(readDate({ date }, NEWS)).toBeUndefined();
+      expect(() => readDate({ date }, NEWS)).toThrow(
+        `${NEWS} - Missing metadata "date"`,
+      );
     },
   );
 

@@ -25,11 +25,11 @@ describe("getNewsSectionItems", () => {
     });
   });
 
-  it("links a url news to its url", () => {
+  it("links a url news to its url, its cover being in the folder of its slug", () => {
     const [urlNews] = getNewsSectionItems("fr", NEWS_DIRECTORY);
 
     expect(urlNews.href).toBe("https://example.com");
-    expect(urlNews.coverImgSrc).toBeUndefined();
+    expect(urlNews.coverImgSrc).toBe("/url/cover.png");
   });
 
   it.each([

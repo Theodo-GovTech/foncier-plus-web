@@ -32,20 +32,24 @@ describe("convertFileIntoNewsMd", () => {
     );
   });
 
-  it("returns undefined for optional metadata that is NA, empty or missing", () => {
+  it("returns undefined for optional metadata that is NA or empty", () => {
     const article = convertFileIntoNewsMd(
       testNews("empty-optional-metadata.md"),
     );
 
     expect(article.description).toBeUndefined();
     expect(article.metaDescription).toBeUndefined();
-    expect(article.coverImgPath).toBeUndefined();
-    expect(article.date).toBeUndefined();
   });
 
   it("reads a date written without quotes", () => {
     expect(convertFileIntoNewsMd(testNews("unquoted-date.md")).date).toBe(
       "2025-10-01",
+    );
+  });
+
+  it("throws when the date is missing", () => {
+    expect(() => convertFileIntoNewsMd(testNews("missing-date.md"))).toThrow(
+      'Missing metadata "date"',
     );
   });
 
@@ -65,6 +69,12 @@ describe("convertFileIntoNewsMd", () => {
     expect(() => convertFileIntoNewsMd(testNews("blank-title.md"))).toThrow(
       'Missing metadata "title"',
     );
+  });
+
+  it("throws when the cover image is missing", () => {
+    expect(() =>
+      convertFileIntoNewsMd(testNews("missing-cover-image.md")),
+    ).toThrow('Missing metadata "cover_image"');
   });
 
   it.each(["missing-slug.md", "pdf-without-slug.md", "url-without-slug.md"])(

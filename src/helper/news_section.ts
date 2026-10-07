@@ -12,24 +12,14 @@ import {
   NewsType,
 } from "@/helper/read_news_md";
 
-type DatedNews = News & { linkToNews: string; date: string };
+type NewsWithLink = News & { linkToNews: string };
 
-export type NewsSectionItem = DatedNews & {
+export type NewsSectionItem = NewsWithLink & {
   href: string;
-  coverImgSrc?: string;
+  coverImgSrc: string;
 };
 
-const readDatedNews = (linkToNews: string): DatedNews => {
-  const news = convertFileIntoNewsMd(linkToNews);
-
-  if (news.date === undefined) {
-    throw new Error(`${linkToNews} - Missing metadata "date"`);
-  }
-
-  return { ...news, date: news.date, linkToNews };
-};
-
-const getNewsHref = (news: DatedNews, assetsPath: string): string => {
+const getNewsHref = (news: NewsWithLink, assetsPath: string): string => {
   if (news.type === NewsType.ARTICLE) return `/${news.slug}`;
   if (news.type === NewsType.PDF) return `${assetsPath}/${news.body}`;
   return news.body;
@@ -46,7 +36,7 @@ export const getNewsSectionItems = (
     ]),
   );
 
-  const getAssetsPath = ({ type, slug, linkToNews }: DatedNews): string => {
+  const getAssetsPath = ({ type, slug, linkToNews }: NewsWithLink): string => {
     if (type !== NewsType.ARTICLE) return `/${slug}`;
 
     const articleDirectory = dirname(linkToNews);
@@ -61,7 +51,10 @@ export const getNewsSectionItems = (
 
   return readNewsFiles([directory])
     .filter((newsFile) => newsFile.locale === locale)
-    .map(({ linkToNews }) => readDatedNews(linkToNews))
+    .map(({ linkToNews }) => ({
+      ...convertFileIntoNewsMd(linkToNews),
+      linkToNews,
+    }))
     .sort(
       (a, b) =>
         compareDates(b.date, a.date) || a.title.localeCompare(b.title, locale),
@@ -72,9 +65,7 @@ export const getNewsSectionItems = (
       return {
         ...news,
         href: getNewsHref(news, assetsPath),
-        coverImgSrc: news.coverImgPath
-          ? `${assetsPath}/${news.coverImgPath}`
-          : undefined,
+        coverImgSrc: `${assetsPath}/${news.coverImgPath}`,
       };
     });
 };

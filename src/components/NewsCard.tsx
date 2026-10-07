@@ -26,9 +26,7 @@ export const NewsCard = async ({ news }: NewsCardProps) => {
   return (
     <article className="flex h-full flex-col">
       <div className="relative aspect-video overflow-hidden bg-brand/5">
-        {coverImgSrc !== undefined && (
-          <Image src={coverImgSrc} alt="" fill className="object-cover" />
-        )}
+        <Image src={coverImgSrc} alt="" fill className="object-cover" />
       </div>
       <time dateTime={date} className="mt-4 text-sm text-muted uppercase">
         {formatDate(date, locale)}

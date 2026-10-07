@@ -1,6 +1,7 @@
 ---
 type: "url"
 title: "News"
+cover_image: "cover.png"
 slug: "/news"
 ---
 
