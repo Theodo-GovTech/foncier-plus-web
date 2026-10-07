@@ -4,15 +4,15 @@ import { join } from "node:path";
 export const PUBLIC_DIRECTORY = "public";
 
 // /a-propos/ECO_454.svg -> public/a-propos/ECO_454.svg
-export const checkImageExists = (
+export const checkPublicFileExists = (
   src: string,
   linkToNews: string,
   publicDirectory: string = PUBLIC_DIRECTORY,
 ) => {
-  const imageFile = join(publicDirectory, src);
+  const publicFile = join(publicDirectory, src);
 
-  if (!existsSync(join(process.cwd(), imageFile))) {
-    throw new Error(`${linkToNews} - Missing image "${imageFile}"`);
+  if (!existsSync(join(process.cwd(), publicFile))) {
+    throw new Error(`${linkToNews} - Missing file "${publicFile}"`);
   }
 };
 
@@ -24,4 +24,4 @@ export const checkMarkdownImagesExist = (
   [...markdown.matchAll(/!\[[^\]]*\]\(([^\s)]+)/g)]
     .map(([, src]) => src)
     .filter((src) => !URL.canParse(src))
-    .forEach((src) => checkImageExists(src, linkToNews));
+    .forEach((src) => checkPublicFileExists(src, linkToNews));

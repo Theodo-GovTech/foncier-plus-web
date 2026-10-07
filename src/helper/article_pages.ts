@@ -1,7 +1,7 @@
 import { readdirSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { hasLocale, type Locale } from "next-intl";
-import { checkMarkdownImagesExist } from "@/helper/images";
+import { checkMarkdownImagesExist } from "@/helper/public_files";
 import {
   convertFileIntoNewsMd,
   type News,

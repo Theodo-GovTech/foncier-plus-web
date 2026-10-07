@@ -6,7 +6,7 @@ import {
   readNewsFiles,
 } from "@/helper/article_pages";
 import { compareDates } from "@/helper/date";
-import { checkImageExists, PUBLIC_DIRECTORY } from "@/helper/images";
+import { checkPublicFileExists, PUBLIC_DIRECTORY } from "@/helper/public_files";
 import {
   convertFileIntoNewsMd,
   type News,
@@ -63,13 +63,18 @@ export const getNewsSectionItems = (
     )
     .map((news) => {
       const assetsPath = getAssetsPath(news);
+      const href = getNewsHref(news, assetsPath);
       const coverImgSrc = `${assetsPath}/${news.coverImgPath}`;
 
-      checkImageExists(coverImgSrc, news.linkToNews, publicDirectory);
+      checkPublicFileExists(coverImgSrc, news.linkToNews, publicDirectory);
+
+      if (news.type === NewsType.PDF) {
+        checkPublicFileExists(href, news.linkToNews, publicDirectory);
+      }
 
       return {
         ...news,
-        href: getNewsHref(news, assetsPath),
+        href,
         coverImgSrc,
       };
     });

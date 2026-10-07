@@ -45,7 +45,11 @@ describe("getNewsSectionItems", () => {
     ["untranslated-article", 'Missing "fr" article'],
     [
       "nonexistent-cover-image",
-      'Missing image "__tests__/test_public/url/nonexistent.png"',
+      'Missing file "__tests__/test_public/url/nonexistent.png"',
+    ],
+    [
+      "nonexistent-pdf",
+      'Missing file "__tests__/test_public/pdf/nonexistent.pdf"',
     ],
   ])("throws for %s", (directory, message) => {
     expect(() => getItems("en", `${INVALID}/${directory}`)).toThrow(message);

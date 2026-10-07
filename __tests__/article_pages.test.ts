@@ -48,7 +48,7 @@ describe("getArticlePages", () => {
     ["duplicated-slug", 'Slug "same" already used'],
     ["static-page-slug", 'Slug "contact" already used'],
     ["duplicated-language", 'Language "fr" already used'],
-    ["nonexistent-image", 'Missing image "public/images/nonexistent.png"'],
+    ["nonexistent-image", 'Missing file "public/images/nonexistent.png"'],
   ])("throws for %s", (directory, message) => {
     expect(() => getArticlePages("fr", [`${INVALID}/${directory}`])).toThrow(
       message,
