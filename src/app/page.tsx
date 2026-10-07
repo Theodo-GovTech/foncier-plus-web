@@ -1,6 +1,8 @@
 import { redirect } from "next/navigation";
 import { routing } from "@/i18n/routing";
 
-export default function RootPage() {
+const RootPage = () => {
   redirect(`/${routing.defaultLocale}`);
-}
+};
+
+export default RootPage;

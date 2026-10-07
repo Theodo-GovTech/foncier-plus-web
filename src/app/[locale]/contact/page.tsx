@@ -1,7 +1,7 @@
 import { getTranslations } from "next-intl/server";
 import { Breadcrumb } from "@/components/Breadcrumb";
 
-export default async function ContactPage() {
+const ContactPage = async () => {
   const t = await getTranslations("ContactPage");
 
   return (
@@ -9,4 +9,6 @@ export default async function ContactPage() {
       <Breadcrumb currentPage={t("title")} />
     </main>
   );
-}
+};
+
+export default ContactPage;

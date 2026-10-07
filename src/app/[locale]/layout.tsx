@@ -27,9 +27,9 @@ const geistMono = Geist_Mono({
 
 const allowIndexing = process.env.ALLOW_INDEXING === "true";
 
-export async function generateMetadata({
+export const generateMetadata = async ({
   params,
-}: LayoutProps<"/[locale]">): Promise<Metadata> {
+}: LayoutProps<"/[locale]">): Promise<Metadata> => {
   const { locale } = await params;
 
   if (!hasLocale(routing.locales, locale)) {
@@ -43,16 +43,12 @@ export async function generateMetadata({
     description: t("description"),
     robots: allowIndexing ? undefined : { index: false, follow: false },
   };
-}
+};
 
-export function generateStaticParams() {
-  return routing.locales.map((locale) => ({ locale }));
-}
+export const generateStaticParams = () =>
+  routing.locales.map((locale) => ({ locale }));
 
-export default async function RootLayout({
-  children,
-  params,
-}: LayoutProps<"/[locale]">) {
+const RootLayout = async ({ children, params }: LayoutProps<"/[locale]">) => {
   const { locale } = await params;
 
   if (!hasLocale(routing.locales, locale)) {
@@ -66,7 +62,7 @@ export default async function RootLayout({
       className={`${metropolis.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <Script id="matomo-tag-manager" strategy="beforeInteractive">
+        <Script id="matomo-tag-manager" strategy="afterInteractive">
           {`const isLocalhost = Boolean(
             window.location.hostname === 'localhost' ||
             window.location.hostname === '127.0.0.1' ||
@@ -91,4 +87,6 @@ export default async function RootLayout({
       </body>
     </html>
   );
-}
+};
+
+export default RootLayout;

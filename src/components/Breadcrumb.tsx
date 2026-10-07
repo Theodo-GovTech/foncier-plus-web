@@ -1,5 +1,5 @@
 import { getTranslations } from "next-intl/server";
-import { HomeLink } from "@/components/HomeLink";
+import { PageLink } from "@/components/PageLink";
 import { CaretDownIcon } from "@/components/icons/CaretDownIcon";
 
 type BreadcrumbProps = { currentPage: string };
@@ -14,9 +14,12 @@ export const Breadcrumb = async ({ currentPage }: BreadcrumbProps) => {
     >
       <ol className="flex flex-wrap items-center gap-2 text-sm">
         <li>
-          <HomeLink className="text-muted transition-colors hover:text-brand focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand">
+          <PageLink
+            href="/"
+            className="text-muted transition-colors hover:text-brand focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+          >
             {t("home")}
-          </HomeLink>
+          </PageLink>
         </li>
         <li
           aria-current="page"
