@@ -9,6 +9,23 @@
     "metadata": {
       "title": "Searching for business land: contact us | Foncier+",
       "description": "Can't find the right plot? No project goes unanswered: tell us what you need and Foncier+ will connect you with the right local contacts."
+    },
+    "contactForm": {
+      "heading": "Haven’t found the land you need, or want to broaden your search?",
+      "description": "Describe your project and your criteria. We will reply within 48 working hours.",
+      "companyLabel": "Company",
+      "companyPlaceholder": "E.g. Arko Industrial",
+      "nameLabel": "Full name",
+      "namePlaceholder": "E.g. Patrick George",
+      "roleLabel": "Job title",
+      "rolePlaceholder": "E.g. Development director",
+      "hint": "Enter up to {max} characters (letters, numbers, spaces, hyphens and apostrophes only).",
+      "cta": "Write my message",
+      "note": "Your email address will reach us with your message. You can also email us directly at {email}"
+    },
+    "email": {
+      "subject": "Land search",
+      "body": "Your search has not been successful, or you have a specific need?\nDescribe your location project to us. Foncier+ will relay your request to the territories and the local contacts able to respond.\n\nTo help us point you in the right direction, please specify:\n- Your business sector and key constraints (water, power supply, logistics access, environmental permits…).\n- Your search criteria: surface area (land/buildings), geographic area and timeline.\n\nYou can also attach your specifications.\n\n{name}\n{role}\n{company}"
     }
   },
   "Metadata": {

@@ -6,6 +6,7 @@ import { PageLink } from "@/components/PageLink";
 import { SectionLink } from "@/components/SectionLink";
 import { ExternalLinkIcon } from "./icons/ExternalLinkIcon";
 import { getPageLinks, getSections } from "./Header";
+import { CONTACT_EMAIL } from "@/lib/contact";
 
 type FooterLink = {
   label: string;
@@ -41,8 +42,8 @@ const getLinkGroups = async (
     links: [
       { label: "72, avenue Pierre Mendès-France 75013 PARIS" },
       {
-        label: "contact.servicefoncier@caissedesdepots.fr",
-        href: "mailto:contact.servicefoncier@caissedesdepots.fr",
+        label: CONTACT_EMAIL,
+        href: `mailto:${CONTACT_EMAIL}`,
       },
     ],
   },
