@@ -3,7 +3,30 @@
     "title": "Foncier plus"
   },
   "ContactPage": {
-    "title": "Nous contacter"
+    "title": "Nous contacter",
+    "heading": "<bold>Pas de projet sans réponse.</bold> <line>Notre réseau se mobilise</line>",
+    "subHeading": "Vous ne trouvez pas l’offre ou le contact qui correspond à votre besoin ? Écrivez-nous : Foncier+ vous oriente vers l’interlocuteur le plus pertinent.",
+    "metadata": {
+      "title": "Recherche de foncier économique : nous contacter | Foncier+",
+      "description": "Vous ne trouvez pas le terrain adapté ? Pas de projet sans réponse : décrivez-nous votre besoin, Foncier+ vous relie aux bons interlocuteurs territoriaux."
+    },
+    "contactForm": {
+      "heading": "Vous n’avez pas trouvé le terrain qu’il vous faut, ou vous souhaitez élargir votre recherche ?",
+      "description": "Décrivez votre projet et vos critères. Nous vous répondons sous 48 h ouvrées.",
+      "companyLabel": "Entreprise",
+      "companyPlaceholder": "Ex : Entreprise",
+      "nameLabel": "Nom et prénom",
+      "namePlaceholder": "Ex : Camille Martin",
+      "roleLabel": "Fonction",
+      "rolePlaceholder": "Ex : CEO",
+      "hint": "Saisissez jusqu’à {max} caractères (lettres, chiffres, espaces, tirets et apostrophes uniquement).",
+      "cta": "Rédiger mon message",
+      "note": "Votre adresse nous parviendra avec votre message. Vous pouvez aussi envoyer un mail directement à {email}"
+    },
+    "email": {
+      "subject": "Recherche de foncier",
+      "body": "Votre recherche n’a pas abouti ou votre besoin est spécifique ?\nDécrivez-nous votre projet d’implantation. Foncier+ relaie votre demande auprès des territoires et des interlocuteurs locaux capables d’y répondre.\n\nPour nous aider à vous orienter, précisez :\n- Votre secteur d’activité et vos contraintes clés (eau, puissance électrique, accès logistique, ICPE…).\n- Vos critères de recherche : surface (foncier/bâti), zone géographique et échéance.\n\nVous pouvez également joindre votre cahier des charges.\n\n{name}\n{role}\n{company}"
+    }
   },
   "Metadata": {
     "title": "Foncier+",
