@@ -3,7 +3,9 @@
     "title": "Welcome to Foncier plus"
   },
   "ContactPage": {
-    "title": "Contact us"
+    "title": "Contact us",
+    "heading": "<bold>No project goes unanswered.</bold> <line>Our network steps up</line>",
+    "subHeading": "Can't find the offer or the contact that matches your needs? Write to us: Foncier+ will direct you to the most relevant contact person."
   },
   "Metadata": {
     "title": "Foncier+",

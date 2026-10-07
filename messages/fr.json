@@ -3,7 +3,9 @@
     "title": "Foncier plus"
   },
   "ContactPage": {
-    "title": "Nous contacter"
+    "title": "Nous contacter",
+    "heading": "<bold>Pas de projet sans réponse.</bold> <line>Notre réseau se mobilise</line>",
+    "subHeading": "Vous ne trouvez pas l’offre ou le contact qui correspond à votre besoin ? Écrivez-nous : Foncier+ vous oriente vers l’interlocuteur le plus pertinent."
   },
   "Metadata": {
     "title": "Foncier+",
