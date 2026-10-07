@@ -26,7 +26,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function ContactPage() {
+const ContactPage = async () => {
   const t = await getTranslations("ContactPage");
 
   return (
@@ -52,4 +52,6 @@ export default async function ContactPage() {
       </div>
     </main>
   );
-}
+};
+
+export default ContactPage;
