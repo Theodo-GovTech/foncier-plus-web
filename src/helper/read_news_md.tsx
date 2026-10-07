@@ -31,9 +31,13 @@ const readMetadata = (
 
   if (!isString) return undefined;
 
-  const strValue: string = value.trim();
+  const strValue = value.trim();
 
-  return strValue !== "" && strValue !== "NA" ? strValue : undefined;
+  const isUndefined = strValue === "" || strValue === "NA";
+
+  if (isUndefined) return undefined;
+
+  return strValue;
 };
 
 const readRequiredMetadata = (
@@ -48,13 +52,16 @@ const readRequiredMetadata = (
 };
 
 const isNewsType = (value: string): value is NewsType =>
-  Object.values<string>(NewsType).includes(value.toLowerCase());
+  Object.values<string>(NewsType).includes(value);
 
 // Leading and trailing "/" are optional. Only ASCII letters, digits, "-" and "_"
 const normalizeSlug = (slug: string, linkToNews: string): string => {
-  const normalizedSlug = slug.replace(/^\/|\/$/g, "");
+  const leadingOrTrailingSlash = /^\/|\/$/g;
+  const onlyAlphanumDashUnderscore = /^[\w-]+$/;
 
-  if (!/^[\w-]+$/.test(normalizedSlug)) {
+  const normalizedSlug = slug.replace(leadingOrTrailingSlash, "");
+
+  if (!onlyAlphanumDashUnderscore.test(normalizedSlug)) {
     throw new Error(`${linkToNews} - Invalid slug "${slug}"`);
   }
 
