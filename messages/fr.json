@@ -5,7 +5,11 @@
   "ContactPage": {
     "title": "Nous contacter",
     "heading": "<bold>Pas de projet sans réponse.</bold> <line>Notre réseau se mobilise</line>",
-    "subHeading": "Vous ne trouvez pas l’offre ou le contact qui correspond à votre besoin ? Écrivez-nous : Foncier+ vous oriente vers l’interlocuteur le plus pertinent."
+    "subHeading": "Vous ne trouvez pas l’offre ou le contact qui correspond à votre besoin ? Écrivez-nous : Foncier+ vous oriente vers l’interlocuteur le plus pertinent.",
+    "metadata": {
+      "title": "Recherche de foncier économique : nous contacter | Foncier+",
+      "description": "Vous ne trouvez pas le terrain adapté ? Pas de projet sans réponse : décrivez-nous votre besoin, Foncier+ vous relie aux bons interlocuteurs territoriaux."
+    }
   },
   "Metadata": {
     "title": "Foncier+",

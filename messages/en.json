@@ -5,7 +5,11 @@
   "ContactPage": {
     "title": "Contact us",
     "heading": "<bold>No project goes unanswered.</bold> <line>Our network steps up</line>",
-    "subHeading": "Can't find the offer or the contact that matches your needs? Write to us: Foncier+ will direct you to the most relevant contact person."
+    "subHeading": "Can't find the offer or the contact that matches your needs? Write to us: Foncier+ will direct you to the most relevant contact person.",
+    "metadata": {
+      "title": "Searching for business land: contact us | Foncier+",
+      "description": "Can't find the right plot? No project goes unanswered: tell us what you need and Foncier+ will connect you with the right local contacts."
+    }
   },
   "Metadata": {
     "title": "Foncier+",
