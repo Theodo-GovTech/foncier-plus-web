@@ -1,6 +1,7 @@
 import { readdirSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { hasLocale, type Locale } from "next-intl";
+import { checkMarkdownImagesExist } from "@/helper/images";
 import {
   convertFileIntoNewsMd,
   type News,
@@ -88,6 +89,8 @@ export const getArticlePages = (
       }
 
       articleDirectories.add(articleDirectory);
+
+      checkMarkdownImagesExist(article.body, linkToNews);
 
       return [{ ...article, articleDirectory }];
     });

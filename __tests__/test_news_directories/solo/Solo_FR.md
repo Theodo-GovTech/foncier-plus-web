@@ -7,3 +7,5 @@ date: "2025-10-01"
 ---
 
 # Solo
+
+![image of another site](https://example.com/image.png)

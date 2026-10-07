@@ -6,6 +6,7 @@ import {
   readNewsFiles,
 } from "@/helper/article_pages";
 import { compareDates } from "@/helper/date";
+import { checkImageExists, PUBLIC_DIRECTORY } from "@/helper/images";
 import {
   convertFileIntoNewsMd,
   type News,
@@ -28,6 +29,7 @@ const getNewsHref = (news: NewsWithLink, assetsPath: string): string => {
 export const getNewsSectionItems = (
   locale: Locale,
   directory: string = NEWS_SECTION_DIRECTORY,
+  publicDirectory: string = PUBLIC_DIRECTORY,
 ): NewsSectionItem[] => {
   const frArticleSlugs = new Map(
     getArticlePages("fr", [directory]).map(({ articleDirectory, slug }) => [
@@ -61,11 +63,14 @@ export const getNewsSectionItems = (
     )
     .map((news) => {
       const assetsPath = getAssetsPath(news);
+      const coverImgSrc = `${assetsPath}/${news.coverImgPath}`;
+
+      checkImageExists(coverImgSrc, news.linkToNews, publicDirectory);
 
       return {
         ...news,
         href: getNewsHref(news, assetsPath),
-        coverImgSrc: `${assetsPath}/${news.coverImgPath}`,
+        coverImgSrc,
       };
     });
 };
