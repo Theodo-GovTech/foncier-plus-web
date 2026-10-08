@@ -3,7 +3,30 @@
     "title": "Welcome to Foncier plus"
   },
   "ContactPage": {
-    "title": "Contact us"
+    "title": "Contact us",
+    "heading": "<bold>No project goes unanswered.</bold> <line>Our network steps up</line>",
+    "subHeading": "Can't find the offer or the contact that matches your needs? Write to us: Foncier+ will direct you to the most relevant contact person.",
+    "metadata": {
+      "title": "Searching for business land: contact us | Foncier+",
+      "description": "Can't find the right plot? No project goes unanswered: tell us what you need and Foncier+ will connect you with the right local contacts."
+    },
+    "contactForm": {
+      "heading": "Haven’t found the land you need, or want to broaden your search?",
+      "description": "Describe your project and your criteria. We will reply within 48 working hours.",
+      "companyLabel": "Company",
+      "companyPlaceholder": "E.g. Company",
+      "nameLabel": "Full name",
+      "namePlaceholder": "E.g. Camille Martin",
+      "roleLabel": "Job title",
+      "rolePlaceholder": "E.g. CEO",
+      "hint": "Enter up to {max} characters (letters, numbers, spaces, hyphens and apostrophes only).",
+      "cta": "Write my message",
+      "note": "Your email address will reach us with your message. You can also email us directly at {email}"
+    },
+    "email": {
+      "subject": "Land search",
+      "body": "Your search has not been successful, or you have a specific need?\nDescribe your location project to us. Foncier+ will relay your request to the territories and the local contacts able to respond.\n\nTo help us point you in the right direction, please specify:\n- Your business sector and key constraints (water, power supply, logistics access, environmental permits…).\n- Your search criteria: surface area (land/buildings), geographic area and timeline.\n\nYou can also attach your specifications.\n\n{name}\n{role}\n{company}"
+    }
   },
   "Metadata": {
     "title": "Foncier+",
@@ -12,7 +35,9 @@
   "Header": {
     "navAriaLabel": "Main navigation",
     "searchNavLabel": "Search for land",
+    "newsNavLabel": "News",
     "businessSectorsPathNavLabel": "Our ambitions",
+    "aboutUsNavLabel": "About Foncier+",
     "business": "Business",
     "localAuthority": "Local authority",
     "contact": "Contact us"
@@ -25,11 +50,71 @@
     "home": "Home"
   },
   "SearchSection": {
-    "title": "Find the ideal land to bring your economic project to life",
+    "title": "<line>The national meeting point</line> <line>between your location project</line> <line>and the territories</line>",
     "highlights": [
-      "Qualified listings",
-      "Support finding land and setting up your business"
+      "Economic land listings nationwide",
+      "Connection with local stakeholders"
     ]
+  },
+  "SearchBox": {
+    "ariaLabel": "Land search",
+    "locationLabel": "Location",
+    "locationPlaceholder": "Region, department, EPCI, municipality",
+    "locationLoading": "Loading locations…",
+    "locationLoadError": "Locations could not be loaded.",
+    "locationNoResult": "No location matches your search",
+    "locationTypes": {
+      "REGION": "Region",
+      "DEPARTEMENT": "Department",
+      "EPCI": "EPCI",
+      "COMMUNE": "Municipality"
+    },
+    "acquisitionTypeLabel": "Acquisition type",
+    "acquisitionTypes": {
+      "VENTE": "Purchase",
+      "LOCATION": "Lease"
+    },
+    "labelLabel": "Label",
+    "readyToUseSite": "Ready-to-use site",
+    "offerTypeLabel": "Offer type",
+    "offerTypes": {
+      "NU": "Land",
+      "BATI": "Property"
+    },
+    "surfaceLabel": "Minimum area",
+    "surfaceUnitLabel": "Area unit",
+    "surfaceUnits": {
+      "ha": "ha",
+      "m2": "m²"
+    },
+    "advancedFilters": "Advanced filters",
+    "reset": "Reset",
+    "search": "Search",
+    "availabilityLabel": "Availability",
+    "availabilities": {
+      "IMMEDIATLY": "Immediate",
+      "FROM_0_TO_6": "0 to 6 months",
+      "FROM_6_TO_12": "6 to 12 months",
+      "MORE_THAN_12": "more than 12 months"
+    },
+    "destinationLabel": "Purpose",
+    "destinations": {
+      "ART": "Crafts",
+      "INDU": "Industry",
+      "LOG": "Logistics",
+      "MIX": "Mixed use"
+    }
+  },
+  "NewsSection": {
+    "title": "<bold>At the heart of the territories:</bold> <line>news & resources</line>",
+    "previousLabel": "Previous news",
+    "nextLabel": "Next news",
+    "newTabLabel": "New tab",
+    "readLink": {
+      "article": "Read the article",
+      "pdf": "Read the PDF",
+      "url": "Read the page"
+    }
   },
   "BusinessSectorsPathSection": {
     "title": "<line>Tomorrow,</line> <bold>a search better tailored to your sector</bold>",

@@ -1,12 +1,19 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
+import { isCurrentPage, PageLink } from "@/components/PageLink";
 import { SectionLink } from "@/components/SectionLink";
 import { usePathname } from "@/i18n/navigation";
 
 type Section = { id: string; label: string };
 
-type SectionNavProps = { sections: Section[]; ariaLabel: string };
+type Page = { href: string; label: string };
+
+type SectionNavProps = {
+  sections: Section[];
+  pageLinks: Page[];
+  ariaLabel: string;
+};
 
 const linkClassName =
   "font-semibold text-[17px] text-brand transition-colors hover:text-brand/70 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand aria-current:text-brand-accent aria-current:hover:text-brand-accent/70";
@@ -30,8 +37,13 @@ const getActiveSectionId = (sections: Section[]) => {
   })?.id;
 };
 
-export const SectionNav = ({ sections, ariaLabel }: SectionNavProps) => {
-  const isHomePage = usePathname() === "/";
+export const SectionNav = ({
+  sections,
+  pageLinks,
+  ariaLabel,
+}: SectionNavProps) => {
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
   const activeSectionId = useSyncExternalStore(
     subscribeToScroll,
     () => (isHomePage ? getActiveSectionId(sections) : undefined),
@@ -41,7 +53,7 @@ export const SectionNav = ({ sections, ariaLabel }: SectionNavProps) => {
   return (
     <nav
       aria-label={ariaLabel}
-      className="mx-auto flex max-w-page gap-6 px-4 py-6 lg:px-[114px]"
+      className="mx-auto flex max-w-page flex-wrap gap-x-6 gap-y-3 px-4 py-6 lg:px-[114px]"
     >
       {sections.map(({ id, label }) => (
         <SectionLink
@@ -52,6 +64,16 @@ export const SectionNav = ({ sections, ariaLabel }: SectionNavProps) => {
         >
           {label}
         </SectionLink>
+      ))}
+      {pageLinks.map(({ href, label }) => (
+        <PageLink
+          key={href}
+          href={href}
+          aria-current={isCurrentPage(pathname, href)}
+          className={linkClassName}
+        >
+          {label}
+        </PageLink>
       ))}
     </nav>
   );

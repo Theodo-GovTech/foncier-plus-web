@@ -1,17 +1,19 @@
 import { SearchSection } from "@/components/SearchSection";
+import { NewsSection } from "@/components/NewsSection";
 import { BusinessSectorsPathSection } from "@/components/BusinessSectorsPathSection";
 import { AmbitionsSection } from "@/components/AmbitionsSection";
 import { ContactSection } from "@/components/ContactSection";
 import { RegionMapSection } from "@/components/RegionMapSection";
 
-export default async function Home() {
-  return (
-    <main className="flex-1">
-      <SearchSection />
-      <BusinessSectorsPathSection />
-      <AmbitionsSection />
-      <RegionMapSection />
-      <ContactSection />
-    </main>
-  );
-}
+const Home = async () => (
+  <main className="flex-1">
+    <SearchSection />
+    <NewsSection />
+    <RegionMapSection />
+    <BusinessSectorsPathSection />
+    <AmbitionsSection />
+    <ContactSection />
+  </main>
+);
+
+export default Home;

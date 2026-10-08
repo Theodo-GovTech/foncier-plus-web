@@ -1,16 +1,18 @@
 import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 import logoFoncierPlusW from "@/assets/logo-foncier-plus-white.svg";
-import { NavButton } from "@/components/NavButton";
+import { PageLink } from "@/components/PageLink";
 import { SectionLink } from "@/components/SectionLink";
 import { ExternalLinkIcon } from "./icons/ExternalLinkIcon";
-import { getSections } from "./Header";
+import { getPageLinks, getSections } from "./Header";
+import { CONTACT_EMAIL } from "@/lib/contact";
 
 type FooterLink = {
   label: string;
   href?: string;
   external?: boolean;
   sectionId?: string;
+  pageHref?: string;
 };
 
 const COPYRIGHT_DATE = 2026;
@@ -23,18 +25,24 @@ const getLinkGroups = async (
 ): Promise<{ title: string; links: FooterLink[] }[]> => [
   {
     title: t("siteMapTitle"),
-    links: (await getSections()).map(({ id, label }) => ({
-      label,
-      sectionId: id,
-    })),
+    links: [
+      ...(await getSections()).map(({ id, label }) => ({
+        label,
+        sectionId: id,
+      })),
+      ...(await getPageLinks()).map(({ href, label }) => ({
+        label,
+        pageHref: href,
+      })),
+    ],
   },
   {
     title: t("contactTitle"),
     links: [
       { label: "72, avenue Pierre Mendès-France 75013 PARIS" },
       {
-        label: "contact.servicefoncier@caissedesdepots.fr",
-        href: "mailto:contact.servicefoncier@caissedesdepots.fr",
+        label: CONTACT_EMAIL,
+        href: `mailto:${CONTACT_EMAIL}`,
       },
     ],
   },
@@ -73,9 +81,12 @@ export const Footer = async () => {
             {t("description")}
           </p>
           <div className="mt-9">
-            <NavButton href="/contact" variant="accent" size="lg">
+            <PageLink
+              href="/contact"
+              className="inline-flex h-12 items-center justify-center border border-brand-accent bg-brand-accent px-4 text-[16px] leading-none font-bold whitespace-nowrap text-white transition-colors hover:bg-brand-accent-hover"
+            >
               {t("cta")}
-            </NavButton>
+            </PageLink>
           </div>
         </div>
         <div className="grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:flex-5">
@@ -83,12 +94,16 @@ export const Footer = async () => {
             <div key={title}>
               <h2 className="text-2xl font-bold">{title}</h2>
               <ul className="mt-6 flex flex-col gap-3 lg:text-[15px] font-semibold">
-                {links.map(({ label, href, external, sectionId }) => (
+                {links.map(({ label, href, external, sectionId, pageHref }) => (
                   <li key={label}>
                     {sectionId !== undefined ? (
                       <SectionLink id={sectionId} className={linkClassName}>
                         {label}
                       </SectionLink>
+                    ) : pageHref !== undefined ? (
+                      <PageLink href={pageHref} className={linkClassName}>
+                        {label}
+                      </PageLink>
                     ) : (
                       <a
                         href={href}
