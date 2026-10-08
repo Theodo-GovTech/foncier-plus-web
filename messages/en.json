@@ -105,7 +105,7 @@
     }
   },
   "NewsSection": {
-    "title": "News",
+    "title": "<bold>At the heart of the territories:</bold> <line>news & resources</line>",
     "previousLabel": "Previous news",
     "nextLabel": "Next news",
     "newTabLabel": "New tab",

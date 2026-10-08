@@ -105,7 +105,7 @@
     }
   },
   "NewsSection": {
-    "title": "Actualités",
+    "title": "<bold>Au cœur des territoires :</bold> <line>actualités & ressources</line>",
     "previousLabel": "Actualités précédentes",
     "nextLabel": "Actualités suivantes",
     "newTabLabel": "Nouvel onglet",

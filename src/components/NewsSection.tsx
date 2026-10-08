@@ -13,7 +13,10 @@ export const NewsSection = async () => {
   return (
     <section className="mx-auto max-w-page px-4 py-20 lg:px-[114px]">
       <NewsTimeline
-        title={t("title")}
+        title={t.rich("title", {
+          bold: (chunks) => <span className="font-bold">{chunks}</span>,
+          line: (chunks) => <span className="block">{chunks}</span>,
+        })}
         previousLabel={t("previousLabel")}
         nextLabel={t("nextLabel")}
         cards={newsItems.map((news) => (

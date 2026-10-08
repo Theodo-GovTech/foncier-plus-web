@@ -4,7 +4,7 @@ import { type ReactNode, useState } from "react";
 import { CaretDownIcon } from "@/components/icons/CaretDownIcon";
 
 type NewsTimelineProps = {
-  title: string;
+  title: ReactNode;
   previousLabel: string;
   nextLabel: string;
   cards: ReactNode[];
