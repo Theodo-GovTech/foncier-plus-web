@@ -6,7 +6,7 @@ import { NavButton } from "@/components/NavButton";
 import { PageLink } from "@/components/PageLink";
 import { searchSectionId } from "@/components/SearchSection";
 import { newsSectionId } from "@/components/NewsSection";
-import { businessSectorsPathSectionId } from "@/components/BusinessSectorsPathSection";
+import { commitmentsSectionId } from "@/components/BusinessSectorsPathSection";
 import { SectionNav } from "@/components/SectionNav";
 import { ABOUT_US_DIRECTORY, getArticleHref } from "@/helper/article_pages";
 import { getFranceFoncierUrl } from "@/lib/franceFoncierUrls";
@@ -17,7 +17,7 @@ export const getSections = async () => {
     { id: searchSectionId, label: t("searchNavLabel") },
     { id: newsSectionId, label: t("newsNavLabel") },
     {
-      id: businessSectorsPathSectionId,
+      id: commitmentsSectionId,
       label: t("businessSectorsPathNavLabel"),
     },
   ];
