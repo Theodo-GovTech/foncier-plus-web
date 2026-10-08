@@ -10,8 +10,8 @@ const Home = async () => (
     <SearchSection />
     <NewsSection />
     <RegionMapSection />
-    <BusinessSectorsPathSection />
     <AmbitionsSection />
+    <BusinessSectorsPathSection />
     <ContactSection />
   </main>
 );
