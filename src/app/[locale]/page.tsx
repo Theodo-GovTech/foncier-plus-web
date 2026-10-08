@@ -9,9 +9,9 @@ const Home = async () => (
   <main className="flex-1">
     <SearchSection />
     <NewsSection />
+    <RegionMapSection />
     <BusinessSectorsPathSection />
     <AmbitionsSection />
-    <RegionMapSection />
     <ContactSection />
   </main>
 );
