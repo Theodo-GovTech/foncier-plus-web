@@ -11,6 +11,7 @@ type NewsTimelineProps = {
 };
 
 const NEWS_PER_PAGE = 3;
+const FIRST_PAGE = 0;
 
 const buttonClassName =
   "flex size-11 cursor-pointer items-center justify-center border border-brand bg-white text-brand transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand not-aria-disabled:hover:bg-brand not-aria-disabled:hover:text-white aria-disabled:cursor-default aria-disabled:border-muted/30 aria-disabled:text-muted/40";
@@ -25,12 +26,19 @@ export const NewsTimeline = ({
   nextLabel,
   cards,
 }: NewsTimelineProps) => {
-  const [currentPage, setCurrentPage] = useState(0);
+  const [currentPage, setCurrentPage] = useState(FIRST_PAGE);
   const pages = Array.from(
     { length: Math.ceil(cards.length / NEWS_PER_PAGE) },
     (_, index) =>
       cards.slice(index * NEWS_PER_PAGE, (index + 1) * NEWS_PER_PAGE),
   );
+  const lastPage = pages.length - 1;
+
+  const goToPreviousPage = () =>
+    setCurrentPage((page) => (page === FIRST_PAGE ? FIRST_PAGE : page - 1));
+
+  const goToNextPage = () =>
+    setCurrentPage((page) => (page === lastPage ? FIRST_PAGE : page + 1));
 
   return (
     <>
@@ -41,8 +49,8 @@ export const NewsTimeline = ({
             <button
               type="button"
               aria-label={previousLabel}
-              aria-disabled={currentPage === 0}
-              onClick={() => setCurrentPage((page) => Math.max(page - 1, 0))}
+              aria-disabled={currentPage === FIRST_PAGE}
+              onClick={goToPreviousPage}
               className={buttonClassName}
             >
               <CaretDownIcon aria-hidden="true" className="size-6 rotate-90" />
@@ -50,9 +58,7 @@ export const NewsTimeline = ({
             <button
               type="button"
               aria-label={nextLabel}
-              onClick={() =>
-                setCurrentPage((page) => (page + 1) % pages.length)
-              }
+              onClick={goToNextPage}
               className={buttonClassName}
             >
               <CaretDownIcon aria-hidden="true" className="size-6 -rotate-90" />

@@ -9,9 +9,13 @@ export const readMetadata = (
 
   if (!isString) return undefined;
 
-  const strValue: string = value.trim();
+  const strValue = value.trim();
 
-  return strValue !== "" && strValue !== "NA" ? strValue : undefined;
+  const isUndefined = strValue === "" || strValue === "NA";
+
+  if (isUndefined) return undefined;
+
+  return strValue;
 };
 
 export const readRequiredMetadata = (

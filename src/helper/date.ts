@@ -2,10 +2,15 @@ import type { Locale } from "next-intl";
 import { type Frontmatter, readRequiredMetadata } from "@/helper/frontmatter";
 
 // new Date("2025-02-31") silently moves to March 3rd
-const isValidDate = (date: string) =>
-  /^\d{4}-\d{2}-\d{2}$/.test(date) &&
-  !Number.isNaN(Date.parse(date)) &&
-  new Date(date).toISOString().startsWith(date);
+const isValidDate = (date: string) => {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) return false;
+
+  const parsedDate = new Date(date);
+  return (
+    !Number.isNaN(parsedDate.getTime()) &&
+    parsedDate.toISOString().slice(0, 10) === date
+  );
+};
 
 // Format : YYYY-MM-DD. YAML reads it as a Date when it is not quoted
 export const readDate = (
