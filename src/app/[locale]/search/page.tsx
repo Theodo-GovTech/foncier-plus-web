@@ -7,7 +7,7 @@ export default async function SearchPage({
   const { locale } = await params;
 
   return (
-    <main className="flex flex-1 flex-col">
+    <main className="mx-auto flex w-full max-w-page flex-1 flex-col px-4 pb-16 lg:px-[114px]">
       <iframe
         src={`/embed/bdt-web-component.html?locale=${locale}`}
         title="France Foncier"

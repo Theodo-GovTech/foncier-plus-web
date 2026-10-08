@@ -15,6 +15,29 @@
       type="module"
       src="https://www.banquedesterritoires.fr/themes/custom/theme-bdt-neva/js/fo4-bdt-wc-foncier.js"
     ></script>
+    <!-- The map is sized in vh, which in an iframe is the iframe's height. Since the iframe grows
+         to fit its content, size the map from the parent window's height instead. -->
+    <style>
+      /* The iframe grows to fit the page, so it never needs its own scrollbar */
+      html {
+        overflow: hidden;
+      }
+      /* Keep the children's margins inside the body, so its height is the iframe's */
+      body {
+        display: flow-root;
+      }
+      .map-results-layout {
+        height: calc(var(--parent-viewport-height, 100vh) * 0.85) !important;
+      }
+      @media (max-width: 768px) {
+        .map-results-layout {
+          height: auto !important;
+        }
+        .map-panel {
+          height: calc(var(--parent-viewport-height, 100vh) * 0.7) !important;
+        }
+      }
+    </style>
   </head>
   <body>
     <!-- The BdT loader script mounts its bundles into #web-component on DOMContentLoaded -->
@@ -25,6 +48,27 @@
       if (locale === "en") webComponent.setAttribute("locale", "en");
       document.documentElement.lang = locale === "en" ? "en" : "fr";
       document.getElementById("web-component").append(webComponent);
+
+      // Grow the iframe to fit the web component, so the page scrolls as a whole and our footer
+      // sits below the map. Both pages share an origin, so this page can reach its <iframe>.
+      const iframe = window.frameElement;
+      if (iframe) {
+        const syncParentViewportHeight = () =>
+          document.documentElement.style.setProperty(
+            "--parent-viewport-height",
+            `${parent.innerHeight}px`,
+          );
+        syncParentViewportHeight();
+        parent.addEventListener("resize", syncParentViewportHeight);
+
+        // Skip the empty page before the web component mounts, so the footer doesn't jump up
+        new ResizeObserver(() => {
+          const height = Math.ceil(
+            document.body.getBoundingClientRect().height,
+          );
+          if (height > 0) iframe.style.height = `${height}px`;
+        }).observe(document.body);
+      }
     </script>
   </body>
 </html>
