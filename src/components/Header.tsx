@@ -64,9 +64,12 @@ export const Header = async () => {
           >
             {t("localAuthority")}
           </NavButton>
-          <NavButton href="/contact" variant="accent">
+          <PageLink
+            href="/contact"
+            className="inline-flex h-[30px] items-center justify-center border border-brand-accent bg-brand-accent px-4 text-[16px] leading-none font-bold whitespace-nowrap text-white transition-colors hover:bg-brand-accent-hover"
+          >
             {t("contact")}
-          </NavButton>
+          </PageLink>
           <LanguageSwitcher />
         </nav>
       </div>
