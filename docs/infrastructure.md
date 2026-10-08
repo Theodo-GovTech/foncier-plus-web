@@ -78,5 +78,11 @@ application (`foncier-plus-deploy-prod`, `focnier-plus-deploy-staging`). Both ap
 ## Notes
 
 - **HTTPS only.** The containers redirect plain HTTP to HTTPS.
+- **France Foncier web component proxy.** The BdT web component on `/[locale]/search` loads its
+  bundles, config and Pollen stylesheet from root-relative paths, so rewrites in
+  [`next.config.ts`](../next.config.ts) forward `/webcomponents/fo4-bdt-wc-foncier/*` and
+  `/design/pollen/*` to banquedesterritoires.fr. This proxy is why the site needs a server and can't
+  be a static export. The web component's search requests go from the browser straight to
+  `opendata-api.caissedesdepots.fr`.
 - **Caching and compression.** The Next.js server gzips responses and sends long cache headers
   for `/_next/static/*`. No CDN is needed at the current traffic level.
