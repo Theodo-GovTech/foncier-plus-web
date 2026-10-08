@@ -7,9 +7,11 @@ description: "Discover Foncier+, the public-interest association connecting busi
 
 meta-description: "Discover Foncier+, the public-interest association connecting business location projects with territories and local economic development stakeholders."
 
-cover_image: NA
+cover_image: "ECO_454.svg"
 
 slug: "/about-us"
+
+date: "2026-10-05"
 ---
 
 # About Foncier+: connecting business location projects with territories

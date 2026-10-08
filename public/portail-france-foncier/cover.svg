@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <defs>
+    <pattern id="grid" width="80" height="80" patternUnits="userSpaceOnUse">
+      <path d="M80 0H0v80" fill="none" stroke="#fff" stroke-opacity=".07" stroke-width="2"/>
+    </pattern>
+  </defs>
+  <rect width="1600" height="900" fill="#043f54"/>
+  <rect width="1600" height="900" fill="url(#grid)"/>
+  <g fill="#fff" fill-opacity=".06" stroke="#fff" stroke-opacity=".14" stroke-width="3">
+    <rect x="140" y="120" width="300" height="200" rx="16"/>
+    <rect x="160" y="400" width="240" height="140" rx="16"/>
+    <rect x="1180" y="110" width="320" height="220" rx="16"/>
+    <rect x="1120" y="660" width="240" height="150" rx="16"/>
+    <rect x="200" y="690" width="280" height="140" rx="16"/>
+  </g>
+  <g fill="none" stroke="#fff" stroke-opacity=".16" stroke-linecap="round">
+    <path d="M-20 600C380 540 900 700 1620 520" stroke-width="34"/>
+    <path d="M560-20C640 300 700 600 620 920" stroke-width="26"/>
+  </g>
+  <rect x="860" y="380" width="320" height="180" rx="16" fill="#e42319" fill-opacity=".18" stroke="#e42319" stroke-width="6" stroke-dasharray="24 14"/>
+  <ellipse cx="1020" cy="476" rx="46" ry="12" fill="#000" fill-opacity=".3"/>
+  <path d="M1020 470c-70-90-110-140-110-200a110 110 0 0 1 220 0c0 60-40 110-110 200z" fill="#e42319"/>
+  <circle cx="1020" cy="270" r="46" fill="#fff"/>
+  <g transform="translate(1440 740) scale(3)">
+    <path fill="#26216a" d="M19.04 20.13h-5.57v11.9h5.57z"/>
+    <path fill="#5a71b4" d="M19.04 0h-5.57v11.89h5.57z"/>
+    <path fill="#e52b21" d="M19.04 13.27h-5.57v5.49h5.57z"/>
+    <path fill="#448d60" d="M12.07 13.13H0v5.49h12.07z"/>
+    <path fill="#ef7757" d="M32.5 13.13H20.43v5.49H32.5z"/>
+  </g>
+</svg>

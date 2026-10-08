@@ -12,6 +12,7 @@ describe("convertFileIntoNewsMd", () => {
       metaDescription: "Article meta description",
       coverImgPath: "cover.png",
       slug: "article",
+      date: "2025-10-01",
       body: "# Article heading\n\nArticle body.",
     });
   });
@@ -31,14 +32,25 @@ describe("convertFileIntoNewsMd", () => {
     );
   });
 
-  it("returns undefined for optional metadata that is NA, empty or missing", () => {
+  it("returns undefined for optional metadata that is NA or empty", () => {
     const article = convertFileIntoNewsMd(
       testNews("empty-optional-metadata.md"),
     );
 
     expect(article.description).toBeUndefined();
     expect(article.metaDescription).toBeUndefined();
-    expect(article.coverImgPath).toBeUndefined();
+  });
+
+  it("reads a date written without quotes", () => {
+    expect(convertFileIntoNewsMd(testNews("unquoted-date.md")).date).toBe(
+      "2025-10-01",
+    );
+  });
+
+  it("throws when the date is missing", () => {
+    expect(() => convertFileIntoNewsMd(testNews("missing-date.md"))).toThrow(
+      'Missing metadata "date"',
+    );
   });
 
   it("throws when the type is missing", () => {
@@ -59,21 +71,24 @@ describe("convertFileIntoNewsMd", () => {
     );
   });
 
-  it("throws when the slug of an article is missing", () => {
-    expect(() => convertFileIntoNewsMd(testNews("missing-slug.md"))).toThrow(
-      'Missing metadata "slug"',
-    );
+  it("throws when the cover image is missing", () => {
+    expect(() =>
+      convertFileIntoNewsMd(testNews("missing-cover-image.md")),
+    ).toThrow('Missing metadata "cover_image"');
   });
 
-  it.each(["pdf", "url"])("does not require a slug for a %s", (type) => {
-    expect(
-      convertFileIntoNewsMd(testNews(`${type}-without-slug.md`)).slug,
-    ).toBeUndefined();
-  });
+  it.each(["missing-slug.md", "pdf-without-slug.md", "url-without-slug.md"])(
+    "throws when the slug of %s is missing",
+    (fileName) => {
+      expect(() => convertFileIntoNewsMd(testNews(fileName))).toThrow(
+        'Missing metadata "slug"',
+      );
+    },
+  );
 
-  it("returns the slug of a non-article when it is provided", () => {
+  it("removes the leading slash of a non-article slug", () => {
     expect(convertFileIntoNewsMd(testNews("pdf-with-slug.md")).slug).toBe(
-      "/pdf",
+      "pdf",
     );
   });
 

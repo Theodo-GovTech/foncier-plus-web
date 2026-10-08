@@ -5,7 +5,8 @@ import {
   getLocaleFromFileName,
 } from "@/helper/article_pages";
 
-// about: FR + EN, shared: same slug in FR and EN, solo: FR only, pdf: not an article
+// about: FR + EN, shared: same slug in FR and EN, solo: FR only with an image of
+// another site, pdf: not an article
 const NEWS_DIRECTORIES = ["__tests__/test_news_directories"];
 const INVALID = "__tests__/test_article_pages_invalid";
 
@@ -47,6 +48,7 @@ describe("getArticlePages", () => {
     ["duplicated-slug", 'Slug "same" already used'],
     ["static-page-slug", 'Slug "contact" already used'],
     ["duplicated-language", 'Language "fr" already used'],
+    ["nonexistent-image", 'Missing file "public/images/nonexistent.png"'],
   ])("throws for %s", (directory, message) => {
     expect(() => getArticlePages("fr", [`${INVALID}/${directory}`])).toThrow(
       message,

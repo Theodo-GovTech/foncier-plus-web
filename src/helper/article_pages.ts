@@ -1,6 +1,7 @@
 import { readdirSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { hasLocale, type Locale } from "next-intl";
+import { checkMarkdownImagesExist } from "@/helper/public_files";
 import {
   convertFileIntoNewsMd,
   type News,
@@ -8,8 +9,9 @@ import {
 } from "@/helper/read_news_md";
 import { routing } from "@/i18n/routing";
 
-export const ABOUT_US_DIRECTORY = "src/assets/a-propos";
-export const NEWS_DIRECTORIES = [ABOUT_US_DIRECTORY];
+export const ABOUT_US_DIRECTORY = "src/assets/news/a-propos";
+export const NEWS_SECTION_DIRECTORY = "src/assets/news";
+export const NEWS_DIRECTORIES = [NEWS_SECTION_DIRECTORY];
 const LOCALE_PAGES_DIRECTORY = "src/app/[locale]";
 
 type NewsFile = {
@@ -17,7 +19,7 @@ type NewsFile = {
   locale: Locale;
 };
 
-export type ArticlePage = News & { slug: string; articleDirectory: string };
+export type ArticlePage = News & { articleDirectory: string };
 
 // Format : <article_name>_[A-Z]+.md
 export const getLocaleFromFileName = (linkToNews: string): Locale => {
@@ -78,9 +80,7 @@ export const getArticlePages = (
       const article = convertFileIntoNewsMd(linkToNews);
       const articleDirectory = dirname(linkToNews);
 
-      if (article.type !== NewsType.ARTICLE || article.slug === undefined) {
-        return [];
-      }
+      if (article.type !== NewsType.ARTICLE) return [];
 
       checkSlugIsFree(article.slug, linkToNews);
 
@@ -90,7 +90,9 @@ export const getArticlePages = (
 
       articleDirectories.add(articleDirectory);
 
-      return [{ ...article, slug: article.slug, articleDirectory }];
+      checkMarkdownImagesExist(article.body, linkToNews);
+
+      return [{ ...article, articleDirectory }];
     });
 };
 
@@ -134,7 +136,7 @@ export const getArticleRedirects = (
     );
 };
 
-// src/assets/a-propos -> /a-propos in fr, /about-us in en
+// src/assets/news/a-propos -> /a-propos in fr, /about-us in en
 export const getArticleHref = (
   locale: Locale,
   articleDirectory: string,

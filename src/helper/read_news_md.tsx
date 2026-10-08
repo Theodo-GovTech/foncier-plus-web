@@ -1,6 +1,8 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import matter from "gray-matter";
+import { readDate } from "@/helper/date";
+import { readMetadata, readRequiredMetadata } from "@/helper/frontmatter";
 
 // Type PDF is used only for local pdf file, link to pdf files are URL
 export enum NewsType {
@@ -14,41 +16,10 @@ export type News = {
   title: string;
   description?: string;
   metaDescription?: string;
-  coverImgPath?: string | null;
-  slug?: string;
+  coverImgPath: string;
+  slug: string;
+  date: string;
   body: string;
-};
-
-// To read md file
-type Frontmatter = Record<string, unknown>;
-
-const readMetadata = (
-  frontmatter: Frontmatter,
-  key: string,
-): string | undefined => {
-  const value = frontmatter[key];
-  const isString = typeof value === "string";
-
-  if (!isString) return undefined;
-
-  const strValue = value.trim();
-
-  const isUndefined = strValue === "" || strValue === "NA";
-
-  if (isUndefined) return undefined;
-
-  return strValue;
-};
-
-const readRequiredMetadata = (
-  frontmatter: Frontmatter,
-  key: string,
-  linkToNews: string,
-): string => {
-  const value = readMetadata(frontmatter, key);
-
-  if (value !== undefined) return String(value);
-  else throw new Error(`${linkToNews} - Missing metadata "${key}"`);
 };
 
 const isNewsType = (value: string): value is NewsType =>
@@ -85,14 +56,13 @@ export const convertFileIntoNewsMd = (linkToNews: string): News => {
     title: readRequiredMetadata(data, "title", linkToNews),
     description: readMetadata(data, "description"),
     metaDescription: readMetadata(data, "meta-description"),
-    coverImgPath: readMetadata(data, "cover_image"),
-    slug:
-      lowercaseType === NewsType.ARTICLE
-        ? normalizeSlug(
-            readRequiredMetadata(data, "slug", linkToNews),
-            linkToNews,
-          )
-        : readMetadata(data, "slug"),
+    coverImgPath: readRequiredMetadata(data, "cover_image", linkToNews),
+    // Also the folder of the news files in public/
+    slug: normalizeSlug(
+      readRequiredMetadata(data, "slug", linkToNews),
+      linkToNews,
+    ),
+    date: readDate(data, linkToNews),
     body: content.trim(),
   };
 };
