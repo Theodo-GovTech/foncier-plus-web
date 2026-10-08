@@ -1,6 +1,9 @@
 import { SearchSection } from "@/components/SearchSection";
 import { NewsSection } from "@/components/NewsSection";
-import { BusinessSectorsPathSection } from "@/components/BusinessSectorsPathSection";
+import {
+  BusinessSectorsPathSection,
+  commitmentsSectionId,
+} from "@/components/BusinessSectorsPathSection";
 import { AmbitionsSection } from "@/components/AmbitionsSection";
 import { ContactSection } from "@/components/ContactSection";
 import { RegionMapSection } from "@/components/RegionMapSection";
@@ -10,8 +13,10 @@ const Home = async () => (
     <SearchSection />
     <NewsSection />
     <RegionMapSection />
-    <AmbitionsSection />
-    <BusinessSectorsPathSection />
+    <div id={commitmentsSectionId}>
+      <AmbitionsSection />
+      <BusinessSectorsPathSection />
+    </div>
     <ContactSection />
   </main>
 );
