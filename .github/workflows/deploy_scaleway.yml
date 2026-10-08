@@ -26,7 +26,10 @@ jobs:
         run: |
           IMAGE="rg.${SCW_REGION}.scw.cloud/${SCW_REGISTRY_NAMESPACE}/web:${GITHUB_REF_NAME}-${GITHUB_SHA}"
           echo "$SCW_SECRET_KEY" | docker login "rg.${SCW_REGION}.scw.cloud" -u nologin --password-stdin
-          docker build --build-arg ALLOW_INDEXING="$ALLOW_INDEXING" -t "$IMAGE" .
+          docker build \
+            --build-arg ALLOW_INDEXING="$ALLOW_INDEXING" \
+            --build-arg NEXT_PUBLIC_CONTACT_EMAIL="$NEXT_PUBLIC_CONTACT_EMAIL" \
+            -t "$IMAGE" .
           docker push "$IMAGE"
           echo "IMAGE=$IMAGE" >> "$GITHUB_ENV"
 
