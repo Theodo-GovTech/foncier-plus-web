@@ -5,6 +5,7 @@ import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { NavButton } from "@/components/NavButton";
 import { PageLink } from "@/components/PageLink";
 import { searchSectionId } from "@/components/SearchSection";
+import { newsSectionId } from "@/components/NewsSection";
 import { businessSectorsPathSectionId } from "@/components/BusinessSectorsPathSection";
 import { SectionNav } from "@/components/SectionNav";
 import { ABOUT_US_DIRECTORY, getArticleHref } from "@/helper/article_pages";
@@ -14,6 +15,7 @@ export const getSections = async () => {
   const t = await getTranslations("Header");
   return [
     { id: searchSectionId, label: t("searchNavLabel") },
+    { id: newsSectionId, label: t("newsNavLabel") },
     {
       id: businessSectorsPathSectionId,
       label: t("businessSectorsPathNavLabel"),

@@ -35,6 +35,7 @@
   "Header": {
     "navAriaLabel": "Navigation principale",
     "searchNavLabel": "Rechercher un terrain",
+    "newsNavLabel": "Actualités",
     "businessSectorsPathNavLabel": "Nos ambitions",
     "aboutUsNavLabel": "À propos de Foncier+",
     "business": "Entreprise",
