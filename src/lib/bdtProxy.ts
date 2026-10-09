@@ -17,7 +17,7 @@ const MAX_CACHED_FILES = 100;
 const MAX_BDT_FETCHES_PER_MINUTE = 60;
 
 // Leaves room for main.js (~5.6 MB) while not keeping visitors waiting on a hung BdT
-const BDT_TIMEOUT_MS = 15_000;
+const BDT_TIMEOUT_MS = 30_000;
 
 // BdT ships a new web component every few weeks: browsers keep the files for an hour, so a new
 // release reaches visitors soon after we fetch it.
