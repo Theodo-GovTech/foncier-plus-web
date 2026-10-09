@@ -2,15 +2,7 @@ import type { Locale } from "next-intl";
 import type { Region } from "@/data/regions";
 import type { Location } from "@/lib/locations";
 
-const FRANCE_FONCIER_URLS: Record<Locale, string> = {
-  fr: "https://www.banquedesterritoires.fr/produits-services/services-digitaux/france-foncier",
-  en: "https://www.banquedesterritoires.fr/france-foncier/en",
-};
-
 const SEARCH_ROUTE = "#/fo4-bdt-wc-foncier/rechercher";
-
-export const getFranceFoncierUrl = (locale: Locale) =>
-  FRANCE_FONCIER_URLS[locale];
 
 interface CheckboxFilter {
   label: string;

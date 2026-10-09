@@ -39,7 +39,7 @@
     "businessSectorsPathNavLabel": "Our commitments",
     "aboutUsNavLabel": "About Foncier+",
     "business": "Business",
-    "localAuthority": "Local authority",
+    "localAuthority": "{count, plural, one {Local authority} other {Local authorities}}",
     "contact": "Contact us"
   },
   "SectionNav": {

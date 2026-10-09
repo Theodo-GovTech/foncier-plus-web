@@ -1,10 +1,14 @@
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import Image from "next/image";
 import logoFoncierPlusW from "@/assets/logo-foncier-plus-white.svg";
 import { PageLink } from "@/components/PageLink";
 import { SectionLink } from "@/components/SectionLink";
 import { ExternalLinkIcon } from "./icons/ExternalLinkIcon";
 import { getPageLinks, getSections } from "./Header";
+import {
+  getArticleHref,
+  LOCAL_AUTHORITIES_DIRECTORY,
+} from "@/helper/article_pages";
 import { CONTACT_EMAIL } from "@/lib/contact";
 
 type FooterLink = {
@@ -34,6 +38,15 @@ const getLinkGroups = async (
         label,
         pageHref: href,
       })),
+      {
+        label: (await getTranslations("Header"))("localAuthority", {
+          count: 2,
+        }),
+        pageHref: getArticleHref(
+          await getLocale(),
+          LOCAL_AUTHORITIES_DIRECTORY,
+        ),
+      },
     ],
   },
   {

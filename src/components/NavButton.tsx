@@ -1,4 +1,5 @@
 import { Link } from "@/i18n/navigation";
+import { PageLink } from "@/components/PageLink";
 import type { AriaAttributes, ReactNode } from "react";
 
 type NavButtonVariant = "solid" | "outline" | "accent";
@@ -49,15 +50,24 @@ export const NavButton = ({
   }
 
   // `<Link>` handles external hrefs, they need the `target`/`rel` pair
+  if (external) {
+    return (
+      <Link
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-current={ariaCurrent}
+        className={className}
+      >
+        {children}
+      </Link>
+    );
+  }
+
+  // `<PageLink>` scrolls back to the top when the page is already displayed
   return (
-    <Link
-      href={href}
-      target={external ? "_blank" : undefined}
-      rel={external ? "noopener noreferrer" : undefined}
-      aria-current={ariaCurrent}
-      className={className}
-    >
+    <PageLink href={href} aria-current={ariaCurrent} className={className}>
       {children}
-    </Link>
+    </PageLink>
   );
 };

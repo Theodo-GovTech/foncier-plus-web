@@ -10,6 +10,7 @@ import {
 import { routing } from "@/i18n/routing";
 
 export const ABOUT_US_DIRECTORY = "src/assets/news/a-propos";
+export const LOCAL_AUTHORITIES_DIRECTORY = "src/assets/news/collectivites";
 export const NEWS_SECTION_DIRECTORY = "src/assets/news";
 export const NEWS_DIRECTORIES = [NEWS_SECTION_DIRECTORY];
 const LOCALE_PAGES_DIRECTORY = "src/app/[locale]";

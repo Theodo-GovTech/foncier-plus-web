@@ -39,7 +39,7 @@
     "businessSectorsPathNavLabel": "Nos engagements",
     "aboutUsNavLabel": "À propos de Foncier+",
     "business": "Entreprise",
-    "localAuthority": "Collectivité",
+    "localAuthority": "{count, plural, one {Collectivité} other {Collectivités}}",
     "contact": "Nous contacter"
   },
   "SectionNav": {
