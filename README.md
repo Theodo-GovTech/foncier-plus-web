@@ -43,6 +43,9 @@ pnpm start
 Set `ALLOW_INDEXING=true` at build time to let search engines index the site. It defaults to
 `false`.
 
+Set `BDT_CACHE_DURATION_HOURS` at runtime to change how long the server keeps the France Foncier
+web component's files before fetching them again from BdT. It defaults to `24`.
+
 ## Deployment
 
 Pushes to `staging` and `main` deploy to Scaleway Serverless Containers. See

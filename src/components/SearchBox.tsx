@@ -7,7 +7,8 @@ import { LocationCombobox } from "@/components/LocationCombobox";
 import { Toggle } from "@/components/Toggle";
 import { CaretDownIcon } from "@/components/icons/CaretDownIcon";
 import { SearchIcon } from "@/components/icons/SearchIcon";
-import { buildFranceFoncierSearchUrl } from "@/lib/franceFoncierUrls";
+import { Link } from "@/i18n/navigation";
+import { buildSearchHref } from "@/lib/franceFoncierUrls";
 import {
   acquisitionTypes,
   availabilities,
@@ -61,11 +62,7 @@ export const SearchBox = () => {
     setResetCount((count) => count + 1);
   };
 
-  // The filters go in the URL hash, which a native form submission would drop: hence a plain link.
-  const searchUrl = buildFranceFoncierSearchUrl(
-    toFranceFoncierQuery(filters, locale),
-    locale,
-  );
+  const searchHref = buildSearchHref(toFranceFoncierQuery(filters, locale));
 
   return (
     <div
@@ -201,15 +198,13 @@ export const SearchBox = () => {
             </button>
           </div>
         </div>
-        <a
-          href={searchUrl}
-          target="_blank"
-          rel="noopener noreferrer"
+        <Link
+          href={searchHref}
           className="flex h-12 items-center justify-center gap-2 bg-brand-accent px-4 text-[15px] font-semibold text-white transition-colors hover:bg-brand-accent-hover lg:w-[201px]"
         >
           {t("search")}
           <SearchIcon width={20} height={20} />
-        </a>
+        </Link>
       </div>
 
       <div

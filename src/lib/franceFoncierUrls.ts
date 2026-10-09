@@ -87,26 +87,22 @@ const toLatin1Base64 = (value: string) =>
     ),
   );
 
-export const buildFranceFoncierSearchUrl = (
-  query: Partial<FranceFoncierQuery>,
-  locale: Locale,
-) => {
-  const encodedQuery = toLatin1Base64(
-    JSON.stringify({ ...emptyQuery, ...query }),
-  );
-  // URI-encoded so that a "+" in the Base64 output is not read back as a space.
-  return `${FRANCE_FONCIER_URLS[locale]}${SEARCH_ROUTE}?q=${encodeURIComponent(encodedQuery)}`;
-};
+// Our search page hands `q` on to the web component, see `buildWebComponentUrl`
+export const buildSearchHref = (query: Partial<FranceFoncierQuery>) => ({
+  pathname: "/search",
+  query: { q: toLatin1Base64(JSON.stringify({ ...emptyQuery, ...query })) },
+});
 
-export const buildFranceFoncierRegionSearchUrl = (
-  region: Region,
-  locale: Locale,
-) =>
-  buildFranceFoncierSearchUrl(
-    {
-      regions: [
-        { type: "REGION", code: region.inseeCode, libelle: region.libelle },
-      ],
-    },
-    locale,
-  );
+export const buildRegionSearchHref = (region: Region) =>
+  buildSearchHref({
+    regions: [
+      { type: "REGION", code: region.inseeCode, libelle: region.libelle },
+    ],
+  });
+
+// The web component reads the search filters from its hash route, as on BdT's own page
+export const buildWebComponentUrl = (locale: Locale, query?: string) => {
+  const url = `/embed/bdt-web-component.html?locale=${locale}`;
+  // URI-encoded so that a "+" in the Base64 output is not read back as a space.
+  return query ? `${url}${SEARCH_ROUTE}?q=${encodeURIComponent(query)}` : url;
+};

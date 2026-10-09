@@ -1,11 +1,12 @@
 "use client";
 
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { type MouseEvent, useState } from "react";
 import iconPlusSE from "@/assets/icon-plus-SE.svg";
 import { franceMapViewBox, regions, type Region } from "@/data/regions";
-import { buildFranceFoncierRegionSearchUrl } from "@/lib/franceFoncierUrls";
+import { Link } from "@/i18n/navigation";
+import { buildRegionSearchHref } from "@/lib/franceFoncierUrls";
 
 interface RegionMapProps {
   className?: string;
@@ -13,7 +14,6 @@ interface RegionMapProps {
 
 export const RegionMap = ({ className }: RegionMapProps) => {
   const t = useTranslations("Regions");
-  const locale = useLocale();
   const [hoveredRegionId, setHoveredRegionId] = useState<Region["id"] | null>(
     null,
   );
@@ -35,11 +35,9 @@ export const RegionMap = ({ className }: RegionMapProps) => {
     >
       <svg viewBox={franceMapViewBox} className="h-auto w-full">
         {regions.map((region) => (
-          <a
+          <Link
             key={region.id}
-            href={buildFranceFoncierRegionSearchUrl(region, locale)}
-            target="_blank"
-            rel="noopener noreferrer"
+            href={buildRegionSearchHref(region)}
             aria-label={t(region.id)}
             className="group outline-none"
             onMouseEnter={() => setHoveredRegionId(region.id)}
@@ -54,7 +52,7 @@ export const RegionMap = ({ className }: RegionMapProps) => {
               stroke="var(--color-brand-accent)"
               strokeWidth={1.28}
             />
-          </a>
+          </Link>
         ))}
       </svg>
       {hoveredRegionId && (
