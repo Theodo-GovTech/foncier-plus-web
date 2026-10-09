@@ -7,6 +7,7 @@ import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
+import { MATOMO_CONTAINER_URL } from "@/lib/matomo";
 import "@/app/globals.css";
 import { Footer } from "@/components/Footer";
 
@@ -75,7 +76,7 @@ const RootLayout = async ({ children, params }: LayoutProps<"/[locale]">) => {
             const d = document;
             const g = d.createElement('script');
             const s = d.getElementsByTagName('script')[0];
-            g.async=true; g.src='https://cdn.matomo.cloud/foncierpluss3websitefrparscwcloud.matomo.cloud/container_t2LCTS8k.js';
+            g.async=true; g.src='${MATOMO_CONTAINER_URL}';
             s.parentNode.insertBefore(g,s);
           }`}
         </Script>

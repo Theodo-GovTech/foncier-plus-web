@@ -80,3 +80,12 @@ application (`foncier-plus-deploy-prod`, `focnier-plus-deploy-staging`). Both ap
 - **HTTPS only.** The containers redirect plain HTTP to HTTPS.
 - **Caching and compression.** The Next.js server gzips responses and sends long cache headers
   for `/_next/static/*`. No CDN is needed at the current traffic level.
+- **Security headers.** [`src/lib/securityHeaders.ts`](../src/lib/securityHeaders.ts) builds the
+  Content-Security-Policy and the other security headers that `next.config.ts` adds to every
+  response, except the trailing-slash redirects. They are fixed at build time, so changing them
+  needs a redeploy. The browser blocks any origin the CSP doesn't list:
+  - add the origin of any new third party (script, image, API, iframe);
+  - Matomo features turned on from its interface, without a deploy, may need new sources: Tag
+    Manager Preview/Debug, the Overlay and Heatmaps. The Overlay also needs Matomo to be allowed
+    to frame the site;
+  - keep article images in `public/`: an external image would be blocked without any build error.
