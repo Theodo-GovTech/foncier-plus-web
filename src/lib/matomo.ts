@@ -1,9 +1,7 @@
-// Also loaded by next.config.ts (through securityHeaders.ts), outside the bundler: do not import
-// with the `@/` alias here.
 export const MATOMO_URL =
   "https://foncierpluss3websitefrparscwcloud.matomo.cloud";
 
-// The CDN serves the containers of every Matomo Cloud customer, so the CSP only allows this folder.
+// cdn.matomo.cloud serves every Matomo Cloud customer: the CSP only allows our folder.
 export const MATOMO_CONTAINER_BASE_URL =
   "https://cdn.matomo.cloud/foncierpluss3websitefrparscwcloud.matomo.cloud/";
 
