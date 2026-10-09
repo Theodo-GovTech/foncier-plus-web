@@ -41,4 +41,4 @@ jobs:
             "https://api.scaleway.com/containers/v1beta1/regions/${SCW_REGION}/containers/${SCW_CONTAINER_ID}" \
             -H "X-Auth-Token: $SCW_SECRET_KEY" \
             -H "Content-Type: application/json" \
-            -d "{\"registry_image\": \"${IMAGE}\", \"redeploy\": true}"
+            -d "{\"registry_image\": \"${IMAGE}\", \"max_scale\": ${CONTAINER_MAX_SCALE}, \"timeout\": \"${CONTAINER_TIMEOUT}\", \"redeploy\": true}"
