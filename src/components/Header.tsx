@@ -8,8 +8,11 @@ import { searchSectionId } from "@/components/SearchSection";
 import { newsSectionId } from "@/components/NewsSection";
 import { commitmentsSectionId } from "@/components/BusinessSectorsPathSection";
 import { SectionNav } from "@/components/SectionNav";
-import { ABOUT_US_DIRECTORY, getArticleHref } from "@/helper/article_pages";
-import { getFranceFoncierUrl } from "@/lib/franceFoncierUrls";
+import {
+  ABOUT_US_DIRECTORY,
+  getArticleHref,
+  LOCAL_AUTHORITIES_DIRECTORY,
+} from "@/helper/article_pages";
 
 export const getSections = async () => {
   const t = await getTranslations("Header");
@@ -60,8 +63,7 @@ export const Header = async () => {
             {t("business")}
           </NavButton>
           <NavButton
-            href={getFranceFoncierUrl(locale)}
-            external
+            href={getArticleHref(locale, LOCAL_AUTHORITIES_DIRECTORY)}
             variant="outline"
           >
             {t("localAuthority")}

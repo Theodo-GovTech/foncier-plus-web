@@ -52,11 +52,11 @@ export const generateMetadata = async ({
 };
 
 const ArticlePage = async ({ params }: PageProps<"/[locale]/[slug]">) => {
-  const { title, body } = await getArticlePage(params);
+  const { title, breadcrumb, body } = await getArticlePage(params);
 
   return (
     <main className="flex-1 bg-linear-to-b from-brand/2 to-white">
-      <Breadcrumb currentPage={title} />
+      <Breadcrumb currentPage={breadcrumb ?? title} />
       <MarkdownContent>{body}</MarkdownContent>
     </main>
   );

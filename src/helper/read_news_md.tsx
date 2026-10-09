@@ -14,6 +14,7 @@ export enum NewsType {
 export type News = {
   type: NewsType;
   title: string;
+  breadcrumb?: string;
   description?: string;
   metaDescription?: string;
   coverImgPath: string;
@@ -54,6 +55,7 @@ export const convertFileIntoNewsMd = (linkToNews: string): News => {
   return {
     type: lowercaseType,
     title: readRequiredMetadata(data, "title", linkToNews),
+    breadcrumb: readMetadata(data, "breadcrumb"),
     description: readMetadata(data, "description"),
     metaDescription: readMetadata(data, "meta-description"),
     coverImgPath: readRequiredMetadata(data, "cover_image", linkToNews),
