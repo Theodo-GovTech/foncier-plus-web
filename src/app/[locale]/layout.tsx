@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Geist_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import { Header } from "@/components/Header";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
@@ -19,11 +18,6 @@ const metropolis = localFont({
     { path: "../../assets/fonts/metropolis-800.woff2", weight: "800" },
   ],
   variable: "--font-metropolis",
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
 });
 
 const allowIndexing = process.env.ALLOW_INDEXING === "true";
@@ -60,7 +54,7 @@ const RootLayout = async ({ children, params }: LayoutProps<"/[locale]">) => {
     <html
       lang={locale}
       data-scroll-behavior="smooth"
-      className={`${metropolis.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${metropolis.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <Script id="matomo-tag-manager" strategy="afterInteractive">

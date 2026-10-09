@@ -10,6 +10,7 @@ const nextConfig: NextConfig = {
   images: { unoptimized: true },
   poweredByHeader: false,
   headers: () => [{ source: "/(.*)", headers: buildSecurityHeaders(isDev) }],
+  reactMaxHeadersLength: 0,
 };
 
 const withNextIntl = createNextIntlPlugin();
