@@ -39,7 +39,7 @@
     "businessSectorsPathNavLabel": "Our commitments",
     "aboutUsNavLabel": "About Foncier+",
     "business": "Business",
-    "localAuthority": "Local authority",
+    "localAuthority": "{count, plural, one {Local authority} other {Local authorities}}",
     "contact": "Contact us"
   },
   "SectionNav": {
@@ -177,7 +177,6 @@
     "description": "The association dedicated to land management and supporting businesses for sustainable territorial growth.",
     "cta": "Contact us",
     "siteMapTitle": "Site map",
-    "localAuthorities": "Local authorities",
     "contactTitle": "Contact us",
     "partnersTitle": "Partners",
     "legalTitle": "Legal notice",

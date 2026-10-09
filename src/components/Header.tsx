@@ -66,7 +66,7 @@ export const Header = async () => {
             href={getArticleHref(locale, LOCAL_AUTHORITIES_DIRECTORY)}
             variant="outline"
           >
-            {t("localAuthority")}
+            {t("localAuthority", { count: 1 })}
           </NavButton>
           <PageLink
             href="/contact"

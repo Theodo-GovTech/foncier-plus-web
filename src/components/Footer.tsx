@@ -39,7 +39,9 @@ const getLinkGroups = async (
         pageHref: href,
       })),
       {
-        label: t("localAuthorities"),
+        label: (await getTranslations("Header"))("localAuthority", {
+          count: 2,
+        }),
         pageHref: getArticleHref(
           await getLocale(),
           LOCAL_AUTHORITIES_DIRECTORY,
